@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/6ae9f010c9.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .container {
+        margin: 20%;
+        display: flex;
+        width: 800px;
+        height: 200px;
+        background-color: antiquewhite;
+        margin-bottom: 30px;
+        display: flex;
+      }
+      .box {
+        width: 80px;
+        background-color: rgb(245, 200, 142);
+        margin: 5px;
+        padding: 5px 45px;
+        text-align: center;
+        color: salmon;
+        text-shadow: 1px 1px rgb(201, 97, 85);
+      }
+      .box1 {
+        width: 80px;
+        margin: 5px;
+        padding: 5px 45px;
+        text-align: center;
+        border: 2px solid snow;
+        box-shadow: 1px salmon;
+      }
+      #container1 {
+        /* 기본값(row : 왼쪽에서 오른쪽으로) 줄바꿈 함 (wrap) */
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      a:visited {
+        color: rgb(180, 177, 177);
+      }
+      div:hover {
+        color: red;
+        background-color: rgba(48, 191, 216, 0.281);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container1">
+      <div class="box1">
+        <a href="#"><i class="fa-solid fa-database fa-4x"></i></a>
+      </div>
+      <div class="box1">
+        <a href="#"><i class="fa-solid fa-calendar fa-4x"></i></a>
+      </div>
+      <div class="box1">
+        <a href="#"><i class="fa-regular fa-face-tired fa-4x"></i></a>
+      </div>
+      <div class="box1">
+        <a href="#"><i class="fa-regular fa-comment fa-4x"></i></a>
+      </div>
+      <div class="box">
+        <a href="#"><b>Calendar</b></a>
+      </div>
+      <div class="box">
+        <a href="#"><b>Drive</b></a>
+      </div>
+      <div class="box">
+        <a href="#"><b>Emoticons</b></a>
+      </div>
+      <div class="box">
+        <a href="#"><b>Chats</b></a>
+      </div>
+    </div>
+  </body>
+</html>

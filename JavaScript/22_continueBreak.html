@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>continue와 break</title>
+    <script>
+        // break
+
+        for (let i =0; i < 5; i++) {
+            document.write(`${i}번째 안녕하세요<br>`);
+            if (i ==3) {
+                break; // 4까지 출력되야하는걸 막아줌
+            }
+        }
+
+        document.write("<hr>");
+
+        for (let i =0; i < 5; i++) {
+            if (i ==3) {
+                continue; // 반복문의 다음 횟수로 건너뜀 = 3번째 안녕하세요 없앰
+            }
+            document.write(`${i}번째 안녕하세요<br>`);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

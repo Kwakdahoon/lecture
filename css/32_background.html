@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배경</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+      div {
+        width: 500px;
+        height: 300px;
+        background-color: salmon;
+        background-image: url("./images/사람.png");
+        background-size: 100px;
+        background-repeat: no-repeat; /* 이미지 하나만 드도록 */
+
+        background-position: center;
+        /* background-position: center;
+        background-position: 150px 150px; px 로 가능*/
+        /* background-position: top bottom left; */
+
+        /* background-size: contain; */
+        background-size: contain;
+        /* cover : 비율 유지하며 div 요소의 더 넓은 너비에 맞춤.
+        contain : 비율을 유지, div 요소에 더 짧은 길이에 맞춤 */
+
+        /* scroll (기본값) : 이미지가 요소를 따라서 같이 스크롤
+        fixed : 이미지가 뷰포트에 고정. 스크롤 되지 않음 신기함*/
+        /* background-attachment: scroll; */
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

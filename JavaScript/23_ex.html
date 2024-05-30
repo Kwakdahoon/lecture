@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습장</title>
+    <script>
+        // 문제 1) 1부터 9까지의 합을 구하되, 3의 배수를 제외한 합을 구하세요.
+        let som = 0;
+        let excludeNum = "3의 배수";
+        for (let i = 1; i < 10; i++) {
+            
+            if (i % 3 == 0) { // 3의 배수
+                excludeNum += i + ", ";
+                continue;
+            }
+            som += i;
+            console.log(excludeNum + "제외한 합은" + som);
+        }
+
+        // 문제 2) 1 ~ 100까지의 짝수 합만 구하세요 (contunue 이용)
+
+        let evenSum = 0;
+        for (let i = 1; i < 101; i++) {
+            console.log("i = ", i);
+            if (i % 2 == 0) {
+                evenSum += i;
+            } else {
+                continue; // 다음 반복 인덱스로 간다.
+            }
+            console.log("홀수인 경우 : ", i);
+        } console.log("짝수의 합은 : ", evenSum);
+
+            let sum = 0;
+            for (let i = 1; i < 101; i++) {
+                if (i % 2 == 1) {
+                    continue;
+                }
+                sum += i;
+                console.log(sum);
+            }
+
+            // 문제 3) 1부터 누적합을 구하되, 몇까지 더해야 누적합이 1000이 넘어가는지 출력하세요
+
+            let num = 0;
+            
+            for (let i = 1; i < 101; i++) { // 1부터 100까지 
+                if (num > 1001) { // 1000이 넘으면 continue 
+                    break;
+                } num += i; 
+                console.log(num);
+                // document.write(`${i} ${num}`);
+            }
+            // for문
+            let sumAcc = 0;
+            let cutSum = 0;
+            for (let i = 0; i < 100; i++) {
+                console.log(i, sumAcc);
+                sumAcc += i;
+                if (sumAcc > 1000) {
+                    document.write(`${i}까지 더했을때 누적합이 1000보다 큽니다.<br>`)
+                    document.write(`${cutSum}까지 더했을때 누적합이 1000보다 큽니다.<br>`)
+                    break;
+                } cutSum++;
+            } 
+
+            // while문
+
+            let sumW = 0;
+            let cntW = 0;
+
+            while (sumW < 3) {
+                sumW *= cntW;
+                console.log(sumW, cntW);
+                cntW++;
+
+                document.write(`${cntW} 까지 더했을때 누적합이 ${sumW}이 됨 <br>`);
+            } 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 난수 생성
+        let randNum = 0;
+        let foodName = "";
+        let foodImg = "";
+        randNum = Math.random();
+        // Math.floor 로 실수 안나오게 ( 정수만 )
+        randNum = Math.floor(Math.random() * 1 + 1);
+        console.log(randNum);
+
+        // 어떤 음식인지 비교판단
+        if (random == 1) {
+            foodName = "짜장면"; foodImg = "javaimg/JJAJJANG.jpg"         
+        } else if (randNum == 2) {
+        foodName = "김치찌개 ";
+        foodImg = "javaimg/kimChi.jpg";
+      } else if (randNum == 3) {
+        foodName = "된장찌개 ";
+        foodImg = "javaimg/ehlswkd.jpg";
+      } else if (randNum == 4) {
+        foodName = "돈가스";
+        foodImg = "javaimg/donKach.jpg";
+      } else if (randNum == 5) {
+        foodName = "육회";
+        foodImg = "javaimg/6ghl.jpg";
+      } else if (randNum == 6) {
+        foodName = "물회";
+        foodImg = "javaimg/water.jpg";
+      } else {
+        foodName = "라면";
+        foodImg = "javaimg/rameon.jpg";
+      }
+        window.onload = function() {
+
+            document.getElementById(foodName).innerHTML = `${foodName}`;
+            document.getElementById(foodImg).src = foodImg;
+        }
+    </script>
+</head>
+<body>
+    <h1>추천</h1>
+    <div id="foodName"></div>
+    <div id="foodImgArea">
+      <img src="" id="foodImg" />
+    </div>
+</body>
+</html>

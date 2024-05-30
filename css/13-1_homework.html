@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 테이블 생성해서 각 행이 교차해서 줄무늬처럼 색상을 적용시켜보세요 -->
+    <style>
+      li {
+        background-color: gray;
+        width: 200px;
+      }
+      .lili {
+        background-color: rgb(202, 197, 197);
+      }
+      .border li:nth-child(2n) {
+        border: 0px dotted gray;
+      }
+      .ilil {
+        background-color: rgb(247, 247, 247);
+      }
+      p {
+        width: 150px;
+        padding-left: 50px;
+        color: red;
+      }
+      .one {
+        background-color: rgb(216, 210, 210);
+      }
+
+      div p {
+        background-color: gray;
+      }
+
+      .even {
+        background-color: gray;
+      }
+
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>줄무늬 색상 적용시키기</h1>
+    <ul class="border">
+      <li class="ilil"><b>First name</b></li>
+      <li class="lili">john</li>
+      <li class="ilil">Mary</li>
+      <li class="lili">July</li>
+    </ul>
+
+    <div>
+      <p class="one"><b>First name</b></p>
+      <p>john</p>
+      <p class="one">Mary</p>
+      <p>July</p>
+    </div>
+
+    <div>
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <td><b>First name</b></td>
+        </tr>
+        <tr class="even">
+          <td>john</td>
+        </tr>
+        <tr>
+          <td>Mary</td>
+        </tr>
+        <tr class="even">
+          <td>July</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

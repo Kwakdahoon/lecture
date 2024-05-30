@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript에서 화면에 출력하는 4가지 방법</title>
+    <script>
+      // 밑에 경우엔 태그가 밑에있기 때문에 호출이 안됨 -> window.onload = function () { 여기 안에 넣으면 적용 가능 }
+      //   document.getElementById("yogi").innerHTML =
+      //       "이름은 <strong>홍길동</strong>입니다.";
+      window.onload = function () {
+        document.getElementById("yogi").innerHTML =
+          "이름은 <strong>홍길동</strong>입니다.";
+      };
+    </script>
+  </head>
+  <body>
+    <div>1. ducument.write.()를 이용한다.</div>
+    <script>
+      // 출력
+      document.write("<h1>Hello, JavaScript! 너 참 반갑다.</h1>");
+    </script>
+
+    <div>2. window.alert()를 이용한다.</div>
+    <script>
+      // 긴급 메시지 창 띄우기 (요샌 잘안씀) 태그적용 X 문자 그대로 출력
+      //  window.alert("<h2>hello~!</h2>");
+      window.alert("hello~!");
+    </script>
+
+    <div>
+      3. console.log()를 이용한다. 디버깅 debugging (오류를 잡기 위해 사용한다.)
+    </div>
+    <script>
+      // log = 기록, 디버깅 debugging (오류를 잡기 위해 사용한다.)
+      console.log("hello condom");
+    </script>
+
+    <div>4. 태그에 접근하여 출력한다.</div>
+    <div id="yogi"></div>
+    <script>
+      // string 문자 여러가지 넣을때, Element : 요소, 태그적용 O <- body 영역에 들어가기때문
+
+      /*   document.getElementById("yogi").innerHTML =
+         "이름은 <strong>홍길동</strong>입니다."; */
+    </script>
+  </body>
+</html>

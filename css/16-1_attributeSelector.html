@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>속성 선택자</title>
+    <style>
+      a[target="_blank"] {
+        padding: 30px;
+        background: url(images/Ex.png) no-repeat right center;
+        background-size: 20px;
+      }
+
+      /* a[class="button"] {
+        color: red;
+      } */
+
+      a[class~="button"] {
+        color: red;
+      }
+
+      a[href*="wiki"] {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a
+          href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started"
+        >
+          html
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/CSS_basics"
+        >
+          css
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/ko/docs/Web/JavaScript"
+          class="button"
+        >
+          javascript
+        </a>
+      </li>
+      <li><a href="https://jquery.com/">jquery</a></li>
+      <li>
+        <a href="https://ko.wikipedia.org/wiki/Ajax" class="button flat"
+          >ajax</a
+        >
+      </li>
+    </ul>
+  </body>
+</html>

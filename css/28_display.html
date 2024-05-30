@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>맛있는 동물</title>
+    <style>
+      li {
+        display: inline;
+      }
+      #big {
+        display: none; /* #big를 가진 요소를 보이지 않도록 처리 */
+      }
+    </style>
+    <script>
+      function sizeup() {
+        console.log("sizeup() 호출됨");
+
+        document.getElementById("big").style.display = "block";
+      }
+      function sizedown() {
+        //   alert("sizeDown() 호출됨");
+        document.getElementById("big").style.display = "none";
+      }
+    </script>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="">보풀이</a></li>
+        <li><a href="">거위</a></li>
+        <li><a href="">라면</a></li>
+        <li><a href="">짜장면</a></li>
+      </ul>
+    </nav>
+    <div class="small">
+      <img
+        src="images/latte.jpg"
+        alt="caffelatte"
+        width="100px"
+        onmouseover="sizeup();"
+        onmouseout="sizedown();"
+      />
+    </div>
+    <div id="big">
+      <img src="images/bopul4.jpg" alt="" width="400px" />
+    </div>
+  </body>
+</html>

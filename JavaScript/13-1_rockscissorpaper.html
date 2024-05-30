@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table td {
+            width: 300px;
+            height: 300px;
+        }
+
+    </style>
+    <script>
+            // 컴퓨터와 유저와의 가위바위보
+            // 컴퓨터 : 랜덤하게 가위, 바위, 보 변수 random floor
+            //  유저 : 가위, 바위, 보를 select해서 [선택] 버튼 누른다. botton on click
+            //  결과를 출력
+            let win = 0;  // 전역변수
+            let lose = 0;
+            let draw = 0;
+            let winRate = 0;
+            
+
+            function gameStart() {
+                let users = Number(document.getElementById("userSelectVal").value); 
+                // 타입 강제로 변환  Number 
+                let computers = Math.floor(Math.random() * 3 + 1);
+                console.log(users, computers);
+                console.log(typeof users, computers);
+                // 이미지 넣기
+
+                // let win = 0;  지역변수
+                let userImg = "",
+                computerImg = "";
+                let result = "";
+                
+                switch (users) {
+                    case 1 : 
+                    userImg = "<img src='javaimg/scissors.png' />";
+                    break;
+                    case 2 :
+                    userImg = "<img src='/javaimg/rock.png'> ";
+                    break;
+                    default :
+                    userImg = "<img src='javaimg/paper.png' />";
+                }
+                    document.getElementById("user").innerHTML =userImg;
+                    document.getElementById("computer").innerHTML =computerImg;
+
+                switch (computers) {
+                    case 1 : 
+                    computerImg = "<img src ='javaimg/scissors.png' />";
+                    break;
+                    case 2 :
+                    computerImg = "<img src ='javaimg/rock.png' />";
+                    break;
+                    default :
+                    computerImg = "<img src ='javaimg/paper.png' />";
+                }
+                    document.getElementById("computer").innerHTML =computerImg;
+                    document.getElementById("user").innerHTML =userImg;
+
+                    // 승패 판단
+                    // 유저가
+                    // 비기는 경우 : user == computer
+                    // 이기는 경우 : user == 1 computer
+                    // 지는 경우 : 나머지의 경우
+                    if (users == computers) {
+                        result = "비겼다 "; 
+                        draw++;
+                      } else if (
+                    (users == 1 && computers == 3) || 
+                    (users == 2 && computers == 1) || 
+                    (users == 3 && computers == 2)) {
+                        result = "이겼따";
+                        win++;
+                    } else {
+                            result = "졌다";
+                            lose++;
+                        }
+                    // 결과출력
+                    document.getElementById("result").innerHTML = result;
+                    document.getElementById("total-result").innerHTML = `${win}승 ${draw}무 ${lose}패`; 
+                    // 계산
+                    let winLose = win +  lose;
+                    winRate = win / winLose * 100;
+                    document.getElementById("rate").innerHTML = `${winRate.toFixed(2)}%`;
+                }
+    </script>
+</head>
+<body>
+    <h1>가위, 바위, 보</h1>
+    <div class="userInput">
+        <select name="" id="userSelectVal">
+            <option value="1">가위</option>
+            <option value="2">바위</option>
+            <option value="3">보</option>
+        </select>
+        <input type="button"  value="선택" onclick="gameStart();">
+    </div>
+    <table border="1">
+        <tr>
+            <th>USER</th>
+            <th>COMPUTER</th>
+        </tr>
+        <tr>
+            <td id = "user"></td>
+            <td id = "computer"></td>
+        </tr>
+    </table>
+    <div id = "result">결과</div>
+    <div id="total-result"></div>
+    <div id="rate"></div>
+</body>
+</html>

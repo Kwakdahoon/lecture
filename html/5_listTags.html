@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리스트 태그 : 목록 태그</title>
+</head>
+<body>
+    <h1>리스트 태그</h1>
+    <hr>
+    <h2>순서(order)가 있는 목록</h2>
+    <h3>라면 끓이는 순서</h3>
+    <ol>
+        <li>물넣어</li>
+        <li>스프넣어</li>
+        <li>끓으면 면 넣어</li>
+        <li><strong><i><s>맛있게 먹어</s></i></strong></li>
+    </ol>
+    
+    <!-- type = "1" (기본값) || "a" || "A" || "i" || "I"-->
+    <ol type="I">
+        <li>물넣어</li>
+        <li>스프넣어</li>
+        <li>끓으면 면 넣어</li>
+        <li><strong><i><s>맛있게 먹어</s></i></strong></li>
+    </ol>
+
+    <h2>순서가 없는 목록 태그</h2>
+    <h3>커피 메뉴</h3>
+    <ul>
+        <li>아메리카노</li>
+        <li>카페라떼</li>
+        <li>카푸치노</li>
+        <li>아이스 핫초코</li>
+        <li>카페모카</li>
+        <li>과일쥬스</li>
+        <ul>
+            <li>수박</li>
+            <li>토마토</li>
+            <li>딸기</li>
+            <ul>
+                <li>제철딸기</li>
+                <li>백설기</li>
+            </ul>
+            <li>하수구</li>
+        </ul>
+    </ul>
+
+    <ul type="square">
+        <li><a href="https://namu.wiki/w/%EC%B9%B4%ED%8E%98%20%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4%EB%85%B8">아메리카노</a></li>
+        <li><img src="latte.jpg" alt="라떼이미지" width="80px">카페라떼</li>
+        <li>카푸치노</li>
+        <li>아이스 핫초코</li>
+        <li>카페모카</li>
+        <li>과일쥬스</li>
+    </ul>
+
+    <h3>정의 (definition) 리스트</h3>
+    <h4>front-end 기술</h4>
+    <!-- definition list -->
+    <dl>
+        <dt>html5</dt> <!-- definition term -->
+        <dd>웹 구조를 만들고, 컨텐츠를 넣는 기술</dd> <!-- definition description-->
+        <dt>css</dt>
+        <dd>웹 문서의 스타일을 꾸며주는 언어</dd>
+        <dt>javascript</dt>
+        <dd>웹 문서를 동적을 만들어주는 언어</dd>
+    </dl>
+</body>
+</html>

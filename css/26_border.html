@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Border</title>
+    <style>
+      h1 {
+        border-bottom: 3px solid pink;
+        border-bottom: 3px dotted pink;
+        border-bottom: 3px dashed pink;
+        /* 아래것만 적용됨 */
+      }
+
+      p {
+        padding: 10px;
+        border: 3px solid green;
+        border-left: 3px solid blue;
+        border-right: 3px solid red;
+        border-radius: 10px 20px 30px 50px;
+      }
+      .img {
+        width: 100px;
+        border-radius: 30px 30px 30px 30px;
+      }
+      #round {
+        border-radius: 50%;
+        /* border-radius: 300px; */
+        width: 200px;
+        height: 200px;
+      }
+      .radius {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        border: 1px solid blue;
+      }
+      .rad1 {
+        border-radius: 100px 100px 0 0;
+      }
+      .rad2 {
+        border-radius: 100px;
+      }
+      .rad3 {
+        border-radius: 100px 0 0 0;
+      }
+      .rad4 {
+        border-radius: 40px 15px 40px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Border</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, dicta
+      repellendus illo cupiditate, minima sequi suscipit possimus asperiores,
+      beatae sunt nulla eaque nisi accusantium? Similique a vero dolore quo
+      molestias.
+    </p>
+    <div class="img">
+      <img id="round" src="/images/bopul2.jpg" alt="" />
+    </div>
+    <div class="radius rad1">radius1</div>
+    <div class="radius rad2">radius2</div>
+    <div class="radius rad3">radius3</div>
+    <div class="radius rad4">radius4</div>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중첩 for (for문 안에 다른 for문)</title>
+    <script>
+        for (let i = 0; i < 3 ; i++) { // 첫번째 인덱스 i 돌고 다음 j부분돔
+            // i = 0, 1, 2          
+            // console.log("i=", i);
+            for (let j = 0; j < 2; j++) {
+                // j = 0, 1
+                console.log("i = ", i, "j =", j);
+            }
+        }
+
+        // i 1번 돌때 j 는 3번 돔 그렇게 i가 3번도는거
+        for (let i = 0; i < 4; i++) {
+            document.write("☆")
+            for (let j = 0; j < 3; j++)
+            document.write("★")
+        }
+
+        // 4행 3열 테이블 만들때 for 문을 두 번 써보자 
+        let output  ="<table border = 1>";
+        let num = 0;
+        for (let i = 0; i < 4; i++) {
+            output += `<tr>`;
+            for (let j = 0; j < 3; j++){
+            output += `<td>${++num}</td>`;
+            }
+             output += "</tr>";
+        }
+        output += "</table>";
+            document.write(output);
+        //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ강사가ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+        let tableOut = "<table border='1'>";
+        let cnt = 0;
+        for (let i = 0; i < 4; i++) { // 0, 1, 2, 3
+            tableOut += `<tr>`;
+            for (let j = 0; j < 3; j++) {
+                tableOut += `<td>${cnt++}</td>`
+            } tableOut += "</tr>";
+        }
+        tableOut += "</table>"
+        document.write(tableOut);
+        document.write("<hr>");
+
+        // 직사각형 별 (3 *4)
+        // ****
+        // ****
+        // ****
+        document.write("직사각형 별 (3*4) <br>");
+        for (let i = 0; i < 3; i++) { //
+            for (let j = 0; j < 4; j++){
+                document.write("★");
+            } document.write("<br>");
+        }
+        document.write("<hr>");
+        document.write("직각삼각형 별 (3*4) <br>");
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+        for (let i = 0; i < 5; i++) {
+
+            document.write("★");
+            for (let j = 0; j < i; j++) {
+
+                document.write("★");
+            } document.write("<br>");
+        }     document.write("<hr>");
+        // i=0 * j = 0
+        // i=1 **  j=0, 1
+        // i=2 *** j=0, 1, 2
+        // i=3 **** j=0, 1, 2, 3
+        // i=4 ***** j=0, 1, 2, 3, 4
+
+        document.write("강사 <br>");
+
+        for (let i = 0; i < 5; i++) {
+            // 행 인덱스 i = 0, 1, 2, 3, 4
+            document.write("★");
+            for (let j = 0; j < i; j++) {
+                // i = 0 : j = 0
+                // i = 1 : j = 0, 1
+                // i = 2 : j = 0, 1, 2
+                // ...
+                // i = 4 : j = 0,1, 2, 3, 4
+                document.write("★");
+            } document.write("<br>");
+        }     document.write("<hr>");
+        
+
+
+        document.write("역직각삼각형 별 <br>");
+        // ***** 
+        // ****
+        // ***
+        // **
+        // *
+        // for (let i = 0; i < 5; i++) {
+        //     document.write("★");
+        //     for (let j = 3;  j < 4 ; j--) {
+        //         document.write("★");
+        //     } document.write("<br>");
+        // }
+        document.write("강사 <br>");
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5 -  i; j++) {
+                // i = 0 : j = 5번 반복
+                // i = 1 : j = 4번 반복
+                // i = 2 : j = 3번 반복
+                // i = 3 : j = 2번 반복
+                // i = 4 : j = 1번 반복
+                document.write("★");
+            } document.write("<br>");
+        }
+        
+
+        
+        document.write("피라미드 별 <br>");
+        //              ★
+        //          ★★★
+        //       ★★★★★
+        //    ★★★★★★★
+        //★★★★★★★★★
+
+        for (let i = 0; i < 5; i++) {
+            // 공백출력
+            for (let j = 4; j - i; j--) {
+                // i = 0 : j = 4, 3, 2, 1
+                // i = 1 : j = 4, 3, 2
+                // i = 2 : j = 4, 3
+                // i = 3 : j = 4
+                document.write("&nbsp&nbsp&nbsp");
+            }  
+            for (let k = 0; k < 2 * i + 1; k++) {
+                document.write("★");
+            }
+            document.write("<br>");
+        } 
+        // for (let i =0; i < 5; i++) { // 행
+            
+        // } for (let j = 0; j < 9; j++) { // 9열
+        //     document.write("★");
+
+        // } 
+        document.write("<hr>");
+        document.write("마름모 별 <br>");
+        //      *
+        //     **
+        //    ***
+        //   ****
+        //  *****
+        // ***** 
+        // ****
+        // ***
+        // **
+        // *
+        for (let i = 0; i < 5; i++) {
+            // 공백출력
+            for (let j = 4; j - i; j--) {
+                // i = 0 : j = 4, 3, 2, 1
+                // i = 1 : j = 4, 3, 2
+                // i = 2 : j = 4, 3
+                // i = 3 : j = 4
+                document.write("&nbsp&nbsp&nbsp");
+            }  
+            for (let k = 0; k < 2 * i + 1; k++) {
+                document.write("★");
+            }
+            document.write("<br>");
+        } 
+        for (let i = 1; i <5; i++) {
+            for (let j = 0; j < i; j++) {
+                document.write("&nbsp&nbsp&nbsp");
+            } for (let k = 0; k < 9 - 2 * i; k++) {
+                document.write("★");
+            } document.write("<br>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

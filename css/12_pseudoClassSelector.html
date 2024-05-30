@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>의사(기상) 클래스 선택자</title>
+    <style>
+      /* :link (방문하지 않은 링크에 스타일 적용)
+        :visited (방문한 링크에 스타일 적용)
+        :hover (특정 요소에 마우스 포인터를 올려놓으면 스타일 적용)
+        :active (특정 요소를 클릭하는 순간 스타일 적용)
+        :focus (웹 요소에 초점이 맞춰졌을때) */
+      a {
+        /* 하이퍼링크의 밑줄 없애기 */
+        text-decoration: none;
+      }
+
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: rgb(0, 4, 255);
+        transition: 30s;
+      }
+      .box:hover {
+        width: 100px;
+        background-color: rgb(255, 0, 0);
+        height: 10px;
+      }
+
+      /* a:link {
+        color: red;
+      } */
+      /* 방문했던 페이지 */
+      a:visited {
+        color: rgb(180, 177, 177);
+      }
+      /* 마우스 올렸을때 */
+      li:hover {
+        color: salmon;
+        background-color: rgba(48, 191, 216, 0.281);
+      }
+
+      a:active {
+        color: red;
+      }
+      input:focus {
+        background-color: slateblue;
+      }
+      /* 홀수 번째 li요소에 적용 (2n +1도 마찬가지) */
+      .firstUL li:nth-child(odd) {
+        border: 1px dotted red;
+      }
+      /* 짝수번째 li요소에 적용 (2n도 마찬가지)*/
+      /* .firstUL li:nth-child(even) {
+        border: 1px dotted red;
+      } */
+
+      input:checked + label {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div><input type="text" name="" id="" /></div>
+    <h1>Web Front</h1>
+    <ul class="firstUL">
+      <li>
+        <a
+          href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started"
+          target="_blank"
+          >html</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/CSS_basics"
+          target="_blank"
+          >css</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/ko/docs/Web/JavaScript"
+          target="_blank"
+          >javascript</a
+        >
+      </li>
+      <li><a href="https://jquery.com/">jquery</a></li>
+      <li>
+        <a href="https://ko.wikipedia.org/wiki/Ajax" target="_blank">ajax</a>
+      </li>
+    </ul>
+
+    <ul>
+      <li>
+        <input type="radio" id="female" name="gender" checked />
+        <label for="female">여성</label>
+      </li>
+      <li>
+        <input type="radio" id="male" name="gender" />
+        <label for="male">남성</label>
+      </li>
+    </ul>
+  </body>
+</html>

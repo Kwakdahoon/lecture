@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position + background img</title>
+    <style>
+      #content {
+        background: url("./images/forest.png") no-repeat;
+        width: 700px;
+        height: 700px;
+        position: relative; /* 위치상 부모 */
+      }
+      h1 {
+        color: yellow;
+        position: absolute;
+        top: 70px;
+        left: 30px;
+      }
+
+      h2 {
+        color: crimson;
+        position: absolute;
+        left: 600px; /* 왼쪽에서 부터 600 px */
+        top: 600px; /* 위에서 부터 600 px */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <h1>가정의 달</h1>
+      <h2>5월의 여행지</h2>
+    </div>
+  </body>
+</html>

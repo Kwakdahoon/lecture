@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변수와 상수</title>
+    <script>
+      // 변수
+      let name = "홍길동"; //변수 선언
+      console.log(name);
+
+      name = "둘리";
+      console.log(name);
+
+      //undefined
+      let email;
+      console.log(email);
+
+      phoneNumber = "98098098";
+      console.log(phoneNumber);
+
+      // 동일한 이름의 변수를 재선언 할 수는 없다.
+      /* let name = "도우너";
+      console.log(name); */
+
+      var num = 5;
+      console.log(num);
+
+      var num = 10;
+      console.log(num);
+      {
+        let a = "a";
+        console.log(a);
+      }
+
+      //   console.log(a);
+
+      {
+        var b = "b";
+        console.log(b);
+      }
+      console.log(b);
+
+      // 상수 : 선언하면서 초기값을 대입할 수 있으나, 상수에 있는 값을 변경불가
+      const hero = "ironmen"; // 상수 선언
+      console.log(hero);
+
+      // hero = "spiderman"; // 에러!! Assignment to constant variable.
+
+      const HERO = "sexman";
+      console.log(HERO);
+    </script>
+  </head>
+  <body></body>
+</html>

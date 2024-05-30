@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원 배열을 이용한 성적표</title>
+    <script>
+//         let ar = new Array(4);
+//         ar [0] = new Array(7); // 0번째 행
+//         ar [1] = new Array(7); // 1번째 행
+//         ar [2] = new Array(7); // 2번째 행
+//         ar [3] = new Array(7); // 3번째 행
+//         ar [4] = new Array(7); // 4번째 행
+//         console.log(ar);
+
+// let stuNo, kor, eng, math = 0;
+// let tot = kor + eng + math;
+// let avg = tot / 3;
+// let name = "";
+// let grade = "";
+
+
+// for (let i = 0; i < ar.length; i++) { // 5열
+
+//     for (let j = 0; j < ar[i].length + 1; j++) { // 7행
+
+//         console.log(i,j);
+//     }
+// }
+
+// if (90 < avg <= 100) {
+//     grade = "A";
+// } else if (80 < avg <= 90) {
+//     grade = "B";
+// } else if (70 < avg <= 80) {
+//     grade = "C";
+// } else if (60 < avg <= 70) {
+//     grade = "D";
+// } else {
+//     grade = "F";
+// }
+// document.getElementById("scoreTable");
+
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ강사ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    const STU_CNT = 5;
+    let scores = new Array(STU_CNT);
+    scores[0] = ["1", "홍길동" , 70 , 42 ,80]; // 한 학생마다의 정보
+    scores[1] = ["2", "홍일동" , 71 , 69 , 100]; // 한 학생마다의 정보
+    scores[2] = ["3", "홍이동" , 68 , 88 ,90]; // 한 학생마다의 정보
+    scores[3] = ["4", "홍삼동" , 100 , 100 , 95]; // 한 학생마다의 정보
+    scores[4] = ["5", "홍사동" , 71 , 69 , 100]; // 한 학생마다의 정보
+    console.log(scores);
+    
+    for (let i = 0; i < scores.length; i++) {
+        // 행번호 [ i ]
+        // 총점
+        scores[i][5] = scores[i][2] + scores[i][3] + scores[i][4]; 
+
+        // 평균
+        scores[i][6] = (scores[i][5] / 3).toFixed(2);
+        // 학점
+        switch (Math.floor(scores[i][6] / 10)) {
+                case 10 :
+                    case 9 :
+                        scores[i][7] = "A";
+                        break;
+
+                        case 8 :
+                        scores[i][7] = "B";
+                        break;
+
+                        case 7 :
+                        scores[i][7] = "C";
+                        break;
+                        
+                        case 6 :
+                        scores[i][7] = "D";
+                        break;
+
+                        default:
+                        scores[i][7] = "F";
+                        break;
+            }
+        
+    }   console.log(scores);
+
+
+    // 테이블 만들기
+    
+
+    let output = "<table border = '1'>";
+        output += "<tr><td>학번</td><td>이름</td><td>국어</td><td>수학</td><td>영어</td><td>총점</td><td>평균</td><td>학점</td></tr>";
+
+        for (let i = 0; i < scores.length; i++) {
+            output += "<tr>";
+                
+                for (let j = 0; j < scores[0].length; j++) {
+                    output += `<td>${scores[i][j]}</td>`;
+                    } output += "</tr>"
+        } output += "</table>";
+           
+        window.onload = function() {
+                document.getElementById("scoretable").innerHTML = output;
+
+            // 추가 문제 : 평균을 기준으로 내림차순 정렬하여 출력
+
+
+            for (let i = 0; i < scores.length; i++) {
+                for (let j = i + 1; j < scores.length; j++) {
+                    // 내림차순
+                    if(scores[i][6] < scores[j][6]) {
+                        let data = scores[i];
+                        scores[i] = scores[j];
+                        scores[j] = data;
+                    }
+                 }
+            } 
+            
+
+
+            let outputt = "<table border = '1'>";
+            outputt += "<tr><td>학번</td><td>이름</td><td>국어</td><td>수학</td><td>영어</td><td>총점</td><td>평균</td><td>학점</td></tr>";
+            for (let i = 0; i < scores.length; i++) {
+                outputt += "<tr>";
+                    for (let j = 0; j < scores[0].length; j++) {
+                        outputt += `<td>${scores[i][j]}</td>`;
+                        }
+                        outputt += "</tr>"
+            } 
+            outputt += "</table>";
+            document.getElementById("sortedtable").innerHTML = outputt;
+
+            // 추가문제 2)
+            // 등수를 매겨 보세요.
+            // 평균을 기준으로 등수를 매겨 보되,
+            // 평균이 같으면 순위는 같다.
+
+            // 등수
+            let rank = 1, curRank = 1;
+            scores[0][8] = curRank;
+
+            for (let i = 1; i < scores.length; i++) {
+                rank++;
+                console.log(rank);
+                if (scores[ i ] [ 6 ] != scores[ i - 1] [ 6 ]) {
+                    curRank = rank;
+                }
+                scores[ i ] [ 8 ] = curRank;
+            }
+            scores[0][8] = 1;
+            for (let i = 1; i < scores.length; i ++) {
+                scores[i][8] = i + 1;
+                if (scores[i - 1][6] == scores [i][6]) {
+                    scores[i][8] = scores[i-1][8];
+                }
+            }
+            let outputtt = "<table border = '1'>";
+            outputtt += "<tr><td>학번</td><td>이름</td><td>국어</td><td>수학</td><td>영어</td><td>총점</td><td>평균</td><td>학점</td><td>등수</td></tr>";
+            for (let i = 0; i < scores.length; i++) {
+                outputtt += "<tr>";
+                    for (let j = 0; j < scores[0].length; j++) {
+                        outputtt += `<td>${scores[i][j]}</td>`;
+                        }
+                        outputtt += "</tr>"
+            } 
+            outputtt += "</table>";
+            document.getElementById("rankTable").innerHTML = outputtt;
+            };
+            function order() {
+                let order = "";
+                let radios = document.getElementsByName("order");
+                console.log(radios);
+                for (let radio of radios) {
+                    console.log(radio.cheked);
+                    if (radio.cheked == true) {
+                        console.log(radio.value);
+                        order = radio.value;
+                    }
+                }
+            }
+    </script>
+</head>
+<body>
+    <h1>정렬 전 테이블</h1>
+    <div id="scoretable"></div>
+    <h1>정렬 후 테이블</h1>
+    <div id="sortedtable"></div>
+    <h1>랭크테이블</h1>
+    <input type="radio" name = "order" id = "desc" value="desc" checked/>내림차순 정렬
+    <input type="radio" name = "order" id = "asc" value="asc"/>오름차순 정렬
+    <button onclick="order()">정렬</button>
+    <div id="rankTable"></div>
+</body>
+</html>

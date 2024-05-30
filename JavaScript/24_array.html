@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 (Array)</title>
+    <script>
+        // 배열 생성
+        // 1) 빈 배열 생성
+        let arr1 = [];
+        arr1[0] = 40;
+        arr1[1] = "웹 개발";
+        arr1[2] = 3.14;
+        arr1[3] = true;
+        console.log(arr1);
+        console.log("arr1 배열의 크기 : ", + arr1.length);
+
+        // 2) 배열의 생성과 할당을 동시에 할 수도 있다. <- 가장 많이 쓰는 방식
+        let arr2 = [40, "웹새발", 3.14, true];
+        console.log(arr2);
+        console.log("arr2 배열의 크기 : ", + arr2.length);
+       
+        // 3) new 연산자를 이용한 배열 생성
+        let arr3 = new Array(4);  // 생성자 (Constructor) 크기가 4인 빈 배열을 arr3라는 이름으로 생성하라.
+        arr3[0] = 40;
+        arr3[1] = "웹개발"; //index 검지 요소
+        arr3[2] = 3.14;
+        arr3[3] = true;
+        console.log(arr3)
+
+        //  배열에 데이터를 추가해보자
+
+        arr1[4] = "졸리다"; // 배열의 크기가 추가됨
+        console.log(arr1);
+        console.log(arr1.length); //5
+
+        arr2.push("매우 졸리다"); // 배열의 끝에 새로운 데이터를 추가
+        console.log(arr2);
+        console.log(arr2 .length);
+
+        // 수정
+        arr2[1] = "웹스";
+        console.log(arr2);
+        console.log(arr2 .length); // [40, '웹스', 3.14, true, '매우 졸리다']
+
+        // splice()
+        // arr1 의 2번째 방에 "간식" 데이터 삽입
+        arr1.splice(2, 0, "간식");
+        console.log(arr1); // [40, '웹 개발', '간식', 3.14, true, '졸리다']
+
+        // pop()으로 꺼내기
+        arr1.pop(); // 메서드
+        console.log(arr1); // [40, '웹 개발', '간식', 3.14, true]
+
+        // arr2 배열의 세번째 요소를 삭제하세요 (splice())
+        console.log(arr2);
+        let removedArr2 = arr2.splice(3, 1);  
+        console.log("removedArr2 : " + removedArr2);
+        console.log(arr2);
+
+        // arr3 배열에 있는 2번째 값만 화면에 출력 <- 2번째라고 말은 하지만 그냥 2번 값
+        document.write(arr3[2] + "<br>");
+        document.write(arr3.at(2) + "<br>");
+        
+        document.write("<hr>");
+        // arr3 배열의 모든 원소를 화면에 출력하자.
+        console.log(arr3);
+        document.write(arr3);
+        document.write("<hr>");
+
+        // document.write("<ul><li>" +arr3 +"</li><ul>");
+
+        document.write("<ul>");
+        for (let i = 0; i < 4; i++) {
+            document.write(`<li> ${arr3[i]}</li>`)
+        } document.write("</ul>")
+
+
+        // ㅡㅡㅡㅡㅡㅡEXㅡㅡㅡㅡㅡㅡㅡㅡ
+        let months = ["1월", "3월", "4월", "6월"];
+        // 1) 2월, 5월을 순서대로 추가하세요.
+        months.splice(1, 0, "2월"); // splice(인덱스, 지울요소갯수, 추가할 items)
+        months.splice(4, 0, "5월");
+        console.log(months);
+        // 2) mdn검색) 역순으로 콘솔에 출력하세요
+        months.reverse(); // reverse (메서드  이용)<- 거꾸로 (역순)
+        console.log(months);
+        // 3) mdn검색) 월 이름 사이에 "/" 넣어서 콘솔에 출력하세요. 1월 /2월 /3월/.../6월
+        months.reverse();
+        console.log(months);
+        console.log(months.join());
+        console.log(months.join("/")); // join <- 
+
+        // 4) concat() 메서드를 이용해서 7월부터 12월까지 추가하세요.
+        let monthss = ["7월", "8월", "9월", "10월", "11월", "12월"];
+        let monthsss = months.concat(monthss); // concat <- 열 병합
+        console.log(monthsss);
+
+        // 5) slice()메서드를 이용해서, 내 생일이 있는 월을 콘솔에 출력
+
+        console.log(monthsss.slice(7, 8)); // <- index 7 은 monthsss 에서 8월, 8은 9월. slice() 메서드는 어떤 배열의 begin 부터 end 까지(end 미포함)에 대한 얕은 복사본을 새로운 배열 객체로 반환합니다
+        console.log(monthsss.slice(7, -1)); // -1 은 마지막 요소의 인덱스
+        console.log(monthsss.slice(7)); // 7이후 끝까지 출력
+        console.log(monthsss); 
+        
+        // 추가 : shift() : 맨 앞 요소를 제거, unshift() :  맨 앞 요소에 추가
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

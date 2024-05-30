@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+    <style>
+        table td {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script>
+            // 컴퓨터와 유저와의 가위바위보
+            // 컴퓨터 : 랜덤하게 가위, 바위, 보 변수 random floor
+            //  유저 : 가위, 바위, 보를 select해서 [선택] 버튼 누른다. botton on click
+            //  결과를 출력하고, 
+
+            // 숫자 넣기
+            let win = 0;
+            let lose = 0;
+            let draw = 0;
+            function gameStart() {
+
+                // 문자 넣기
+                let result = ""; 
+                // console.log(document.getElementById("userSelectVal").value);
+                let users = document.getElementById("userSelectVal").value;
+                // 난수 생성 Math.floor = 정수만 출력, Math.randome = 0에서 1까지 랜덤한 실수 출력
+                let computers = Math.floor(Math.random() * 3 + 1); 
+                console.log(users, computers);
+                console.log(typeof users, computers); // string 인지 number 인지 형 파악
+                
+                // 이미지 넣기
+                if (users == 1) { // 유저가 가위 (1) 냈을 때 
+                    console.log("users");
+                    document.getElementById("user").innerHTML="<img src='./javaimg/scissors.png'> "
+                    if (computers == 1) { // 컴퓨터가 가위 (1) 냈을때
+                        document.getElementById("computer").innerHTML="<img src='./javaimg/scissors.png'> "
+                        draw++; // 무승부
+                        result = "비겼어요";
+                    } else if (computers ==2) { // 컴퓨터가 바위 (2) 냈을 때
+                        document.getElementById("computer").innerHTML="<img src='./javaimg/rock.png'> "
+                        lose++;
+                        result = "졌어요"; // 패배
+                    } else if (computers == 3) { // 컴퓨터가 보 (3) 냈을 때
+                        document.getElementById("computer").innerHTML="<img src='./javaimg/paper.png'> "
+                        win++;
+                        result = "이겼어요"; // 승리
+                    }
+                } else if (users == 2) { 
+            document.getElementById("user").innerHTML="<img src='./javaimg/rock.png'> "
+            if (computers == 1) {
+                document.getElementById("computer").innerHTML="<img src='./javaimg/scissors.png'> "
+                win++;
+                result = "이겼어요";
+            } else if (computers ==2) {
+                document.getElementById("computer").innerHTML="<img src='./javaimg/rock.png'> "
+                draw++;
+                result = "비겼어요";
+            } else if (computers == 3) {
+                document.getElementById("computer").innerHTML="<img src='./javaimg/paper.png'> "
+                lose++;
+                result = "졌어요";
+            }
+        } else if(users == 3) {
+            document.getElementById("user").innerHTML="<img src='./javaimg/paper.png'> "
+            if (computers == 1) {
+                document.getElementById("computer").innerHTML="<img src='./javaimg/scissors.png'> "
+                lose++;
+                result = "졌어요";
+            } else if (computers ==2) {
+                document.getElementById("computer").innerHTML="<img src='./javaimg/rock.png'> "
+                win++;
+                result = "이겼어요";
+            } else if (computers == 3) {
+                document.getElementById("computer").innerHTML="<img src='./javaimg/paper.png'> "
+                // document(페이지의 url을 얻거나 문서에 새로운 요소생성하는 기능).
+                // getElementByld(요소를 가져옴)(태그? 이름).innerHTML(HTML 안에 넣어줌) = "이미지태그 이미지 경로"
+                draw++;
+                result = "비겼어요";
+            }
+        }
+        let tot = win + lose +draw; 
+        tot = (win / tot * 100); // 승률
+        
+        console.log(win / tot * 100);
+    document.getElementById("result").innerHTML = " 승 : " + win + " 무" + draw + " 패" + lose + " 승률출력" + Math.round(tot) + "% " + result; 
+
+        
+}
+       
+    </script>
+</head>
+<body>
+    <h1>가위, 바위, 보</h1>
+    <div class="userInput">
+        <select name="" id="userSelectVal">
+            <option value="1">가위</option>
+            <option value="2">바위</option>
+            <option value="3">보</option>
+        </select>
+        <input type="button"  value="선택" onclick="gameStart();">
+    </div>
+    <table border="1">
+        <tr>
+            <th>USER</th>
+            <th>COMPUTER</th>
+        </tr>
+        <tr>
+            <td id = "user"></td>
+            <td id = "computer"></td>
+        </tr>
+    </table>
+    <div id = "result">결과</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 : while</title>
+    <script>
+        let i = 0;
+
+        while (i < 5) {
+            // 조건식이 참일 동안 반복 수행할 문장(들);
+            // console.log(i);
+            i++;
+        }
+
+        // 1부터 7까지의 합을 while 문을 이용해서 구해보자.
+
+        let j = 1;
+        let sumJ = 0;
+        while (j < 8) {
+            sumJ += j;
+            // console.log(j ,sumJ);
+            j++;
+        }
+
+        // 단을 입력 받아서 입력받은 단의 구구단을 출력 while
+
+        let dan = window.prompt("단 입력");
+        let k =0; // while 문에서 사용할 인덱스 '초기값' 선언
+        while (k < 9) {
+            k++;
+            console.log(`${dan} X ${k} = ${dan * k}`);
+        }
+
+        // 3 * 4 직사각형 별 그리기 (중립 while문)
+
+        let row = 0;
+
+        while (row < 3) { // 행
+            // 각 행마다 반복
+            let col = 0;
+            while (col < 4) { // 열
+                document.write("★");
+                col++;
+            } document.write("<br>");
+            row++;
+        }
+
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+        
+        // let star = 0;
+        // while (star < 6) {
+        //     document.write("★");
+        //     star++;
+        // }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

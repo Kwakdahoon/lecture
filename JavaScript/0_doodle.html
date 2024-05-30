@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /* 가로가 3cm 높이가 5cm인 직사각형의 넓이를 구해 출력하는 프로그램을 만드세요 */
+      let width = 3,
+        height = 5,
+        area;
+      area = width * height;
+      document.write(
+        "<div>직사각형의 넓이는" + area + " cm<sup>2</sup>입니다.</div>"
+      );
+      // 1. 반지름이 5cm인 원의 넓이를 구하고, 화면에 출력하세요.
+      let radius = 5,
+        circleArea;
+      const pi = 3.14;
+      circleArea = radius * radius * pi;
+      document.write(
+        "<div>원의 넓이는" + circleArea + "<sup>&pi;</sup> 입니다. </div>"
+      );
+
+      //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+      // html, css, javascript 세 과목의 점수를 입력받아 평균을 구하고
+      // 평균이 60점 이상이고, 과목당 40점 이상이어야 합격
+      // 40점 미만 과목은 불합격
+      // 합격 여부를 출력하세요
+
+      // (조건문) ? A : B
+
+      // let name = window.prompt("이름");
+      // let html = Number(prompt("html")); //100
+      // let css = Number(prompt("css")); //100
+      // let js = Number(prompt("java script")); //0
+
+      let tot = html + css + js;
+      let avg = tot / 3; //66.6
+
+      answer = "";
+
+      answer =
+        avg >= 60 && html > 40 && css > 40 && js > 40 ? "합격" : "불합격";
+
+      // if (avg > 60 && html < 40 && css < 40 && js < 40) {
+      //   answer = "합격";
+      // } else {
+      //   answer = "불합격";
+      // }
+
+      let output = `
+      <table>
+          <tr>
+              <td>이름</td>
+              <td>html</td>
+              <td>css</td>
+              <td>javaScript</td>
+              <td>총점</td>
+              <td>평균</td>
+              <td>합격여부</td>
+          </tr>
+          <tr>
+              <td>${name}</td>
+              <td>${html}</td>
+              <td>${css}</td>
+              <td>${js}</td>
+              <td>${tot}</td>
+              <td>${avg}</td>
+              <td>${answer}</td>
+              <td></td>
+          </tr>
+      </table>`;
+      document.write(output);
+
+      // 어린이 키에 따른 놀이기구 탑승 가능 여부를 확인하는 프로그램을 작성하시오.
+      // 키가 120cm 이상인 경우에만 탑승 가능
+      // 삼항 연산자 이용
+
+      let ch = 115;
+      let ch2 = 121;
+
+      let cl = 120;
+
+      output = "";
+      output =
+      (cl < ch && cl > ch2) ? "탑승 가능" : "탑승 불가"
+
+      document.write(output)
+
+
+
+    </script>
+  </head>
+  <body></body>
+</html>

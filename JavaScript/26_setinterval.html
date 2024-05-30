@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열을 이용한 초간단 슬라이더 만들기</title>
+
+    <script>
+        // 이미지 배열 만들기
+        // images[0] = "images/dongas.jpg";
+        let images = new Array();
+        images[0] = "images/rock.png"
+        images[1] = "images/scissors.png"
+        images[2] = "images/paper.png"
+        images[3] = "images/gugudan.png"
+        images[4] = "images/water.jpg"
+       
+        console.log(images);
+
+        let index = 0; // 현재 이미지 슬라이더에 출력되는 이미지의 요소
+        console.log(index);
+        let interval;
+        function prev() {
+        // [0]번째 이미지
+        if (index == 0) {
+            index = images.length; // 5
+        }
+
+        document.getElementById("imgSlider").src = images[--index];
+        console.log(index);
+        }
+
+        function next() {
+         // [2]번째 이미지
+        
+         // 방법 1
+        // if (++index == images.length) {
+        //     index = 0;
+        // } ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+        // 방법 2
+        if (index == images.length - 1) {
+            index = - 1 ;
+         }
+
+         document.getElementById("imgSlider").src = images[++index]
+         console.log(index);
+        }
+
+        function auto() {
+            let intervalid = window.setInterval(next, 1000);
+        }
+
+        function stopAuto() {
+          clearInterval(interval);
+        }
+        
+        // let interval = setInterval(auto, 10000, index);
+        // function auto() {
+        //     document.getElementById("imgSlider").src = images[++index]
+
+        //     if (index == images.length) {
+        //     index = 0 ;
+        //  }
+        //  console.log(index);
+        // }
+    </script>
+        <style>
+            #imgSlider {
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+</head>
+<body>
+    <div>
+        <img src="images/rock.png" id ="imgSlider">
+    </div>
+    <!-- 버튼 눌렀을때 이전 사진 다음사진 으로 돌아가는 -->
+    <button onclick="prev();">이전</button>
+    <button onclick="next()">다음</button>
+    <button onclick="auto()">자동시작</button>
+    <button onclick="stopAuto()">자동정지</button>
+</body>
+</html>

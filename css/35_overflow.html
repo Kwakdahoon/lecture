@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overflow 속성</title>
+    <style>
+      div.overflow {
+        width: 200px;
+        height: 200px;
+        background-color: cadetblue;
+        /* overflow: auto;  auto : 스크롤바 */
+        overflow: hidden; /* hidden : 숨겨줌 */
+        text-overflow: ellipsis;
+      }
+      .ellipse {justify-content: flex-start;flex-direction: column
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre; /* 넘치는 부분 ... 으로 보여줌 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overflow">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore
+      dolores assumenda nam exercitationem impedit eligendi fugit, delectus a
+      consectetur, labore ab animi qui numquam dignissimos blanditiis, amet
+      itaque modi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum
+      inventore dolores assumenda nam exercitationem impedit eligendi fugit,
+      delectus a consectetur, labore ab animi qui numquam dignissimos
+      blanditiis, amet itaque modi! Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Cum inventore dolores assumenda nam exercitationem
+      impedit eligendi fugit, delectus a consectetur, labore ab animi qui
+      numquam dignissimos blanditiis, amet itaque modi!
+    </div>
+    <div class="ellipse">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis vel
+      quibusdam quaerat ipsa cumque quos consectetur natus doloribus, sequi, in
+      aperiam delectus omnis animi beatae, iste sed eaque ipsum nostrum?ur
+      adipisicing elit. Veritatis vel quibusdam quaerat ipsa cumque quos
+      consectetur natus doloribus, sequi, in aperiam delectus omnis animi
+      beatae, iste sed eaque ipsum nostrum?ur adipisicing elit. Veritatis vel
+      quibusdam quaerat ipsa cumque quos consectetur natus doloribus, sequi, in
+      aperiam delectus omnis animi beatae, iste sed eaque ipsum nostrum?ur
+      adipisicing elit. Veritatis vel quibusdam quaerat ipsa cumque quos
+      consectetur natus doloribus, sequi, in aperiam delectus omnis animi
+      beatae, iste sed eaque ipsum nostrum?
+    </div>
+  </body>
+</html>

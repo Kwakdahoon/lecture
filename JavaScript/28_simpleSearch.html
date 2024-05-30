@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탐색 (데이터 탐색) : 순차 검색</title>
+    <script>
+        // 1) 방이 50개 짜리 1차원 배열을 만들고 (요소 50개
+        // 그 방 안에 1 ~ 200 까지의 랜덤한 수를 넣어주세요 (난수생성)
+        // 테이블 (5행 10열)에 랜덤 수를 출력하세요.
+
+        // let random = Math.floor((Math.random)() * 200 + 1); // 1 ~ 200 사이의 난수
+        // console.log(random);
+
+        // let room = new Array (50); // 방 50개 (요소 50)
+        // console.log(room);
+        // for (let i; i < room.length; i++){
+        //     console.log(room);
+        // }
+        // document.write("<table><tr>");
+        //    for (let ind in random) {
+        //     console.log(random);
+        //     document.write(random[ind] + "<br>")
+        //    }
+            // for (let i; i < random.length; i++) {
+            //     document.write(`<td>${room}</td>`)
+            //     console.log(room);
+            //     if (i == 10) {
+            //     document.write("</tr>")
+            // }  
+            // }
+        // document.write("</tr></table>")
+
+        // 1) 방이 50개 짜리 1차원 배열을 만들고 (요소 50개
+        // 그 방 안에 1 ~ 200 까지의 랜덤한 수를 넣어주세요 (난수생성)
+        // 테이블 (5행 10열)에 랜덤 수를 출력하세요.
+        
+        let room = new Array(50); // 방 50개짜리 빈 배열
+
+        console.log(Math.floor(Math.random() * 200) + 1); // 1 ~ 200 사이 난수
+
+        for (let i = 0; i < room.length; i++) {
+            room[i] = Math.floor(Math.random() * 200) + 1 // room (방) 안에 난수 집어넣기
+        } 
+        console.log(room);
+
+
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ내가ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // let cnt = 0;
+        // let red = 0;
+        // let table = "<table border = '1'>";
+        // for (let r = 0; r < 5; r++) { // 5행
+        //     table += "<tr>";
+        //         for (let c = 0; c < 10; c++) { // 10열
+        //             table +=`<td id = ${red++}>${room[cnt++]}</td>`
+        //         } table += "</tr>";
+        // } 
+        // table += "</table>";
+        // document.write(table);
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ강사ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        let cnt = 0;
+        let red = 0;
+        let table = "<table border = '1'>";
+        for (let r = 0; r < 5; r++) { // 5행
+            table += "<tr>";
+                for (let c = 0; c < 10; c++) { // 10열
+                    table +=`<td>${room[cnt++]}</td>`
+                } table += "</tr>";
+        } 
+        table += "</table>";
+        document.write(table);
+
+        // 2) 유저에게 찾을 수를 입력받아서, 유저가 찾은 숫자가 몇 번째에 있는지 출력한다.
+        // == (유저가 입력한 값) 를 이용
+        
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ내가ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // let user = window.prompt("찾는 숫자");
+        // let output = "";
+        
+        // for (let i = 0; i < room.length; i++) {
+            
+        //     if (room [i] == user) {
+        //        output = `입력값 O ${i}에 있음`
+        //        document.getElementById(i).style.backgroundColor = "red";
+        //        break;
+        //     } else { 
+        //         output = "입력값 X";
+        //     } 
+        // }   document.write(output)
+        // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ강사ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        
+        let userNum = Number(window.prompt("찾을 숫자를 입력하세요"));
+        let result = "";
+        let isFind = false;
+        // 탐색
+        for (let i = 0; i < room.length; i++) {
+            if (room[i] === userNum) {
+                // 검거
+                result += i + ',';
+                isFind = true;
+            }
+        } 
+        // 출력
+        if (isFind == false) {
+            document.write(`${userNum} 은 찾지 못했습니다`);
+        } else {           
+            document.write(`${userNum} 은 ${result} 에 있습니다`);
+            let tds = document.getElementsByTagName("td"); // 모든 td 태그를 찾아서 유사배열로 반환
+            console.log(tds);
+            console.log(tds[0].innerHTML);
+            for (let td of tds) {
+                console.log(td);
+                if (userNum == td.innerHTML) {
+                    td.style.backgroundColor = "yellow";
+                    td.innerHTML = "*" + userNum;
+                }
+            }
+        }
+        // console.log(document.getElementsByTagName("td").length);
+        
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+</body>
+</html>

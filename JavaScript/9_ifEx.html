@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if문 연습</title>
+    <style>
+      tr {
+        border: 1px solid black;
+      }
+    </style>
+    <script>
+      // html, css, javascript 세 과목의 점수를 입력받아 평균을 구하고
+      // 평균이 60점 이상이고, 과목당 40점 이상이어야 합격
+      // 40점 미만 과목은 불합격
+      // 합격 여부를 출력하세요
+      let name = window.prompt("이름을 입력하세요");
+      console.log(name);
+
+      let html = Number(prompt("HTML 점수를 입력하세요"));
+      console.log(html);
+
+      let css = Number(prompt("CSS 점수를 입력하세요"));
+      console.log(css);
+
+      let js = Number(prompt("JAVASCRIPT 점수를 입력하세요"));
+      console.log(js);
+
+      let tot = html + css + js;
+
+      let avg = tot / 3;
+      console.log(avg);
+
+      let grade = "";
+
+      // (조건식) ? A : B
+      // (평균 60이상이면) ? 합격 : 불합격
+      //
+
+      if (avg >= 60) {
+        grade = "합격";
+      } else { (html < 40 && css < 40 && js < 40) 
+        grade = "불합격";
+      }
+
+      console.log(grade);
+
+      let output = `
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>html</td>
+            <td>css</td>
+            <td>javaScript</td>
+            <td>총점</td>
+            <td>평균</td>
+            <td>합격여부</td>
+        </tr>
+        <tr>
+            <td>${name}</td>
+            <td>${html}</td>
+            <td>${css}</td>
+            <td>${js}</td>
+            <td>${tot}</td>
+            <td>${avg}</td>
+            <td>${grade}</td>
+        </tr>
+    </table>`;
+
+      document.write(output);
+    </script>
+  </head>
+  <body></body>
+</html>

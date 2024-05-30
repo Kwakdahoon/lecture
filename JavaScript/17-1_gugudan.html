@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+            
+        }
+        .box {
+            background-color: antiquewhite;
+            width: 700px;
+            height: 500px;
+            border-radius: 20px 20px 20px 20px;
+            text-align: center;
+            
+        }
+        #table {
+            width: 500px;
+            height: 300px;
+        }
+
+    </style>
+    <script>
+        function button() {
+            let result = "";
+            let num = document.getElementById("num").value;
+            for (let i = 1; i < 10; i++) {
+                let tot = num * i;
+                document.write(`${num} X ${i} = ${tot}`);
+                document.write("<br>");
+                result += `${num} X ${i} = ${tot}`;
+            }
+            // let res = document.getElementById("result").value;
+            // res = result; <- 전표찬이
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <h1>구구단을 외자 구구단을 외자</h1>
+        <div class="boxy">
+            <img src="./javaimg/gugudan.png" id="table" alt = "구구단 이미지"></div>
+        <input type="number" id = "num" min = "0" placeholder="숫자만 입력하세요" style = "text-align: center;"> <br>
+        <button onclick="button()">검색</button>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돼지측정</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .box {
+            text-align: center;
+            background-color:  #f5ecec;
+            height: 250px;
+            width: 600px;
+            border-radius: 50px 50px 50px 50px;
+        }
+    </style>
+    <script>
+        let height = 0;
+        let kg = 0;
+        
+        function submit() {
+            let pig = "";
+           
+            let result = 0;
+
+            // 신장에 관한 요소
+            let height = document.getElementById("height").value // 땡겨올때는 value
+
+            // 무게에 관한 요소
+            let kg = document.getElementById("kg").value
+            
+             // BMI 계산법 (체질량지수는 자신의 몸무게(kg)를 키의 제곱(m)으로 나눈 값입니다.)
+            result =  kg / ((height / 100) ** 2); 
+
+            if (result >= 35) {
+                pig = "3단계 비만";
+            } else if (result >= 30 && result < 35) {
+                pig ="2단계 비만";
+            } else if (result >= 25 && result < 30) {
+                pig ="1단계 비만";
+            } else if (result < 25 && result >= 23) {
+                pig ="비만 전단계";
+            } else if (result < 23 && result >= 18.5) {
+                pig ="정상";
+            } else if (result < 18.5 && result >= 0) // if 문 끝낼때 else '만' 쓰던가 else if (나머지 값 넣어주기)
+                pig ="저체중";
+                console.log(result);
+
+            document.getElementById("result").innerHTML = "체질량 : " + Math.round(result) + pig;
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <h1>BMI 지수</h1>
+        <input type="radio" name="gender" value="male">남성
+        <input type="radio" name="gender" value="femail">여성
+        <div class="height">
+            신장<input type="number" id = "height" placeholder="cm" min="0" >cm
+        </div>
+        <div class="kg">
+            체중<input type="number" id = "kg" placeholder="kg" min="0" >kg
+        </div>
+        <input type="button" value = "계산하기" onclick="submit();">
+        <div id = "result"></div>
+    </div>
+</body>
+</html>

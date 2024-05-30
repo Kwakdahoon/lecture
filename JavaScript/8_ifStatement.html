@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if ~ else if ~ else 문</title>
+    <script>
+      // 사용자에게 이름, 국어, 영어, 수학를 입력받아서
+      // 총점과 평균을 구하고,
+      // 학점을 구해 출력하는 프로그램을 작성해 보세요.
+      // 단, 평균이 90점 이상 100점 이하 : A
+      //                  80점 이상 90점 미만 :  B
+      //                  70점 이상 80점 미만 : C
+      //                  60점 이상 70점 미만 : D
+      //                  나머지는 F
+
+      // 1) 사용자에게 이름과 국, 영, 수 점수를 입력받아, 각 변수에 저장
+      let stuName = window.prompt(`이름을 입력하세요`);
+      console.log(stuName);
+
+      let kor = Number(prompt(`국어 점수를 입력하세요`)); // string -> number 타입으로 전환
+      console.log(kor);
+
+      let eng = Number(prompt(`영어 점수를 입력하세요`));
+      console.log(eng);
+
+      let math = Number(prompt(`수학 점수를 입력하세요`));
+      console.log(math);
+
+      // 2) 총점, 평균을 구한다.
+      let tot = kor + eng + math;
+      console.log(tot);
+
+      let avg = tot / 3;
+      console.log(stuName, kor, eng, math, tot, avg);
+
+      // 3) 학점을 구한다.
+      let grade = "";
+
+      if (avg >= 90 && avg <= 100) {
+        grade = "A";
+      } else if (avg >= 80 && avg < 90) {
+        grade = "B";
+      } else if (avg >= 70 && avg < 80) {
+        grade = "C";
+      } else if (avg >= 60 && avg < 70) {
+        grade = "D";
+      } else {
+        grade = "F";
+      }
+      console.log(grade);
+      // 출력은 table로
+      let output = `<table><tr><td>이름</td><td>국어</td><td>영어</td><td>수학</td><td>총점</td><td>평균</td><td>학점</td></tr><tr><td>${stuName}</td><td>${kor}</td><td>${eng}</td><td>${math}</td><td>${tot}</td><td>${avg}</td><td>${grade}</td></tr></table>`;
+      document.write(output);
+    </script>
+  </head>
+  <body></body>
+</html>

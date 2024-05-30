@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while문과 do~while문</title>
+    <script>
+        // 사용자에게 숫자를 입력 받는다.
+        // 단, 숫자를 입력하지 않으면 숫자를 입력할 때까지 계속 입력받도록 하고, 숫자가 입력되면 입력된 숫자를 화면에 출력하세요.
+        
+        // if문으로 
+        // let data = window.prompt("숫자를 입력하세요");
+        // if (isFinite(data)) {
+        //     document.write(`입력하신 숫자는 ${data} 입니다`);
+        // } else {
+        //     data = window.prompt("숫자 입력하라고 병신아");
+        //     document.write(`입력하신 숫자는 ${data} 입니다`);
+        // } 
+
+        // while문으로
+        // let datta = window.prompt("숫자를 입력하세요");
+        // while (!isFinite(datta)) { // 문자를 입력한 경우에
+        // datta = window.prompt("숫자를 입력하세요");
+        // } document.write(`입력하신 숫자는 ${datta} 입니다`);
+
+        // 위의 코드는 입력을 받는 부분에서 중복 코드가 생기게 된다.
+        //while문을 사용하여 중복 코드가 생기는 경우, while문을 do ~ while 문을 바꾸면 중복코드가 생기지 않게 된다.
+        // do ~ while문으로
+        let dataa = 0;
+        do {
+            dataa = window.prompt("숫자를 입력하세요");
+            console.log(dataa);
+        } while (!isFinite(dataa))
+        document.write(`입력하신 숫자는 ${dataa} 입니다`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

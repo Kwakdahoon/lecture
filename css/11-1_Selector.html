@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자식 선택자</title>
+    <style>
+      /* 자손 선택자 */
+      div p {
+        background-color: slateblue;
+        color: blue;
+      }
+      /* 자식 선택자 */
+      div > p {
+        background-color: red;
+      }
+
+      div > h3 > p {
+        color: brown;
+      }
+
+      p {
+        background-color: black;
+        color: white;
+      }
+
+      .pp {
+        color: aquamarine;
+      }
+      /* 인접 형제 선택자 */
+      h1 + p {
+        background-color: violet;
+      }
+      /* class 선택자 */
+      .center {
+        background-color: pink;
+        color: white;
+      }
+      /* 인접 형제 선택자 */
+      .center + p {
+        background-color: wheat;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>자식 (Child, &gt; ) 선택자</h1>
+    <p>자식 선택자로 스타일을 꾸미면 어떻게 될까요?</p>
+    <div>
+      <p>div 내부 p태그 (div의 자식)</p>
+      <p class="center">div 내부 p태그 (div의 자식)</p>
+      <p>div 내부 p태그 (div의 자식)</p>
+      <h2>
+        <p>div 내부의 내부 p태그(h2의 자식, div의 자손)</p>
+      </h2>
+      <h3>
+        <p>div 내부의 내부 p 태그 (h3 의 자식이고 div 의 자손)</p>
+      </h3>
+    </div>
+    <p class="pp">div 외부의 p태그</p>
+  </body>
+</html>

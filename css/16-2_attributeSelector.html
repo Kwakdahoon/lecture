@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>속성 선택자</title>
+    <style>
+      ul {
+        list-style: none;
+      }
+
+      li {
+        display: inline-block;
+        margin: 10px;
+        padding: 50px;
+      }
+
+      li a {
+        font-size: 13px;
+
+        text-decoration: none;
+      }
+      a[class|="us"] {
+        padding-left: 20px;
+        background: url(images/usa.png) no-repeat left center;
+      }
+
+      a[class|="ch"] {
+        padding-left: 20px;
+        background: url(images/china.png) no-repeat left center;
+      }
+
+      a[class|="jp"] {
+        padding-left: 20px;
+        background: url(images/japan.png) no-repeat left center;
+      }
+
+      a[tltle^="eng"] {
+        color: pink;
+      }
+
+      a[title$="se"] {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <b>
+      <ul>
+        <li>외국어 :</li>
+        <li><a href="#" class="us-말코미칀련" title="english">영어 :</a></li>
+        <li><a href="#" class="ch-짱깨썅년" title="chinese">중국어 :</a></li>
+        <li><a href="#" class="jp-씨벌련" title="japanese">일본어 :</a></li>
+        <!-- | 있으면 - 뒤에 쪽은 허용해줌 -->
+      </ul>
+    </b>
+  </body>
+</html>

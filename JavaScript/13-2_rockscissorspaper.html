@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <style>
+        td {
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+        }
+    </style>
+    <script>
+        // 난수 생성
+        // 이미지 넣기
+        let win = 0; // 전역변수
+        let lose = 0;
+        let draw = 0;
+
+        function gameStart() {
+
+            let computers = Math.floor(Math.random() * 7 + 1); // computers 의 난수 랜덤 + 1 ~ 7안에정수
+            let users = document.getElementById("userSelectVal").value; // user 의 요소 가져옴
+
+            if (users == 1) { // 유저가 1 냈을때
+                document.getElementById("user").innerHTML ="<img src = './javaimg/scissors.png'>";
+                if (computers == 1) // 컴퓨터가 1 냈을때
+                     document.getElementById("computer").innerHTML = "<img src = './javaimg/scissors.png'>";
+                        draw++;
+                        console.log(draw);
+                    } else if (computers == 2) {// 컴퓨터가 2 냈을때
+                        document.getElementById("computer").innerHTML = "<img src = './javaimg/rock.png'>";
+                        lose++;
+                    } else if (computers == 3) // 컴퓨터가 3 냈을때
+                        document.getElementById("computer").innerHTML = "<img src = './javaimg/paper.png'>";
+                        win++;
+
+            if (users == 2) { // 유저가 2냈을때
+                document.getElementById("user").innerHTML ="<img src = './javaimg/rock.png'>";
+                    if (computers == 1) // 컴퓨터가 1 냈을때
+                    document.getElementById("computer").innerHTML = "<img src = './javaimg/scissors.png'>";
+                         win++;
+                    } else if (computers == 2) {// 컴퓨터가 2 냈을때
+                        draw++;
+                        document.getElementById("computer").innerHTML = "<img src = './javaimg/rock.png'>";
+                    } else if (computers == 3) // 컴퓨터가 3 냈을때
+                        document.getElementById("computer").innerHTML = "<img src = './javaimg/paper.png'>";
+                        lose++;
+
+            if (users == 3) { // 유저가 3냈을 때
+                document.getElementById("user").innerHTML ="<img src = './javaimg/paper.png'>";
+                if (computers == 1) // 컴퓨터가 1 냈을때
+                     document.getElementById("computer").innerHTML = "<img src = './javaimg/scissors.png'>";
+                        lose++;
+                    } else if (computers == 2) {// 컴퓨터가 2 냈을때
+                        document.getElementById("computer").innerHTML = "<img src = './javaimg/rock.png'>";
+                        win++;
+                    } else if (computers == 3) // 컴퓨터가 3 냈을때
+                    document.getElementById("computer").innerHTML = "<img src = './javaimg/paper.png'>";
+                         draw++;
+                
+
+                        document.getElementById("result").innerHTML = "승 : " + win + " 무승부 : " + draw + " 패 : " + lose;
+                    }
+
+            </script>
+</head>
+<body>
+    <h1>가위, 바위, 보</h1>
+    <div class="userInput">
+        <select name="" id="userSelectVal">
+            <option value="1">가위</option>
+            <option value="2">바위</option>
+            <option value="3">보</option>
+        </select>
+        <input type="button"  value="선택" onclick="gameStart();">
+    </div>
+    <table border="1">
+        <tr>
+            <th>USER</th>
+            <th>COMPUTER</th>
+        </tr>
+        <tr>
+            <td id = "user"></td>
+            <td id = "computer"></td>
+        </tr>
+    </table>
+    <div id = "result"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- 문서의 문자 인코딩 및 뷰포트 설정 -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 문서 제목 -->
+    <title>검색창</title>
+    <!-- 외부 스타일 시트 링크 -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 검색 창을 포함한 컨테이너 -->
+    <div class="search-container">
+      <!-- 구글 검색 엔진으로 검색을 보내는 폼 -->
+      <form
+        id="search-form"
+        action="https://www.google.com/search"
+        method="get"
+        target="_blank"
+      >
+        <!-- 검색어를 입력할 텍스트 입력 필드 -->
+        <input
+          type="text"
+          id="search-input"
+          name="q"
+          placeholder="검색어를 입력하세요"
+        />
+        <!-- 검색 버튼 -->
+        <button type="submit">검색</button>
+      </form>
+    </div>
+
+    <!-- JavaScript 파일 로드 -->
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 태그</title>
+</head>
+<body>
+    <h1>3행(row) 4열(column)짜리 표를 만들어 봅시다.</h1>
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+    </table> 
+        <h2>2행 3열짜리 표를 만들어요</h2>
+        <table border="1">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+        </table>
+    <h2>테이블 셀의 병합</h2>
+    <table border="1">
+        <tr>
+            <td colspan="2">1</td> <!-- 가로 -->
+            <!-- <td>2</td> -->
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td rowspan="2">8</td> <!-- 세로 --> 
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <!-- <td>12</td> -->
+        </tr>
+    </table>
+    <h2>8행 4열</h2>
+    <table border="100">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td colspan="2">3</td>
+            <!-- <td>4</td> -->
+        </tr>
+        <tr9>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr9>
+        <tr>
+            <td>9</td>
+            <td rowspan="3">10</td>
+            <td>11</td>
+            <td>12</td>
+            
+        </tr>
+        <tr>
+            <td>13</td>
+            <!-- <td>14</td> -->
+            <td>15</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <!-- <td>18</td> -->
+            <td>19</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td colspan="3">26</td>
+            <!-- <td>27</td>
+            <td>28</td> -->
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+            <td>32</td>
+        </tr>
+    </table>
+    <!-- table>tr*8>td*4 -> 행, 열 emmet 약어 -->
+    <h2>주소록 만들기</h2>
+    <table border="1" style="border-collapse: collapse;"> 
+        <thead>
+            <th>이름</th>
+            <th>저나버노</th>
+            <th>주소</th>
+            <th>사진</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>곽다훈</td>
+                <td>010-8751-9235</td>
+                <td>신대방</td>
+                <td><img src="cat.jpg" alt="" width="60px"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

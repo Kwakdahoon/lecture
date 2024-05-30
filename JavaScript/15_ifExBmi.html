@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체질량 지수</title>
+    <script>
+        function clearInput() {
+         document.getElementById("height").value = "";
+         document.getElementById("weight").value = "";
+        }
+        function calBmi() {
+                // alert("!");  // 함수호출 확인용
+                let height = Number(getElementById("height").value);
+                let weight = Number(getElementById("weight").value);
+                console.log(height,weight);
+                console.log(typeof weight, typeof height); // 타입확인
+
+                // 2) bmi 계산하기
+                let heightMeter = height / 100;
+                let bmi = weight / (heightMeter * heightMeter);
+                bmi = bmi.toFixed(2);
+                console.log(heightMeter, weight, bmi);
+
+                let result = `당신의 BMI 지수는 ${bmi} 입니다. `;
+
+                if (bmi < 18.5) {
+                    result += "<span>저체중<span>";
+                } else if (bmi >= 18.5 && bmi < 23) {
+                    result += "<span>정상<span>"; 
+                } else if (bmi >= 23 && bmi < 25) {
+                    result += "<span>비만전단계<span>"; 
+                } else {
+                    result += "<span>비만<span>"; 
+                }
+                document.getElementById("result").innerHTML = result;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>체질량 지수 (BMI)</h1>
+        <div id="bmiForm">
+            <laber for="height">신장 : </laber> <!--for 태그 쓸 경우에 밑에있는거 땅겨옴 -->
+            <input type="number" id = "height" placeholder="cm" min = "0"/> 
+            <br>
+            <laber for="weight">체중 : </laber>
+            <input type="number" id = "weight" placeholder="kg" min = "0" />
+            <div class="btn-container">
+                <button onclick="calBmi()">계산</button>
+                <button onclick="clearInput()">지우기</button>
+            </div>
+        </div>
+        <div id="result"></div>
+    </div>
+    
+</body>
+</html>
