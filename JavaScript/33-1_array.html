@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            const STU_CNT = 5;
+    let scores = new Array(STU_CNT);
+    scores[0] = ["1", "홍길동" , 70 , 42 ,80]; // 한 학생마다의 정보
+    scores[1] = ["2", "홍일동" , 71 , 69 , 100]; // 한 학생마다의 정보
+    scores[2] = ["3", "홍이동" , 68 , 88 ,90]; // 한 학생마다의 정보
+    scores[3] = ["4", "홍삼동" , 100 , 100 , 95]; // 한 학생마다의 정보
+    scores[4] = ["5", "홍사동" , 71 , 69 , 100]; // 한 학생마다의 정보
+    console.log(scores);
+
+
+    </script>
+</head>
+<body>
+        <h1>랭크테이블</h1>
+    <input type="radio" name = "order" id = "desc" value="desc" checked/>내림차순 정렬
+    <input type="radio" name = "order" id = "asc" value="asc"/>오름차순 정렬
+    <button onclick="order()">정렬하기</button>
+    <div id="rankTable"></div>
+</body>
+</html>
