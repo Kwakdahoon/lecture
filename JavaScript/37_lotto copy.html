@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성기</title>
+    <script>
+        // 1 ~ 45 까지의 랜덤한 정수 6개를 뽑아서 배열에 담는다.
+        // 중복 허용 X 
+        // 로또 번호 6개 출력.
+        let lotto = new Array(6);
+        let tmp = 0; // 임시 변수
+
+        for (let i = 0; i < lotto.length; i++) {
+            console.log("i 느으으으으으으응ㄴ",i);
+            do {
+                tmp = Math.floor(Math.random() * 45) + 1
+                console.log(tmp);
+                console.log(isDuplicate);
+            }   while (isDuplicate()); // 중복이 있다면
+            lotto[i] = tmp;
+        }
+
+
+        // 중복된 수 있으면 true를 반환하고 , 중복된 수가 없으면 false를 반환
+        function isDuplicate() {
+            for (let item of lotto) {
+                console.log(tmp, item);
+                if (tmp == item) {
+                    // 중복된 수가 있는 경우
+                    return true;
+                }
+            }
+            return false;
+        }
+        console.log(lotto);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

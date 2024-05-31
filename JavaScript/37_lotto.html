@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성기</title>
+    <script>
+        // 1 ~ 45 까지의 랜덤한 정수 6개를 뽑아서 배열에 담는다.
+        // 중복 허용 X 
+        const lotto = 6;
+        let random = Math.floor(Math.random() * 45) + 1;
+        let arr = new Array(lotto); // 랜덤 수 있는 배열
+        let array = [] // 빈 배열 (데이터를 집어넣을 배열)
+        console.log( array[0] == undefined); // 배열 확인
+        for (let i = 0; i < arr.length;/*6*/ i++) { // 배열 arr
+            arr[i] = Math.floor(Math.random() * 45) + 1;
+
+        }
+        // for (let i =1; i < arr.length; i++) {
+        //     for (let j = 0; j <arr.length; j++) {
+        //         if (array[j] == undefined) {
+        //             array[j] = arr[i] ; //비어있으면 undefined
+        //         } else if (array[j] !== undefined) {
+        //             array[j + 1] = arr[i];
+        //         }
+        //     }
+        // }
+
+        // while(array.length < 6) {
+             pushArray();
+        // }
+
+        function pushArray() {
+            for (let i =0; i < arr.length; i++) {
+                for (let j = 0; j <arr.length; j++) {
+                    if (array[0] == undefined) {
+                        console.log(arr[0])
+                        array[0] = arr[0] ; //비어있으면 undefined
+                        console.log("j",array[0])
+                        break;
+                    }
+                }
+            }
+            return;
+        }
+        console.log (array);
+        // 오름차식
+        for (let j = 0; j < arr.length; j++) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    let a = arr[i];1
+                    arr[i] = arr[i + 1];
+                   arr[i + 1] = a;
+            }
+        }
+    }
+
+        document.write(arr);
+        console.log(arr);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
