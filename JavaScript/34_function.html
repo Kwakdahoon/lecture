@@ -11,7 +11,7 @@
         document.write("<br />");
 
         sayHello();
-
+        // 함수 선언
         function addTwoNumbers (num1, num2) {
             document.write(num1 + num2);
         }
@@ -45,12 +45,43 @@
         sumTwoNums(100, 200);
 
         function sumThree (a, b = 5, c = 10) {
-            console.log(a, b, c, a + b+ c);
+            console.log("sumThree 함수 : " , a, b, c, a + b+ c);
         }
-
+        
+        sumThree ();
         sumThree (10);
         sumThree (10, 20);
         sumThree (10, 20 ,30);
+
+        // 지역, 전역변수
+        let gNum = 100; // 전역
+        console.log(test());
+
+        function test () {
+            let gNum = 200;
+            let lNum = 5; // 지역변수
+
+            console.log(lNum);
+            return gNum;
+        }
+        
+        // console.log(lNum); // Error: lNum is not defined at 34_function.html:67:21
+
+        let gVar = "global";
+        function myfunc() {
+            let lVar = "local";
+            console.log(lVar);
+            console.log(gVar);
+            function innerfunc () {
+                console.log("이너뻥크 안쪽 : ", lVar);
+                let innerVar = "inner";
+            }
+            innerfunc();
+            console.log(innerVar); // Error: innerVar is not defined
+        }
+        // console.log(lVar);
+            console.log(gVar);
+        myfunc();
     </script>
 </head>
 <body>
