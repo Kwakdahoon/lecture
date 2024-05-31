@@ -33,10 +33,64 @@
             }
             return false;
         }
-        console.log(lotto);
+
+        let divBox = "";
+        for (let i in lotto) {
+            let boxId = "box" + i;
+            console.log(boxId);
+            let color = pickColor(lotto[i]);
+            divBox = `<div class = 'box' id = '${boxId}' style = 'background=color : ${color}''>${lotto[i]} </div>`;
+        }
+        window.onload = function () {
+
+            document.getElementById("lotto").innerHTML = divBox;
+        }
+        function pickColor(num) {
+            let color = "";
+            if (num >= 1 && num < 10) {
+                color = "yellow";
+            } else if (num >= 10 && num > 20) {
+                color = "lightblue";
+            } else if (num >= 20 && num > 30) {
+                color = "orange";
+            } else if (num >= 30 && num > 40) {
+                color = "gray";
+            } else {
+                color = "green";
+            }
+            }
+
+        function sortAsc(arr) {
+
+            for (let j = 0; j < arr.length; j++) {
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] > arr[i + 1]) {
+                        let a = arr[i];1
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = a;
+                    }
+                }
+            }
+            return arr;
+    }
+            document.write(lotto);
+            console.log(lotto);
     </script>
+    <style>
+        .box {
+            width : 100px;
+            height: 100px;
+            float : left;
+            border-radius: 50px 50px 50px 50px;
+            text-align: center;
+            line-height:  100px;
+            font-size: 50px;
+            color : white;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>로또 추첨 번호</h1>
+    <div id="lotto"></div>
 </body>
 </html>
