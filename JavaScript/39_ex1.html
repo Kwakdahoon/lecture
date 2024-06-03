@@ -16,58 +16,102 @@
         // 2. 난수 생성
         // 3. 중복 값 
 
-        let array = new Array(99); // 99개 짜리 배열
-        let randNum = Math.floor(Math.random() * 100) + 1; // 1 ~ 100 사이의 난수
+        // let array = new Array(99); // 99개 짜리 배열
+        // let randNum = Math.floor(Math.random() * 100) + 1; // 1 ~ 100 사이의 난수
 
-        // 1 ~ 100의 합이 들어갈 변수
-        let result = 0;
-        for (let j = 1; j <= 100; j++) {
-            result += j;
-        }
-        console.log(result);
+        
+        // console.log(array.length);
+        // // 1 ~ 100의 합이 들어갈 변수
+        // let result = 0;
+        // for (let j = 1; j <= 100; j++) {
+        //     result += j;
+        // }
+        // console.log(result);
         
 
-        // 배열 안에 99개 값 저장하는 for 문
-        for (let i = 0; i < array.length; i++) {
-            do {
-                tmp = Math.floor(Math.random() * 100) + 1;
-            } while (isDuplicate(array, tmp)); // 중복이 있다면
-            array[i] = tmp;
-        }
-        console.log(array);
+        // // 배열 안에 99개 값 저장하는 for 문
+        // for (let i = 0; i < array.length; i++) {
+        //     do {
+        //         tmp = Math.floor(Math.random() * 100) + 1;
+        //     } while (isDuplicate(array, tmp)); // 중복이 있다면
+        //     array[i] = tmp;
+        // }
+        // console.log(array);
 
-        function isDuplicate(arr, num) {
-            for (let item of arr) {
-                if (num === item) {
-                    // 중복된 수가 있는 경우
-                    return true;
-                }
+        // function isDuplicate(arr, num) {
+        //     for (let item of arr) {
+        //         if (num === item) {
+        //             // 중복된 수가 있는 경우
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+
+
+        //     // 1 ~ 100 모두 더한 값(result) - array 모두 더한 값 == 빠진 값
+
+        //     // 배열 모두 더한 값
+        //     let sum = 0;
+        //     for (let i = 0; i < array.length; i++) {
+        //         sum += array[i];
+        //     }
+        //     console.log(sum);
+
+        //     // 빠진 값
+        //     let answer = result - sum;
+        //     document.write(array);
+        //     document.write("제외된 수 : ", answer); 
+//  ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+            let arr = new Array(99);
+            let tmp = 0;
+
+            // 중복 제외
+            for (let i = 0; i < arr.length; i++) {
+                do {
+                    tmp = Math.floor(Math.random() * 100) + 1;
+                 } while (isDuplicate()); 
+                 arr[i] = tmp;
             }
-            return false;
-        }
-        array.sort(function(a, b) {
-    return a - b;
-});
-console.log("After sorting: ", array);
-            // 1 ~ 100 모두 더한 값(result) - array 모두 더한 값 == 빠진 값
 
-            // 배열 모두 더한 값
-            let sum = 0;
-            for (let i = 0; i < array.length; i++) {
-                sum += array[i];
+            // 1 ~ 100 의 합
+            let summ = 0;
+            for (let i = 1; i  < 101; i++) {
+                summ += i;
             }
-            console.log(sum);
 
-            // 빠진 값
-            let answer = result - sum;
-            document.write(array);
-            document.write("제외된 수 : ", answer); 
-            document.write("제외된 수 : ", answer); 
-            document.write("제외된 수 : ", answer); 
-            document.write("제외된 수 : ", answer); 
+            // array (99) 배열의 합
+            let summArr= 0;
+            for (let i = 0; i < arr.length; i++) {
+                summArr += arr[i]
+            }
+
+            // Array의 sort();
+            // 오름차순 정렬
+            // 화살표 함수로 compareFunction을 이용
+
+            arr.sort((a, b) => a - b); // 오름차순 정렬
+            console.log(arr);
+
+            arr.sort((a, b) => b - a); // 내림차순 정렬
+            console.log(arr);
+
+            // 문자로도 가능 (이건 내가 발명함 ㅋ)
+            arr.sort(function (ㄱ, ㄴ) {
+                return ㄱ - ㄴ;
+            }); console.log(arr);
 
             
 
+            function isDuplicate() {
+                for (let item of arr) {
+                    if (tmp == item) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            document.write(`${arr}제외된 수는 ${summ - summArr}`);
         </script>
 </head>
 
