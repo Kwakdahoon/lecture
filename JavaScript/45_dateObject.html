@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 객체</title>
+    <script>
+        let date = new Date();
+        document.write(`현재 : ${date} </br>`)
+        console.log(typeof date);
+        document.write(`현재 : ${date.toDateString()} </br>`)
+        document.write(`현재 : ${date.toLocaleDateString()} </br>`)
+        document.write(`현재 : ${date.toLocaleTimeString()} </br>`)
+        document.write(`현재 : ${date.toLocaleString()} </br>`)
+
+        let pastDate = new Date(1998, 8, 7, 7, 8, 7);
+       document.write(pastDate);
+
+       
+       let pastDate1 = new Date(2004, 8, 7);
+       document.write(pastDate1,"</br>");
+
+       let pastDate3 = new Date("현재 : Mon Jun 03 2024 16:41:47 GMT+0900 (한국 표준시)");
+       console.log(pastDate3);
+
+       // getter
+       document.write(`현재 연도 : ${date.getFullYear()}</br>`) // 2024
+       document.write(`현재 월 : ${date.getMonth()}</br>`) // date.getMonth() = 5 (6월) -> 1월 = 0 부터 시작
+       document.write(`현재 일 : ${date.getDate()}</br>`) // 3
+       document.write(`현재 요일 : ${date.getDay()}</br>`) // 요일 0 = sunday (일요일)
+       
+
+       // 요일을 담은 배열을 만들어서 오늘의 요일을 출력
+       let 요일 = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"]
+       document.write(`현재 요일 : ${요일[date.getDay()]}</br>`)
+
+       // setter
+       let date2 = new Date();
+       document.write(`현재 : ${date2} </br>`)
+       date2.setDate(1);
+       document.write(`현재 setDate(1) : ${date2} </br>`)
+       date2.setHours(1, 10, 11);
+       document.write(`현재 setHours(1, 10, 11) : ${date2} </br>`)
+
+       // getTime()
+       // 1970 년 1 월 1 일 00:00:00 UTC와 주어진 날짜 사이의 경과 시간 (밀리 초)을 나타내는 숫자
+       document.write(`현재 getTime() : ${date.getTime()} </br>`); // 1717401733967 타임스탬프 값을 출력
+       
+       // 
+       let myBirthday = new Date(1998, 7, 7); // 월 주의 8 => 8 - 1 =  7 (8월)
+       console.log(myBirthday.getTime());                               // 902415600000 (밀리초 단위 ms)
+       console.log((date.getTime() - myBirthday.getTime()) / 1000 / 60 / 60 / 24); // 일
+       console.log((date.getTime() - myBirthday.getTime()) / 1000 / 60 / 60 / 24  / 30); // 개월
+
+       // 시계 출력
+       setInterval(function() {
+        let now = new Date();
+        // document.write(now);
+        document.getElementById("clock").innerHTML = now;
+       }, 1000);
+    </script>
+</head>
+<body>
+    <div id="clock"></div>
+</body>
+</html>

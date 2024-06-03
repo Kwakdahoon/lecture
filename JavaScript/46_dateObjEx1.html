@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 사용자에게 날짜를 입력 받아, 
+        // 현재 시간이 입력받은 날짜로부터
+        // 얼마나 지났는지 (며칠) 계산을 해주세요
+
+        function calDate() {
+        //     // 사용자에게 입력받은 날짜 가져오기
+        //     let input = document.getElementById("calendar").value;            
+        //     // 날짜 계산
+        let input = document.getElementById("calendar").value; 
+        
+        let date = new Date;
+
+        console.log(date.getTime());
+        console.log(input);
+
+        document.write(`${date}`)
+
+
+    }
+        
+    </script>
+</head>
+<body>
+    <div id = "calendar">
+        지정일을 입력하고, 확인버튼을 누르세요.
+    <input type="date" />
+    <button onclick="calDate()">확인</button>
+</div>
+</body>
+</html>
