@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살표 함수</title>
+    <script>
+        // 1) 함수 선언식
+        function greeting() {
+            return "Hello!";
+        }
+        console.log(greeting());
+
+        // 2) 함수 표현식
+        // 끌고 올라오는거 불가
+        const greeting1 = function sayHi() {
+            return "Hi";            
+        } 
+        console.log(greeting1());
+
+        // 화살표 함수
+        function sayHello () {
+            return "Fuck you";
+        }
+        console.log(sayHello());
+
+        const func1 = () => "Hello";
+        console.log(func1());
+
+        //
+        const a = () => {}
+        const b = (x) => {}
+        const c = (x, y) => {}
+        const d = x => {return 2 * x;}
+        const e = x => 2 * x;
+        const f = x => {
+            console.log(2 * x);
+            return 2 * x;
+        }
+        console.log(a(),b(),c(),d(),e(),f());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

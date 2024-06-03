@@ -77,11 +77,31 @@
                 let innerVar = "inner";
             }
             innerfunc();
-            console.log(innerVar); // Error: innerVar is not defined
+            // console.log(innerVar); // Error: innerVar is not defined
         }
         // console.log(lVar);
             console.log(gVar);
         myfunc();
+
+
+        // 익명 함수
+        // window.onload = function() {
+        // }
+        let add = function (a, b) {
+            return a + b;
+        }
+        console.log(add(100, 200))
+
+        // 즉시실행 함수
+        let add1 = (function (){
+            return 300 + 400 ;
+        })();
+        console.log(add1);
+
+        let add2 = function (a,b) {
+            return a + b;
+        } (10 , 20 );
+        console.log(add2);
     </script>
 </head>
 <body>
