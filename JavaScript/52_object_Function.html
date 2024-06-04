@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자 함수를 이용하여 객체 생성 및 사용하기</title>
+    <script>
+        function Account (owner, accNum, balance) {             // 파스칼표기 1
+            this.owner = owner;
+            this.accNum = accNum;
+            this.balance = balance;
+            this.name = "직장인 비과세 예금";
+            this.bankName = "우리은행";
+
+            console.log(this);
+
+            // 객체 기능 부여 (메서드) 3
+            this.checkBalnace = function() {
+                return this.balance;
+            }
+            this.deposit = function(money) {
+                this.balance += money;
+            };
+
+            this.withdraw = function(money) {
+                if (this.balance >= money) {
+
+                    this.balance -= money;
+                } else {
+                    window.alert("정액이 부족합니다.");
+                }
+            }
+        }
+
+        // 객체 생성 2
+        let acc1 = new Account("홍길동", "1321-1321-13213", 500); // 3
+        console.log(acc1);
+        document.write(`예금주 : ${acc1.owner} </br>`);
+        document.write(`계좌번호 : ${acc1.accNum} </br>`);
+        document.write(`잔액 : ${acc1.balance} </br>`);
+
+        // 예금하기
+
+        acc1.deposit(3000000);
+        document.write(`예금 후 잔액 : ${acc1.balance} <br>`);
+
+        acc1.withdraw (2000000);
+        document.write(`인출 후 잔액 : ${acc1.balance} <br><br>`);
+
+        // 둘째 고객
+        let acc2 = new Account("둘리" , "231-3121-321-3" , 0);
+        document.write(`예금주 : ${acc2.owner} </br>`);
+        document.write(`계좌번호 : ${acc2.accNum} </br>`);
+        document.write(`잔액 : ${acc2.balance} </br>`);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

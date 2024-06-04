@@ -43,9 +43,20 @@
         console.log(account.balance)
 
         // 인출하기
-        account.widthDraw = widthDraw;
+        // account.widthDraw = widthDraw;
+        account.widthDraw = function widthDraw(money) {
+            if (this.balance >= money) {
+                this.balance -= money;
+            } else window.alert("잔액이 부족합니다.")
+        }
         account.widthDraw(500000)
+        console.log(account.checkBalance())
         console.log(account.balance);
+
+        account.widthDraw(300000);
+
+        
+
 
         function widthDraw(money) {
             this.balance -= money;
@@ -58,7 +69,7 @@
 
 
         
-        function saveMoney(money) { // 기존금액에 money 추가 1
+        function saveMoney(money) { // 기존금액에 money 추가 1 매개변수
             this.balance += money; // 2
         }
     </script>
