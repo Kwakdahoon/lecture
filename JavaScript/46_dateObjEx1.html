@@ -4,34 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #calendar {
+            width: 500px;
+            height: 200px;
+            background-color: antiquewhite;
+            text-align: center;
+            border-radius: 30px 30px 30px 30px;
+        }
+        .box1 {
+            background-color: aliceblue;
+            border-radius: 30px 30px 0px 0px;
+        }
+        .box2 {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+        }
+        #span {
+            padding-top: 20px;
+        }
+
+        
+    </style>
     <script>
         // 사용자에게 날짜를 입력 받아, 
         // 현재 시간이 입력받은 날짜로부터
         // 얼마나 지났는지 (며칠) 계산을 해주세요
 
-        function calDate() {
-        //     // 사용자에게 입력받은 날짜 가져오기
-        //     let input = document.getElementById("calendar").value;            
-        //     // 날짜 계산
-        let input = document.getElementById("calendar").value; 
-        
-        let date = new Date;
+        function calDate () {
+            let calendarInput = document.getElementById("input").value; // 요소 끌어오기
 
-        console.log(date.getTime());
-        console.log(input);
+            const date = new Date(); // 현재시간
+            const inputData = new Date(calendarInput); // 입력받는 시간
 
-        document.write(`${date}`)
+            console.log(`현재 시간 : ${date.getTime()}(밀리초)`); // 현재 밀리초
+            console.log(`입력받은 시간 : ${inputData.getTime()}(밀리초)`); // 입력받은 날짜의 밀리초
+
+            let difference = (date.getTime() - inputData.getTime()); // 현재시간 - 입력받은시간
+            let result = difference / (1000 * 3600 * 24); // 밀리초 / 시간 / 일
 
 
-    }
-        
+            document.getElementById("span").innerHTML = (`</br>입력하신 날짜와 ${parseInt(result)}일 차이 입니다.`)
+        }
     </script>
 </head>
 <body>
     <div id = "calendar">
-        지정일을 입력하고, 확인버튼을 누르세요.
-    <input type="date" />
+        <div class = box1>
+            지정일을 입력하고, 확인버튼을 누르세요.</br>
+        </div>
+    <div class = "box2">
+        <input type="date" id = "input" /></br>
+    </div>
     <button onclick="calDate()">확인</button>
+    <span id = "span"></span>
 </div>
 </body>
 </html>

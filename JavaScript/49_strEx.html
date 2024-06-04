@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 우영우, 기러기, eye, madam, tenet
+        // 앞에서 읽으나 , 뒤에서 읽으나 똑같은 단어를 회문이라고 한다.
+        // 유저에게 문자열을 입력받아 입력된 문자가 회문인지 아닌지 판단하는 함수를 만드세요
+        function result() {     
+            let userInput = document.getElementsByTagName("input")[0].value;
+            console.log(userInput);
+            document.getElementById("span").innerHTML = (`${userInput}은 회문입니?까?`);
+            let str = new String(userInput);
+             console.log(str.substr(str.indexOf(1,2)));
+        }
+
+    let str = "asdffdsaasdffdsa"; // 회문 입력받았다고 치고
+        // 5 -> 2
+        // 7 -> 4
+        // 9-> 4
+        str = "다시합창합시다"
+    console.log(isPalin(str));
+    // 회문 판별
+    // isPalin(str) : true && checkAllSame(str) : false
+
+    function checkAllSame (str) {
+        // 모두 같으면 true
+        // 하나라도 다르면 false
+    }
+    isPalin(str); // 호출용
+    function isPalin(str) { 
+        let strHarf = parseInt(str.length / 2) ; // 문자열 반으로 접고 정수만
+        console.log(strHarf);
+        for (let i = 0; i < strHarf; i++) {
+            console.log(i);
+            if (str[i] !== str[str.length - 1 - i]) {
+                return false;
+            } 
+        }
+        return true;
+    }
+
+    </script>
+</head>
+<body>
+    단어를 입력하세요 <input type="text">
+    <button onclick="result()">Click!</button>
+    <div>
+        <span id = "span"></span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 사용자에게 날짜를 입력 받아, 
+        // 현재 시간이 입력받은 날짜로부터
+        // 얼마나 지났는지 (며칠) 계산을 해주세요.
+        window.onload = function() {
+
+            document.getElementsByTagName("input")[0].max = getToday(); // 속성값을 넣어주겠다.
+        }
+
+        function calDate () {
+        
+            // 1. 입력받은 날짜 가져오기
+            console.log(document.getElementsByTagName("input")[0].value)
+            // 2024-06-03
+            let userInput = document.getElementsByTagName("input")[0].value;
+            console.log(typeof userInput);
+            console.log(userInput == "");
+            if (!userInput) { // false - 유저가 날짜를 선택하지 않은 경우
+                document.getElementById("result").innerHTML = `날짜를 선택해주세요`;
+            } else {
+                // 2. 날짜 계산하기
+                let usersDate = new Date(userInput); // 유저가 입력한 날짜 객체 생성
+                console.log(typeof usersDate);
+                console.log(usersDate); // Sat Jun 01 2024 09:00:00 GMT+0900 (한국 표준시)
+
+                // 현재 날짜 객체 생성
+                let now = new Date();
+
+                console.log(now);
+                console.log(now.getTime()); // 밀리초
+
+                console.log(now.getTime() - usersDate.getTime());
+                console.log(now - usersDate);
+
+                let tmp = now.getTime() - usersDate.getTime();
+
+                // 3. "~ 일 지났습니다" 출력하기
+                let result = parseInt(tmp / 1000 / 60 / 60 / 24)
+                console.log(result);
+               
+                document.getElementById("result").innerHTML = `${result}일 이 지났습니다.`
+
+            }
+        }
+
+        function getToday () {
+            // input 태그에 max = 2024 06 04를 설정
+            let today = "2024-06-04"
+            return today;
+        }
+    </script>
+</head>
+<body>
+    <div id = "calendar">
+            지정일을 입력하고, 확인버튼을 누르세요.</br>
+        <input type="date" id = "input" max = ""/></br>
+    <button onclick="calDate()">확인</button>
+    <div id = "result"></div>
+</div>
+</body>
+</html>
