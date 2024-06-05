@@ -17,33 +17,12 @@
             this.kl = kl;
             this.eg = eg;
             this.math = math;
-        }
-
-        // 객체 생성
-        let stu1 = new Student("one하나")
-        let stu2 = new Student("이second")
-        let stu3 = new Student("삼three")
-        let stu4 = new Student("사넷")
-        let stu5 = new Student("five다섯")
-
-        // 객체 집어넣기
-        let students = []
-        students.push(stu1)
-        students.push(stu2)
-        students.push(stu3)
-        students.push(stu4)
-        students.push(stu5)
-        
-        function calculation() {
-            let name = document.getElementById("input1").value; // 입력받은값
-            let kl = Number(document.getElementById("input2").value);
-            let eg = Number(document.getElementById("input3").value);
-            let math = Number(document.getElementById("input4").value);
             let tot = kl + eg + math;
             let avg = tot / 3;
             let grade = "";
-            
-            switch(avg / 10) {
+
+            // 함수 return 을 사용
+            switch(Math.floor(avg/ 10)) {
                 case 10 :
                 grade = `S`;
                 break;
@@ -68,9 +47,20 @@
                 grade = `F`;
                 break;
                 }
+        }
 
+        // 객체 집어넣기
+        let students = []
+        
+        function calculation() {
+            let name = document.getElementById("input1").value; // 입력받은값
+            let kl = Number(document.getElementById("input2").value);
+            let eg = Number(document.getElementById("input3").value);
+            let math = Number(document.getElementById("input4").value);
+        }
+           
 
-
+        // for 문 사용
             document.getElementById("span").innerHTML = (`
             <table border = 1>
             <tr>
@@ -80,7 +70,6 @@
             <td>학점 : ${grade}</td>
             </tr>
             </table>`);
-        }
 
         function filter() {
             let 
