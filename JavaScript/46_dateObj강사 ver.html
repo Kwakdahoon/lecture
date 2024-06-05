@@ -51,7 +51,15 @@
 
         function getToday () {
             // input 태그에 max = 2024 06 04를 설정
-            let today = "2024-06-04"
+            // padStrat() : 현재 문자열의 시작을 다른 문자열로 채워, 주어진 길이를 만족하는 새로운 문자열을 반환
+            let today = "";
+            let todayDate = new Date();
+            let year = String(todayDate.getFullYear());
+            let month = String(todayDate.getMonth() + 1).padStart(2, "0"); // 형변환 String 으로 넘버타입에서 문자타입으로 바꿔줌
+            let tdate = String(todayDate.getDate()).padStart(2,"0");
+            console.log(typeof year, typeof month, tdate);
+            console.log(year, month, tdate);
+            today = `${year}-${month}-${tdate}`
             return today;
         }
     </script>

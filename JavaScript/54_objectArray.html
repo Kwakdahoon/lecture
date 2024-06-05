@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/account.js"></script>
+    <title>배열에 객체를 담아 관리</title>
+    <script>
+        let acc1 = new Account ("홍길동", "980807-1470724", 500);
+        console.log(acc1);
+
+        let acc2 = new Account ("곽다훈", "00-285353", 1000);
+        console.log(acc2);
+
+        let acc3 = new Account ("JSON", "12312-32-285353", 101235234);
+        let clients = [];
+        clients.push(acc1);
+        clients.push(acc2);
+        clients.push(acc3);
+        console.log(clients);
+
+
+        // 고객의 명단 list로 출력을 하세요 (이름, 계좌, 잔액)
+        // for of = 키 값 && for in = index 값 기억, 해!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+        
+        let = output = "<ul>";
+            for (let cl of clients) {
+                console.log(cl);
+                output +=`<li>예금주 : ${cl.owner}</li>
+                <li>계좌번호 : ${cl.accNum}</li>
+                <li>잔액 : ${cl.balance.toLocaleString()}원</li>`                
+            } output += "</ul>"
+            document.write(output);
+
+        // document.write(`<ul><li>${acc1.owner}</li><li>${acc1.accNum}</li><li>${acc1.balance}</li></ul>`)
+        // document.write(`<ul><li>${acc2.owner}</li><li>${acc2.accNum}</li><li>${acc2.balance}</li></ul>`)
+        
+        // JSON
+        document.write(JSON.stringify(clients));
+        let jsonStr = JSON.stringify(clients);
+        console.log(typeof jsonStr);
+
+        let jsonObj = JSON.parse(jsonStr);
+        console.log(typeof jsonObj);
+        console.log(jsonObj);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

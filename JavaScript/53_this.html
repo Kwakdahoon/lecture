@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+    <script>
+        // 1.
+        console.log(this); // |> window 최상위 객체
+
+        // 2.
+        func()
+        function func() {
+            console.log(this); // window 객체 = 이 함수를 포함하고 있는 객체가 window 라는 뜻
+        }
+
+        // 3.
+        const obj = {
+            fullname : "홍길동",
+            balance : 500,
+            sayHello : function () {
+                console.log("Hello");
+                console.log(this); // 객체 안에 this 를 넣을때는 현 객체 호출
+            },
+        };
+        obj.sayHello() // document.write 처럼 이름에 . 붙여서 호출
+
+        const objobj = {
+            innerobj : {
+                fullname : "둘리",
+                sayHi : function () {
+                    console.log("Hi");
+                    console.log(this);
+                },
+            },
+        };
+
+        objobj.innerobj.sayHi(); // 호출
+
+        // 화살표 함수의 this
+
+        const objobj1 = {
+            innerobj : {
+                fullname : "둘리",
+                sayHi : () => {
+                    console.log("Hi");
+                    console.log(this.fullname); // undefined 일반 함수사용했을때와 화살표 함수 썼을때 차이
+                },
+            },
+        };
+
+        objobj1.innerobj.sayHi(); // 호출
+
+        // 상위 함수 만들기
+        function outFunc () {
+            const obj = {
+            fullname : "홍길동",
+            balance : 500,
+            sayHello : function () {
+                console.log("Hello");
+                console.log(this.fullname); 
+            },
+        };
+        obj.sayHello();
+    } 
+    outFunc();
+
+        // this 상위 함수
+        function outFunc () {
+            this.fullname = "michol"
+
+                const obj = {
+                fullname : "홍길동",
+                balance : 500,
+                sayHello : () => {
+                    console.log("Hello");
+                    console.log(this.fullname); 
+                },
+            };
+            obj.sayHello();
+    } 
+    outFunc();
+
+    // 정리
+    // this
+    // 일반함수의 this는 호출되는 위치에서 정의
+    // 화살표 함수의 this는 선언된 함수범위에서 정의
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

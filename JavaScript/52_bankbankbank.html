@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Account(user, num, balance) {
+            this.owner = user;
+            this.accNum = num;
+            this.balance = balance;
+            this.bank = "국민은행";
+            this.content = "청년 내일 채움 공제";
+            this.height = "170cm";
+            this.kg = "74kg";
+            this.eye = "1.0";
+
+
+
+            //객체 호출
+            this.현재금액 = function () {
+                this.balance;
+            }
+            this.입금금액 = function(money) {
+                this.balance += money;
+            }
+            console.log(balance.toLocaleString());
+            this.출금금액 = function(money) {
+                if (this.balance >= money) {
+                    this.balance -= money;
+                } else {
+                    window.alert("돈 모자람");
+                }
+            }
+
+            
+        }
+
+        // 객체 생성
+        let acc = new Account("곽다훈" , "943202-00-285353", 30545300)
+        document.write(`고객 정보 : ${acc.owner}<br>`);
+        document.write(`계좌번호 : ${acc.accNum}<br>`);
+        document.write(`현재금액 : ${acc.balance.toLocaleString()}<br>`);
+        document.write(`은행 : ${acc.bank}<br>`);
+        document.write(`상품 이름 : ${acc.content}<br>`);
+        document.write(`고객 키 : ${acc.height}<br>`);
+        document.write(`고객 무게 : ${acc.kg}<br>`);
+        document.write(`고객 시력 : ${acc.eye}<br>`);
+        
+        acc.입금금액(300000);
+        document.write(`입금 후 금액  : ${acc.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원<br>`)
+
+        acc.출금금액(135465);
+        document.write(`출금 후 금액  : ${acc.balance.toLocaleString()}원<br>`)
+
+        acc.출금금액(3546541);
+        document.write(`출금 후 금액  : ${acc.balance.toLocaleString()}원<br>`)
+
+        acc.출금금액(46545);
+        document.write(`출금 후 금액  : ${acc.balance.toLocaleString()}원<br>`)
+
+        acc.출금금액(2130265);
+        document.write(`출금 후 금액  : ${acc.balance.toLocaleString()}원<br>`)
+
+        acc.입금금액(12415155233);
+        document.write(`입금 후 금액  : ${acc.balance.toLocaleString()}원<br>`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

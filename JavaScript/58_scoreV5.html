@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적표</title>
+    <script>
+        // *) 객체 이용
+        // 1) input 태그를 이용해서 5명 학생의 이름, 국어, 영어, 수학점수를 입력받아,
+        // "성적처리" button을 누르면 총점, 평균, 학점 (등수는 자유) table로 출력하되
+        // "성적처리" button을 누르기 전에는 보이지 않게 된다.
+        
+        // 검색창을 만들어서, 학생이름으로 검색하면, 그 학생의 성적이 보이도록한다.
+
+        function Student(name, kl, eg, math) {
+            this.name = name;
+            this.kl = kl;
+            this.eg = eg;
+            this.math = math;
+        }
+
+        // 객체 생성
+        let stu1 = new Student("one하나")
+        let stu2 = new Student("이second")
+        let stu3 = new Student("삼three")
+        let stu4 = new Student("사넷")
+        let stu5 = new Student("five다섯")
+
+        // 객체 집어넣기
+        let students = []
+        students.push(stu1)
+        students.push(stu2)
+        students.push(stu3)
+        students.push(stu4)
+        students.push(stu5)
+        
+        function calculation() {
+            let name = document.getElementById("input1").value; // 입력받은값
+            let kl = Number(document.getElementById("input2").value);
+            let eg = Number(document.getElementById("input3").value);
+            let math = Number(document.getElementById("input4").value);
+            let tot = kl + eg + math;
+            let avg = tot / 3;
+            let grade = "";
+            
+            switch(avg / 10) {
+                case 10 :
+                grade = `S`;
+                break;
+
+                case 9 : 
+                grade = `A`;
+                break;
+                
+                case 8 : 
+                grade = `B`;
+                break;
+
+                case 7 : 
+                grade = `C`;
+                break;
+
+                case 6 : 
+                grade = `D`;
+                break;
+
+                default :
+                grade = `F`;
+                break;
+                }
+
+
+
+            document.getElementById("span").innerHTML = (`
+            <table border = 1>
+            <tr>
+            <td>학생이름 : ${name}</td>
+            <td>총점 : ${tot} </td>
+            <td>평균 : ${avg.toFixed(2)}</td>
+            <td>학점 : ${grade}</td>
+            </tr>
+            </table>`);
+        }
+
+        function filter() {
+            let 
+        }
+    </script>
+</head>
+<body>
+    <div>
+        이름
+        <input type="text" id="input1">
+    </div>
+    <div>
+        국어
+        <input type="number" id="input2">
+    </div>
+    <div>
+        영어
+        <input type="number" id="input3">
+    </div>
+    <div>
+        수학
+        <input type="number" id="input4">
+    </div>
+    <div>
+        <button onclick="calculation()">클리꾸</button>
+    </div>
+    <div>
+        내 성적 찾아봐 <br>
+        <input type="text" onkeyup="filter()" placeholder="이름을 입력하세요"> <br>
+        <button onclick="filter()">내 성적 찾기</button>
+    </div>
+    <span id = "span"></span>
+</body>
+</html>

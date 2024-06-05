@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 생성 : literal</title>
+    <script>
+        let acc = {
+            owner : "황길동",
+            accNum : "1111-11-1111",
+            balance : 500,
+            name : "직장",
+            backName : "쿸민",
+
+            checkBalance : function () {
+                return this.balance;
+            },
+            deposit : function () {
+                this.balance += money;
+            },
+            withdraw : function (money) {
+                this.balance -= money;
+                if (this.balance >= money) {
+                    this.balance -= money;
+                } else {
+                    alert ("잔액부족");
+                }
+            }
+
+        };
+        console.log(acc);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

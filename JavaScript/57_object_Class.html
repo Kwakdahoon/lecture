@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class를 이용한 객체 생성 </title>
+    <script>
+        class Account {
+            constructor(owner, accNum, balance) {
+                this.owner = owner;
+                this.accNum = accNum;
+                this.balance = balance;
+            }
+
+            checkBalance () {
+                console.log(this.balance);
+            }
+        }
+
+        let acc1 = new Account("곽다훈", "국민은행 943202-00-2853530", 5000000);
+        console.log(acc1.accNum);
+        acc1.checkBalance();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
