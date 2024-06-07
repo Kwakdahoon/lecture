@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적 처리</title>
+    <script src = "./score.js"></script>
+    <style>
+        /* 테이블 스타일 설정 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>성적 입력</h1>
+    <form id="scoreForm">
+        <div id="students">
+            <!-- 학생 입력 필드가 여기 추가됩니다 -->
+        </div>
+        <button type="button" onclick="processScores()">성적 처리</button>
+    </form>
+    <div>
+        <input type="text" id="searchName" placeholder="학생 이름 검색">
+        <button type="button" onclick="searchStudent()">검색</button>
+    </div>
+    <h2>성적 결과</h2>
+    <table id="resultTable">
+        <th>
+            <tr>
+                <th>학생 이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>총점</th>
+                <th>평균</th>
+
+
+
+                
+                <th>학점</th>
+            </tr>
+        </th>
+        <tbody>
+            <!-- 결과가 여기 추가됩니다 -->
+        </tbody>
+    </table>
+</body>
+</html>

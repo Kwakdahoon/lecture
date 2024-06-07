@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,90 +17,95 @@
             this.kl = kl;
             this.eg = eg;
             this.math = math;
-            let tot = kl + eg + math;
-            let avg = tot / 3;
-            let grade = "";
-
-            // 함수 return 을 사용
-            switch(Math.floor(avg/ 10)) {
-                case 10 :
-                grade = `S`;
-                break;
-
-                case 9 : 
-                grade = `A`;
-                break;
-                
-                case 8 : 
-                grade = `B`;
-                break;
-
-                case 7 : 
-                grade = `C`;
-                break;
-
-                case 6 : 
-                grade = `D`;
-                break;
-
-                default :
-                grade = `F`;
-                break;
-                }
+            this.tot = kl + eg + math;
+            this.avg = this.tot / 3;
+            this.grade = getGrade(this.avg);
         }
 
-        // 객체 집어넣기
-        let students = []
-        
+        function getGrade(avg) {
+            if (avg >= 90) return 'S';
+            if (avg >= 80) return 'A';
+            if (avg >= 70) return 'B';
+            if (avg >= 60) return 'C';
+            if (avg >= 50) return 'D';
+            return 'F';
+        }
+
+        let students = [];
+
         function calculation() {
-            let name = document.getElementById("input1").value; // 입력받은값
-            let kl = Number(document.getElementById("input2").value);
-            let eg = Number(document.getElementById("input3").value);
-            let math = Number(document.getElementById("input4").value);
-        }
-           
+            students = []; // 입력 받을 때마다 초기화
 
-        // for 문 사용
-            document.getElementById("span").innerHTML = (`
-            <table border = 1>
-            <tr>
-            <td>학생이름 : ${name}</td>
-            <td>총점 : ${tot} </td>
-            <td>평균 : ${avg.toFixed(2)}</td>
-            <td>학점 : ${grade}</td>
-            </tr>
-            </table>`);
+            for (let i = 1; i <= 5; i++) {
+                let name = document.getElementById(`inputName${i}`).value;
+                let kl = Number(document.getElementById(`inputKl${i}`).value);
+                let eg = Number(document.getElementById(`inputEg${i}`).value);
+                let math = Number(document.getElementById(`inputMath${i}`).value);
+                
+                let student = new Student(name, kl, eg, math);
+                students.push(student);
+            }
+
+            displayStudents(students);
+        }
+
+        function displayStudents(studentsToDisplay) {
+            let output = `
+                <table border="1">
+                    <tr>
+                        <th>학생 이름</th>
+                        <th>총점</th>
+                        <th>평균</th>
+                        <th>학점</th>
+                    </tr>`;
+
+            for (let student of studentsToDisplay) {
+                output += `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.tot}</td>
+                        <td>${student.avg.toFixed(2)}</td>
+                        <td>${student.grade}</td>
+                    </tr>`;
+            }
+
+            output += `</table>`;
+            document.getElementById("span").innerHTML = output;
+        }
 
         function filter() {
-            let 
+            let searchName = document.getElementById("searchInput").value.toLowerCase();
+            let filteredStudents = students.filter(student => student.name.toLowerCase().includes(searchName));
+            displayStudents(filteredStudents);
         }
     </script>
 </head>
 <body>
     <div>
-        이름
-        <input type="text" id="input1">
+        <h3>학생 성적 입력</h3>
+        <div id="inputFields"></div>
     </div>
+    <button onclick="calculation()">성적 처리</button>
     <div>
-        국어
-        <input type="number" id="input2">
+        <h3>내 성적 찾아봐</h3>
+        <input type="text" id="searchInput" onkeyup="filter()" placeholder="이름을 입력하세요">
     </div>
-    <div>
-        영어
-        <input type="number" id="input3">
-    </div>
-    <div>
-        수학
-        <input type="number" id="input4">
-    </div>
-    <div>
-        <button onclick="calculation()">클리꾸</button>
-    </div>
-    <div>
-        내 성적 찾아봐 <br>
-        <input type="text" onkeyup="filter()" placeholder="이름을 입력하세요"> <br>
-        <button onclick="filter()">내 성적 찾기</button>
-    </div>
-    <span id = "span"></span>
+    <span id="span"></span>
+
+    <script>
+        // 5명의 학생 성적 입력을 위한 필드 생성
+        let inputFieldsHtml = '';
+        for (let i = 1; i <= 5; i++) {
+            inputFieldsHtml += `
+                <div>
+                    학생 ${i} 이름: <input type="text" id="inputName${i}">
+                    국어: <input type="number" id="inputKl${i}">
+                    영어: <input type="number" id="inputEg${i}">
+                    수학: <input type="number" id="inputMath${i}">
+                </div>
+                <br>`;
+        }
+        document.getElementById("inputFields").innerHTML = inputFieldsHtml;
+    </script>
 </body>
 </html>
