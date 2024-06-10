@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6ae9f010c9.js" crossorigin="anonymous"></script>
+    <title>성적표</title>
+    <script>
+        // *) 객체 이용
+        // 1) input 태그를 이용해서 5명 학생의 이름, 국어, 영어, 수학점수를 입력받아,
+        // "성적처리" button을 누르면 총점, 평균, 학점 (등수는 자유) table로 출력하되
+        // "성적처리" button을 누르기 전에는 보이지 않게 된다.
+        
+        // 검색창을 만들어서, 학생이름으로 검색하면, 그 학생의 성적이 보이도록한다.
+
+        let scores = []; // 학생 전체 성적을 처리하기 위한 배열
+        const STUDENT_CNT = 5;
+
+        function scoreProcess() {
+            inputScore(); // table에 있는 점수 입력받는 함수
+            console.log(scores);
+            outputScores(); // 출력하기
+        }
+
+        function outputScores() {
+            let tableOutput = "<table>";
+            tableOutput += "<tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th></tr>";
+            for (let i = 0; i < STUDENT_CNT; i++) {
+                tableOutput += `<tr class='stu'>`;
+                tableOutput += `<td>${scores[i].name}</td><td>${scores[i].kor}</td><td>${scores[i].eng}</td><td>${scores[i].math}</td><td>${scores[i].tot}</td><td>${scores[i].avg.toFixed(2)}</td><td>${scores[i].grade}</td>`;
+                tableOutput += `</tr>`;
+            }
+            tableOutput += "</table>";
+            document.getElementById("output").innerHTML = tableOutput;
+            document.getElementById("searchStudent").style.display = "block";
+        }
+
+        function findStudent() {
+            // 학생 이름으로 검색
+            let findStudentName = document.getElementById("searchStudentName").value;
+            console.log(findStudentName);
+            let findPos = -1;
+
+
+            for (let i = 0; i < STUDENT_CNT; i ++) {
+                if (scores[i].name == findStudentName) {
+                    findPos = i;
+                }
+            }
+
+            if (findPos !== -1) {
+                // 찾는 학생이 있는 경우 -> 하이라이트를 해준다.
+                document.getElementsByClassName("stu")[findPos].style.backgroundColor = "yellow";
+            } else {
+                window.alert("그런 학생 또 없습니다..")
+            }
+        }
+
+        function inputScore(){
+            scores = []; // 배열 초기화
+            for (let i = 0; i < STUDENT_CNT; i++) {
+                let name = document.getElementsByClassName("stuName")[i].value;
+                let kor = parseInt(document.getElementsByClassName("kor")[i].value);
+                let eng = parseInt(document.getElementsByClassName("eng")[i].value);
+                let math = parseInt(document.getElementsByClassName("math")[i].value);
+
+                scores.push(new Student(name, kor, eng, math)); // input 태그에 값 읽어와서 객체에 넣어놓는다
+            }
+        }
+
+        function Student(name, kor, eng, math) {
+            // 생성자 함수
+            this.name = name;
+            this.kor = kor;
+            this.eng = eng;
+            this.math = math;
+            this.tot = this.kor + this.eng + this.math;
+            this.avg = this.tot / 3;
+            switch (Math.floor(this.avg / 10)) {
+                case 10:
+                case 9:
+                    this.grade = "A"; break;
+                case 8:
+                    this.grade = "B"; break;
+                case 7:
+                    this.grade = "C"; break;
+                case 6:
+                    this.grade = "D"; break;
+                default:
+                    this.grade = "F"; break;
+            }
+        }
+        function runScript(e) {
+            if(e.keyCode == 13) { // enter는 13이다!        
+            alert("엔터를 입력하셨습니다!");
+            return false; // 추가적인 이벤트 실행을 방지하기 위해 false 리턴    
+        }   else {
+            return true;
+        }
+    }
+    </script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table th,td {
+            border : 1px solid black;
+        }
+
+        input[type="text"] {
+            border : none;
+        }
+
+        #searchStudentName {
+            border: 1px solid black;
+        }
+
+        #searchBox {
+            display : flex;
+            justify-content: flex-start;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="stuName" value="둘리" /></td>
+                <td><input type="text" class="kor" value="88" /></td>
+                <td><input type="text" class="eng" value="68" /></td>
+                <td><input type="text" class="math" value="78" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="stuName" value="희동" /></td>
+                <td><input type="text" class="kor" value="88" /></td>
+                <td><input type="text" class="eng" value="68" /></td>
+                <td><input type="text" class="math" value="78" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="stuName" value="도우너" /></td>
+                <td><input type="text" class="kor" value="88" /></td>
+                <td><input type="text" class="eng" value="68" /></td>
+                <td><input type="text" class="math" value="78" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="stuName" value="또치" /></td>
+                <td><input type="text" class="kor" value="88" /></td>
+                <td><input type="text" class="eng" value="68" /></td>
+                <td><input type="text" class="math" value="78" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="stuName" value="마이콜" /></td>
+                <td><input type="text" class="kor" value="88" /></td>
+                <td><input type="text" class="eng" value="68" /></td>
+                <td><input type="text" class="math" value="78" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" value="성적처리" onclick="scoreProcess();" onkeypress="return runScript(event)"/>
+    <div id="output"></div>
+    <!-- 검색창 -->
+    <div id="searchStudent" style="display: none;">
+        <div class="searchBox">
+            <input type="text" placeholder="학생 이름을 입력하세요" id="searchStudentName" />
+            <button>
+                <i class="fa-solid fa-magnifying-glass" onclick="findStudent()"></i>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
