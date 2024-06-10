@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let array = new Array(99); // 99개 짜리 배열
+        let result = 0;
+            for (let j = 1; j <= 100; j++) {
+            result += j;
+        }
+        console.log(result);
+
+        let tmp = 0; // 임시 변수
+            for (let i = 0; i < array.length; i++) {
+            do {
+                tmp = Math.floor(Math.random() * 100) + 1;
+            } while (isDuplicate(array, tmp)); // 중복이 있다면
+            array[i] = tmp;
+        }
+        console.log("Before sorting: ", array);
+
+        function isDuplicate(arr, num) {
+            for (let item of arr) {
+                if (num === item) {
+                    // 중복된 수가 있는 경우
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // 배열 오름차순 정렬 (버블 정렬)
+        for (let i = 0; i < array.length - 1; i++) {
+            for (let j = 0; j < array.length - 1 - i; j++) {
+                if (array[j] > array[j + 1]) {
+                    // swap
+                    let temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        console.log("After sorting: ", array);
+
+        // 배열 모두 더한 값
+        let sum = 0;
+            for (let i = 0; i < array.length; i++) {
+                sum += array[i];
+        }
+        console.log("배열 합의 값 : ", sum);
+
+        // 빠진 값
+        let answer = result - sum;
+        document.write(array);
+        document.write("제외된 수 : ", answer, '</br>');
+
+        // 1 ~ 5까지 수--*
+        // 세개 숫자가 나오면 당첨
+        // 숫자가 높을 수록 높은 등수 5 > 4 > 3 > 2 > 1
+        // 당첨될때까지 구매하고 몇번째 구매 당첨인지, 몇등 당첨인지
+
+        
+        const transForm = '</br>';
+
+        for (let i =1;i<7;i++){
+            for (let j=0; j<7;j++) {
+
+                document.write('*');
+            } document.write(transForm);
+        } 
+        // for in 을 loop 에서 쓰면key 값을 가져올 수 있고
+        // for in 을 배열(array)에서 사용하면 index 값을 가져 올 수 있다
+        // for of 를 사용하면 값이 입력됨
+        // 인덱스 값을 가져오고 싶을때는 for in 값을 가져오고 싶을때는 for of
+        let karina = {
+            name : '유지민',
+            height : 168,
+            gender : 'female',
+        }
+
+        for (let key in karina) {
+            console.log(key);
+        }
+
+        const aespa = ['카리나', '윈터' ,'닝닝' , '지젤']
+        for (let key in aespa) {
+            console.log(`${key}${aespa[key]}`);
+        }
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+
+        for(let value of aespa) {
+            console.log(value);
+            console.log(karina);
+        }
+
+        let number = 0;
+
+        while (number < 10) {
+            number++;
+        }
+
+
+        let time = 1;
+
+
+        function getGrade(number) {
+        switch (number) {
+            case 5: return "1등";
+            case 4: return "2등";
+            case 3: return "3등";
+            case 2: return "4등";
+            case 1: return "5등";
+            default: return "등급 없음";
+            }
+        }
+
+        while (true) {
+
+            num1 = Math.floor(Math.random() * 5) + 1;
+            num2 = Math.floor(Math.random() * 5) + 1;
+            num3 = Math.floor(Math.random() * 5) + 1;
+
+            if (num1 == num2 && num2 == num3) {
+                console.log(`${num1}, ${num2}, ${num3}당첨 [${time++}회차] `);
+                break;
+            } 
+            console.log(`${num1}, ${num2}, ${num3}, 꽝~!  [${time}회차] `);
+            time++;
+        }
+
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
