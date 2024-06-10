@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function sayHello() {
+            alert("Hello");
+        }
+        window.onload = function () {
+            let btn3 = document.getElementById("btn3");
+            console.log(btn3);
+            btn3.onclick = sayHello;
+            btn3.onclick = function () {
+                alert("button3 clicked");
+            };
+
+            const btn4 = document.getElementById("btn4");
+
+            // addEventListener속성은 덮어쓰기가능, btn3는 가장 마지막것만 호출됨
+            btn4.addEventListener("click", sayHi);
+            function sayHi() {
+                alert("Hi!");
+                document.getElementById("btn4").style.backgroundColor = "red";
+            }
+
+            btn4.addEventListener("click", function() {
+                alert("btn clicked");
+            })
+
+            let btn5 = document.getElementById("btn5");
+            btn5.addEventListener("dblclick", sayHi);
+        };
+    </script>
+</head>
+<body>
+    <button onclick="alert('!')">버튼 1</button>
+    <button onclick="sayHello();">버튼 2</button>
+    <button id="btn3">버튼 3</button>
+    <button id="btn4">버튼 4</button>
+    <button id="btn5">버튼 5</button>
+</body>
+</html>
