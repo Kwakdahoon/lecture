@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let pQsel = document.querySelectorAll("p");
+            let pGetEl = document.getElementsByTagName("p");
+            console.log(pQsel);
+            console.log(pGetEl);
+
+            // 새로운 p태그를 추가
+            let newP = document.createElement("p"); // 요소 만들어줌 ex) div, span, p, ... 등등
+            let newText = document.createTextNode("new paragraph"); // 요소 안에 들어갈 문장??
+            newP.appendChild(newText); // append : 가장 마지막에 추가(변수로)한다는 뜻인듯
+            console.log(newP);
+            document.body.appendChild(newP); // 화면에 출력
+            console.log(pQsel);
+            console.log(pGetEl);
+        };
+    </script>
+</head>
+<body>
+    <p id="firstP">first paragraph</p>
+    <p id="secondP">second paragraph</p>
+    <p id="thirdP">third paragraph</p>
+</body>
+</html>

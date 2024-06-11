@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>접속환경이 pc 인지 mobile 인지</title>
+    <script>
+        let pcFilter = ["win16", "win32", "win64", "mac", "macintel"];
+        let isPc = false;
+        
+        for (let pc of pcFilter) {
+            if (navigator.platform.toLowerCase().includes(pc)) {
+                // pc 에서 접속
+                isPc = true;
+                location.href = "https://www.google.com";
+            }
+        }
+        if (!isPc) {
+            location.href = "https://www.naver.com";
+        }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

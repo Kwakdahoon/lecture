@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초간단 계산기 만들기</title>
+    <script>
+        window.onload = function () {
+            
+            
+            
+        }
+            function btnClick() {
+                let btn = event.target.innerText;
+                console.log(btn);
+            }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <td colspan="4">display</td>
+            </tr>
+        </thead>
+        <tr>
+            <td class="num" onclick="btnClick(event)">1</td>
+            <td class="num" onclick="btnClick(event)">2</td>
+            <td class="num" onclick="btnClick(event)">3</td>
+            <td>/</td>
+        </tr>
+        <tr>
+            <td class="num" onclick="btnClick(event)">4</td>
+            <td class="num" onclick="btnClick(event)">5</td>
+            <td class="num" onclick="btnClick(event)">6</td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td class="num" onclick="btnClick(event)">7</td>
+            <td class="num" onclick="btnClick(event)">8</td>
+            <td class="num" onclick="btnClick(event)">9</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td class="num"onclick="btnClick(event)">0</td>
+            <td>=</td>
+            <td>C</td>
+        </tr>
+    </table>
+</body>
+</html>

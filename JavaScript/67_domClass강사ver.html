@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6ae9f010c9.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let list = document.getElementById("list");
+            console.log(list);
+
+
+
+            list.onclick = function (e) {
+                console.log(e);
+                let target = e.target;
+                console.log(target);
+                target.classList.toggle("text-red");
+            }
+
+        
+        let heart = document.getElementById("heart");
+    heart.onclick = function (e) {
+        let target = e.target;
+    target.classList.toggle("fa-solid");
+}
+}
+    </script>
+    <style>
+        .text-red {
+            color:red;
+        }
+        </style>
+</head>
+<body>
+    <ul id="list">
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+    </ul>
+    <div>
+        <span id="heart"><i class="text-red fa-regular fa-heart"></i></span>
+    </div>
+</body>
+</html>
