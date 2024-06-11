@@ -5,47 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>초간단 계산기 만들기</title>
     <script>
-        window.onload = function () {
-            
-            
-            
-        }
             function btnClick() {
-                let btn = event.target.innerText;
+                let btn = Number(event.target.innerText);
                 console.log(btn);
             }
+
+            function toolClick() {
+                let tool = event.target.innerText;
+                console.log(tool);
+            }
+
+            function result() {
+                
+            }
+
+
+
     </script>
+    <style>
+        #table {
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            border: 5px solid orange;
+        }
+
+        #thead {
+            height: 80px;
+        } 
+    </style>
 </head>
 <body>
-    <table border="1">
-        <thead>
+    <table border = 1 id="table">
+        <thead id="thead">
             <tr>
-                <td colspan="4">display</td>
+                <td colspan="4"></td>
             </tr>
         </thead>
         <tr>
             <td class="num" onclick="btnClick(event)">1</td>
             <td class="num" onclick="btnClick(event)">2</td>
             <td class="num" onclick="btnClick(event)">3</td>
-            <td>/</td>
+            <td class="tool" onclick="toolClick(event)">/</td>
+
         </tr>
         <tr>
             <td class="num" onclick="btnClick(event)">4</td>
             <td class="num" onclick="btnClick(event)">5</td>
             <td class="num" onclick="btnClick(event)">6</td>
-            <td>*</td>
+            <td class="tool" onclick="toolClick(event)">*</td>
         </tr>
         <tr>
             <td class="num" onclick="btnClick(event)">7</td>
             <td class="num" onclick="btnClick(event)">8</td>
             <td class="num" onclick="btnClick(event)">9</td>
-            <td>-</td>
+            <td class="tool" onclick="toolClick(event)">-</td>
         </tr>
         <tr>
-            <td>+</td>
+            <td class="tool" onclick="toolClick(event)">+</td>
             <td class="num"onclick="btnClick(event)">0</td>
-            <td>=</td>
-            <td>C</td>
+            <td class="result" onclick="result(event)">=</td>
+            <td class="ac" onclick="toolClick(event)">C</td>
         </tr>
     </table>
 </body>
