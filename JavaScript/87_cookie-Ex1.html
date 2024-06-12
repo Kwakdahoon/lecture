@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이 창 열지않기</title>
+    <script>
+        window.onload = function () {
+            // 체크한 유저인지 아닌지 판별해서
+            // 체크한 경우 팝업창을 띄우지 않는다.
+            // window.open("87-1_sub.html", "sub", "top=200 left = 200 width=600 height=400");
+            let c = document.cookie;
+            console.log(c);
+            let cookie = c.split(";");
+            console.log(cookie);
+
+            let f = false;
+            let search = "myCoo1313k";
+            console.log(typeof cookie);
+            console.log(typeof cookie[0])
+            for (let i = 0; i < cookie.length; i++) {
+                cookie[i].split("=")[0];// myCook
+                console.log(cookie[i].split("=")[0].trim());
+
+                if (search == cookie[i].split("=")[0].trim()) {
+
+                }
+
+                }
+
+                   
+            
+        };
+
+    </script>
+
+</head>
+<body>
+    <h1>Main page</h1>
+</body>
+</html>

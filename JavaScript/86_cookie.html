@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function saveCookie() {
+        // 쿠키이름 = 값; expires = 쿠키만료일; (domain=도메인명; path=쿠키 저장경로)
+        // UTC (협정세계시)
+        let myCookie = "";
+        let now = new Date();
+        console.log(now);
+        // console.log(now.getSeconds());
+        // console.log(now.getSeconds() + 3);
+        now.setDate(now.getDate() + 1); // 1일 후'
+        console.log(now.toString());
+
+        myCookie = "myCook=kdh;expires=" + now.toUTCString();
+        console.log(myCookie);
+
+        document.cookie = myCookie; // 쿠키 저장
+
+        // 만료일을 2분후
+        let now2 = new Date();
+        now2.setMinutes(now2.getMinutes() + 2);
+        let myCookie2 = "myCook2=cookie2;expires=" + now2.toUTCString();
+        document.cookie = myCookie2;
+        }
+
+        function readCookie() {
+            let cook = document.cookie;
+            console.log(cook);
+            console.log(typeof cook);
+            // myCook=kdh; myCook2=cookie2
+            let cookArr = cook.split(";");
+            console.log(cookArr);
+
+            let isFind = false;
+            let searchName = "myCook";
+
+            for (let i = 0; i < cookArr.length; i++) {
+                // myCook = kdh
+                let cookName = cookArr[i].split("=")[0];
+                console.log(cookName);
+
+                if (cookName.trim() == searchName) {
+                    isFind = true;
+                    alert("차즘 : " + cookArr[i].split("=")[1]);
+                }
+            }
+            if (!isFind) {
+                alert("그런쿠키 없습니다")
+            }
+        }
+
+        function delCookie() {
+            // 삭제할 쿠키 : myCook
+            // 삭제할 쿠키의 expires값을 현재 날짜, 시간으로 재설정하여 다시 저장한다.
+            let delName = "myCook";
+            let now = new Date();
+            let cookie = delName + "=;expires=" + now.toUTCString();
+            document.cookie = cookie;
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="쿠키저장" onclick="saveCookie();">
+    <input type="button" value="쿠키읽기" onclick="readCookie();">
+    <input type="button" value="쿠키삭제" onclick="delCookie();">
+</body>
+</html>

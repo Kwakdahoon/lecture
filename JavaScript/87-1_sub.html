@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업띄우기용 노예</title>
+    <script>
+
+            
+
+        function saveCookie() {
+            // 24시간 후에 만료되는 쿠키 저장
+            let myCookie = "";
+            let now = new Date();
+            now.setHours(now.getHours() + 24); // 24시간 후
+            myCookie = "myCook=kdh;expires=" + now.toUTCString();
+            document.cookie = "myCook113=kdh;expires=" + now.toUTCString();
+            document.cookie = "myCoo1313k=kdh;expires=" + now.toUTCString();
+            document.cookie = "myCo4141242ok=kdh;expires=" + now.toUTCString();
+            document.cookie = myCookie;
+            window.close();
+
+        }
+
+
+
+    </script>
+    <style>
+        div { 
+        text-align: center;
+        margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="notice">
+        <h1>공지사항</h1>
+
+            <div>쿠키를 열심히 공부해 봅시다.</div>
+            
+            <div class="check">하루동안 이 창 열지 않기</div>
+            <br><br>
+            <input type="checkbox">
+
+            <div class="close">
+                <input type="button" value ="닫기" onclick="saveCookie();">
+            </div>
+            
+    </div>
+</body>
+</html>
