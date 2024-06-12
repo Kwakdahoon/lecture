@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // seoul, tokyo, newyork 뜸
+        function mySelect(obj) {
+            console.log(obj.value);
+            
+        }
+
+        // 대전 부산 제주 뜸
+        function mySelect2 () {
+            let city2 = document.getElementById("city2");
+            console.log(city2);
+            console.log(city2.options);
+            console.log(city2.options.selectedIndex);
+            console.log(city2.options[city2.options.selectedIndex].value);
+        }
+    </script>
+</head>
+<body>
+    <select id="city" onchange="mySelect(this);">
+        <option value="seoul">서울</option>
+        <option value="tokyo">도쿄</option>
+        <option value="newyork">뉴욕</option>
+    </select>
+    <select id="city2" onchange="mySelect2();">
+        <option >대전</option>
+        <option >부산</option>
+        <option >제주</option>
+    </select>
+</body>
+</html>

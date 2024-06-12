@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2차원 배열을 이용한 성적표</title>
+    <script>
+      //   let input = Number(window.prompt("학생 수를 입력", 10)); //학생 수 입력받기
+      let input = 20; //학생 수
+      let st = new Array(input);
+      for (let i = 0; i < input; i++) {
+        st[i] = new Array(8);
+        // st[i][0] = Math.floor(Math.random() * 9000 + 1000); //랜덤 학번 9000~9999
+        st[i][0] = 1001 + i; //학번
+        // st[i][1] = "홍길동"; //이름 홍길동
+        switch (
+          Math.floor(Math.random() * 20 + 1) // 1~20 사이의 랜덤 숫자로 이름 뽑기
+        ) {
+          case 20:
+            st[i][1] = "고주영";
+            break;
+          case 19:
+            st[i][1] = "윤준재";
+            break;
+          case 18:
+            st[i][1] = "사공상민";
+            break;
+          case 17:
+            st[i][1] = "고예원";
+            break;
+          case 16:
+            st[i][1] = "류원용";
+            break;
+          case 15:
+            st[i][1] = "예승하";
+            break;
+          case 14:
+            st[i][1] = "제갈영식";
+            break;
+          case 13:
+            st[i][1] = "예선옥";
+            break;
+          case 12:
+            st[i][1] = "남하은";
+            break;
+          case 11:
+            st[i][1] = "남영화";
+            break;
+          case 10:
+            st[i][1] = "김정호";
+            break;
+          case 9:
+            st[i][1] = "홍길동";
+            break;
+          case 8:
+            st[i][1] = "이순신";
+            break;
+          case 7:
+            st[i][1] = "강감찬";
+            break;
+          case 6:
+            st[i][1] = "세바스찬";
+            break;
+          case 5:
+            st[i][1] = "요셉";
+            break;
+          case 4:
+            st[i][1] = "정도전";
+            break;
+          case 3:
+            st[i][1] = "테레사";
+            break;
+          case 2:
+            st[i][1] = "리 신";
+            break;
+          case 1:
+            st[i][1] = "응우옌 팅추이";
+            break;
+        }
+        //국영수 점수 랜덤
+        for (let j = 0; j < 3; j++) {
+          if (99 < Math.floor(Math.random() * 137 + 4)) {
+            st[i][j + 2] = 100;
+          } else {
+            st[i][j + 2] = Math.floor(Math.random() * 99 + 1);
+          }
+        }
+      }
+
+      // 총점 계산
+      for (let i = 0; i < input; i++) {
+        st[i][5] = st[i][2] + st[i][3] + st[i][4];
+      }
+      // 평균 계산
+      for (let i = 0; i < input; i++) {
+        st[i][6] = (st[i][5] / 3).toFixed(2);
+      }
+      //학점 계산
+      for (let i = 0; i < input; i++) {
+        switch (Math.floor(st[i][6] / 10)) {
+          case 10:
+          case 9:
+            st[i][7] = "A";
+            break;
+          case 8:
+            st[i][7] = "B";
+            break;
+          case 7:
+            st[i][7] = "C";
+            break;
+          case 6:
+            st[i][7] = "D";
+            break;
+          case 5:
+            st[i][7] = "E";
+            break;
+          default:
+            st[i][7] = "F";
+            break;
+        }
+      }
+      // 테이블 출력
+      //   let scoreTable = `<div class="box_1"><table>`;
+      //   scoreTable += `<tr class = title><td colspan=8>학번 오름차순</td></tr>`;
+      //   scoreTable += `<tr class = "title"><td>학번</td><td>이름</td><td>국어</td><td>영어</td><td>수학</td><td>총점</td><td>평균</td><td>학점</td></tr>`;
+      //   for (let i = 0; i < input; i++) {
+      //     scoreTable += "<tr>";
+      //     for (let j = 0; j < st[i].length; j++) {
+      //       scoreTable += `<td>${st[i][j]}</td>`;
+      //     }
+      //     scoreTable += "</tr>";
+      //   }
+      //   scoreTable += "</table></div>";
+      //   console.log(scoreTable); // 테이블 확인용 콘솔로그
+      //   document.write(scoreTable);
+
+      // 추가 문제 : 평균을 기준으로 내림차순으로 정렬
+      for (let i = 0; i < input; i++) {
+        for (let j = i + 1; j < input; j++) {
+          if (Number(st[i][6]) < Number(st[j][6])) {
+            let tmp = st[j];
+            st[j] = st[i];
+            st[i] = tmp;
+          }
+          //   console.log(st.join()); //정렬이 잘 되었는지 확인하는 콘솔로그
+        }
+      }
+      // 추가문제 2 )
+      // 등수를 매겨 보세요.
+      // 평균을 기준으로 등수를 매겨 보되,
+      // 평균이 같으면 순위는 같다.
+
+      for (let i = 0; i < input; i++) {
+        let rank = 0;
+        for (let j = 0; j < input; j++) {
+          if (Number(st[i][6]) < Number(st[j][6])) {
+            rank++;
+          }
+          st[i][8] = rank + 1;
+          switch (st[i][8]) {
+            case 1:
+              st[i][8] += "st★";
+              break;
+            case 2:
+              st[i][8] += "nd★";
+              break;
+            case 3:
+              st[i][8] += "rd★";
+              break;
+            default:
+              st[i][8] += "위";
+              break;
+          }
+        }
+      }
+      console.log(st); //2차원 배열 값 확인용 콘솔로그
+
+      //  내림차순 정렬
+      let scoreTable_2 = `<div class="box_2"><table>`;
+      scoreTable_2 += `<tr class = title><td colspan=9>학점 내림차순</td></tr>`;
+      scoreTable_2 += `<tr class = "title"><td>학번</td><td>이름</td><td>국어</td><td>영어</td><td>수학</td><td>총점</td><td>평균</td><td>학점</td><td>순위</td></tr>`;
+      for (let i = 0; i < input; i++) {
+        scoreTable_2 += "<tr>";
+        for (let j = 0; j < st[i].length; j++) {
+          scoreTable_2 += `<td>${st[i][j]}</td>`;
+        }
+        scoreTable_2 += "</tr>";
+      }
+      scoreTable_2 += "</table></div>";
+      // 오름차순 정렬
+      let scoreTable_3 = `<div class="box_2"><table>`;
+      scoreTable_3 += `<tr class = title><td colspan=9>학점 오름차순</td></tr>`;
+      scoreTable_3 += `<tr class = "title"><td>학번</td><td>이름</td><td>국어</td><td>영어</td><td>수학</td><td>총점</td><td>평균</td><td>학점</td><td>순위</td></tr>`;
+      let t = st.length;
+      for (let i = 0; i < input; i++) {
+        scoreTable_3 += "<tr>";
+        console.log(t);
+        t--;
+        for (let j = 0; j < st[i].length; j++) {
+          scoreTable_3 += `<td>${st[t][j]}</td>`;
+        }
+        scoreTable_3 += "</tr>";
+      }
+      scoreTable_3 += "</table></div>";
+      //페이지가 켜졌을때
+      window.onload = function () {
+        document.getElementById("scoreTable_2").innerHTML = scoreTable_2;
+      };
+      function sort() {
+        let sorted = document.getElementsByName("sort"); // html에서 name="sort" 의 값을 변수 sorted의 배열에 저장.
+        if (sorted[0].checked == true) {
+          // sorted의 첫번째 배열의 checked값이 true와 같을 때
+          document.getElementById("scoreTable_2").innerHTML = scoreTable_2; // html의 id="scoreTable_2" 에 변수 scoreTable_2를 출력한다. (내림차순)
+        } else if (sorted[1].checked == true) {
+          // sorted의 두번째 배열의 checked값이 true와 같을 때
+          document.getElementById("scoreTable_2").innerHTML = scoreTable_3; // html의 id="scoreTable_2" 에 변수 scoreTable_3를 출력한다. (오름차순)
+        }
+      }
+    </script>
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        border-spacing: 0;
+      }
+      .title {
+        background-color: antiquewhite;
+        font-size: large;
+        text-align: center;
+      }
+      .box_1 {
+        float: left;
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="radio" name="sort" value="desc" checked />내림차순
+    <input type="radio" name="sort" value="asc" />오름차순
+    <button onclick="sort()">정렬하기</button>
+    <div id="scoreTable_2"></div>
+  </body>
+</html>

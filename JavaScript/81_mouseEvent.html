@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6ae9f010c9.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let box = document.getElementById("box");
+            let tail = document.getElementById("tail");
+            console.log(tail);
+            
+            box.addEventListener("mousemove", function(event){
+                // console.log(event);
+                tail.style.display = "block";
+                tail.style.top = `${event.clientY}px`;
+                tail.style.left = `${event.clientX}px`
+            });
+        };
+    </script>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 10px solid slateblue;
+            position: relative;
+        }
+
+        #tail {
+            width: 50px;
+            height: 50px;
+            color: red;
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="tail">
+        <span id="heart"><i class="fa-regular fa-heart"></span>
+    </div>
+</body>
+</html>
