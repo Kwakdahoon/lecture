@@ -33,12 +33,12 @@ function readCookie(searchName){
     let cookArr = cook.split(";");
 
     for (let i = 0; i < cookArr.length; i++) {
-        let cookName = cookArr[i].split("=")[0];
-        if (cookName.trim() == searchName) {
+        let cookName = cookArr[i].split("=")[0].trim();
+        if (cookName == searchName) {
             // 쿠키를 찾았다
-            returnVal = cookArr[i].split("=")[i];
+            returnVal = cookArr[i].split("=")[1].trim();
         }
-    }
+    }   
     return returnVal;
 }
 
@@ -48,7 +48,7 @@ function saveCookie(cookieName, cookieValue, expDate) {
     let now = new Date();
     now.setDate(now.getDate() + expDate);
 
-    let tmpCookie = cookieName + "=" + cookieValue + ";expries=" + now.toUTCString();
+    let tmpCookie = cookieName + "=" + cookieValue + ";expires=" + now.toUTCString();
 
     // 쿠키 저장
     document.cookie = tmpCookie;
