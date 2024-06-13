@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="js/commonJS.js">
-    </script>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/commonJS.js"></script>
+    <title>성적표 출력</title>
+    <!-- 이름, 국어, 영어, 수학 점수 읽어와서 출력 -->
     <script>
-        console.log(getParameter("ko"));
+      // http://127.0.0.1:5501/89-1_sub.html?stuName=aa&kor=aa&eng=a&math=a
+      console.log(getParameter("kor"));
 
-        let getParameterArr = ["name", "ko", "en", "math"]
+      let parameterArr = ["stuName", "kor", "eng", "math"];
 
-        let scores = new Array(4);
+      let scores = new Array(4);
 
-        for (let i = 0; i < scores.length; i++) {
-            scores[i] = getParameter(getParameterArr[i]);
-            scores[i] = decodeURIComponent(getParameter(getParameterArr[i]));
-        }
-        console.log(scores);
+      for (let i = 0; i < scores.length; i++) {
+        scores[i] = decodeURIComponent(getParameter(parameterArr[i]));
+      }
+
+      console.log(scores);
     </script>
-</head>
-<body>
-    <h1>서브 성적표</h1>
-</body>
+  </head>
+  <body>
+    <h1>Score V6. sub page</h1>
+  </body>
 </html>
