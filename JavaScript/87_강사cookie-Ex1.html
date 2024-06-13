@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/commonJS.js"></script>
+    <title>이 창 열지않기</title>
+    <script>
+        onload = function () {
+            // 체크한 유저인지 아닌지 판별해서
+            // 체크한 경우 팝업창을 띄우지 않는다.
+            console.log(readCookie("notise"));
+            if (readCookie("notise") !== "Y") {
+                window.open("87-1_강사sub.html", "sub", "top=200 left = 200 width=400 height=400");
+            };
+        };
+    </script>
+
+</head>
+<body>
+    <h1>Main page</h1>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let c = console.log;
+        let url = location.href
+
+        // url의 쿼리스트링에서 값 가져오기
+        let qS = url.split("?")[1];
+        let qS1 = qS.split("&");
+        c(qS1);
+
+        let stu = "";
+        let ko = 0;
+        let en = 0;
+        let math = 0;
+
+        qS1.forEach(function (item){
+            c(item);
+
+            if (item.split("=")[0] == "name"){
+                name = item.split("=")[1];
+            } else if (item.split("=")[0] == "ko") {
+                ko = item.split("=")[1];
+            } else if (item.split("=")[0]) {
+                en = item.split("=")[1]
+            } else if (item.split("=")[0]) {
+                math = item.split("=")[1]
+            }
+        });
+        document.write(`
+        이름 : ${decodeURIComponent(encodeURIComponent(name))} <br>
+        국어 : ${ko} <br>
+        영어 : ${en} <br>
+        수학 : ${math} <br>
+        `);
+
+        
+    </script>
+</head>
+<body>
+    <h1>서브 성적표</h1>
+</body>
+</html>

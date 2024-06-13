@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let c = console.log;
+        c(location.href);
+        let url = location.href
+        c(typeof url) // string
+
+        // url의 쿼리스트링에서 base, height 값 가져오기
+        let queryStr = url.split("?")[1];
+        c(queryStr);
+        let queryStrArr = queryStr.split("&");
+        c(queryStrArr);
+
+        let base = 0;
+        let height = 0;
+
+        queryStrArr.forEach(function (item){
+            c(item); // height = 20
+            if (item.split("=")[0] == "height") {
+                height = item.split("=")[1];
+            } else if (item.split("=")[0] == "base") {
+                base = item.split("=")[1];
+            }
+        });
+        c("height :", height, "base : " , base);
+        
+        // 삼각형 넓이 출력
+        let area = base * height / 2;
+        c(area);
+    </script>
+</head>
+<body>
+    <h1>sub page</h1>
+</body>
+</html>

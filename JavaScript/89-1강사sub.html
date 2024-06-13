@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/commonJS.js">
+    </script>
+    <script>
+        console.log(getParameter("ko"));
+
+        let getParameterArr = ["name", "ko", "en", "math"]
+
+        let scores = new Array(4);
+
+        for (let i = 0; i < scores.length; i++) {
+            scores[i] = getParameter(getParameterArr[i]);
+            scores[i] = decodeURIComponent(getParameter(getParameterArr[i]));
+        }
+        console.log(scores);
+    </script>
+</head>
+<body>
+    <h1>서브 성적표</h1>
+</body>
+</html>

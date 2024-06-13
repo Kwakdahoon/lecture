@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 이름, 국어, 영어, 수학 점수를 입력받아서 전송 -->
+     <script>
+        function send() {
+            let name = document.getElementById("name").value;
+            let ko = document.getElementById("ko").value;
+            let en = document.getElementById("en").value;
+            let math = document.getElementById("math").value;
+            console.log(name, ko, en, math)
+
+            location.href = `89-1sub.html?name=${name}&ko=${ko}&en=${en}&math=${math}`
+        }
+     </script>
+</head>
+<body>
+        <div>이름 : <input type="text" id="name"></div>
+        <div>국어 : <input type="number" id="ko"></div>
+        <div>영어 : <input type="number" id="en"></div>
+        <div>수학 : <input type="number" id="math"></div>
+    <div><button type="submit" onclick="send()">전송</button></div>
+</body>
+</html>
