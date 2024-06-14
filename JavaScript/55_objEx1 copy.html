@@ -31,7 +31,8 @@
       cars.push(new Car("Volvo", "xc60", "white", "볼보에서 출시했음", "images/Panamera Turbo E-Hybrid.jpg", "https://www.volvocar.co.kr/buy/purchase/test-drive/?type=digital&source=sa&utm_source=other&utm_medium=paidsearch&utm_content=range_google-pc-branda&utm_campaign=kr_range_consideration-action_2304_nameplates_always-on_search_paid&sourceapplicationinformation=kr_rng_cat_npl&gad_source=1&gclid=Cj0KCQjw9vqyBhCKARIsAIIcLMG8GJAlOK3ZdXgD15jI0ytY_lrYF73jjIk2LqgktFQFQCNkQAXMwFUaAk0mEALw_wcB"));
       
       console.log(cars);
-
+      console.log(JSON.stringify(cars));
+      console.log(JSON.parse(cars));
       // 3) catalog div태그에 bootstrap card로 출력하기
       let output = "";
       cars.forEach(function(item){

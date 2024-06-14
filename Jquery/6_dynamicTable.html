@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery를 이용하여 동적으로 행을 추가, 삭제하는 테이블 만들기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(function () {
+            // 행 추가
+            // $(".addBtn").click(function () {
+            $("table").on("click", ".addBtn", function(){
+                // on() 메서드는 동적으로 생성된 요소에서도 이벤트를 발생
+                // click() 메서드는 동적으로 생성된 요소에서는 이벤트를 발생시키지 못함
+                const copyTr = $(this).parent().parent(); // 복사 할 행 할당
+                const newTr = copyTr.clone();
+                clearContents($(newTr).children()); // 복사된 행의 input태그 안의 내용을 삭제
+                newTr.insertAfter(copyTr);
+
+                function clearContents(tdArr) {
+                    $.each(tdArr, function (index, item) {
+                        $(item).children().val("");
+                    })
+
+                }
+            });
+
+            // 행 삭제
+            $("#listTable").on("click", ".remBtn", function () {
+                $(this).closest("tr").remove();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+    <table border = "1" id="listTable">
+        <tr>
+            <th>상품명</th>
+            <th>수량</th>
+            <th>가격</th>
+            <th>추가</th>
+            <th>삭제</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="in1" /></td>
+            <td><input type="text" id="in2" /></td>
+            <td><input type="text" id="in3" /></td>
+            <td><button class="addBtn">+</button></td>
+            <td><button class="remBtn">-</button></td>
+        </tr>
+    </table>
+    <div><button class="send">숑숑</button></div>
+</div>
+
+  
+
+  </table>
+</div>
+
+</body>
+</html>

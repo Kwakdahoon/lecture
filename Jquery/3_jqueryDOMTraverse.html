@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>gg</title>
+    <script>
+        $(function (){ // window.onload
+            c = console.log;
+            console.log($(".tr td").eq(0).html()); // 1
+            // 3번 접근
+            c($(".tr td").eq(2).html()) // 3
+            // next() : nextElementSibling (다음요소로)
+            c($(".tr td").eq(0).next().next().html()); // 3
+            // 5 -> 4
+            // prev() : previousElementSibling (이전요소로)
+            c($("#td5").prev().html()); //4
+            // 1 -> 4
+            c($(".tr td").eq(0).parent().next().children().eq(0).html()); // 4
+
+            // parent() 부모요소에 접근
+            // children() 자식요소에 접근
+
+            // 5번 시작 -> 9번
+            c($("#td5").parent().next().children().eq(2).html());
+
+            // 1번 배경색 노란색
+            $(".tr td").eq(0).css("background-color", "yellow");
+            $(".tr td:first").css("background-color", "red");
+            $("table").eq(0).css("width", "200px");
+
+            // 5번에 a 글자 진하게 넣기
+            $("#td5").prepend("<strong>a<strong>");
+
+            // 9번 배경색 파란색으로 바꾸고 글자색 하얀색
+            $("#td9").css({"background-color":"blue","color":"white"}) // 객체
+            // 8번 100으로 변경
+            $("#td9").prev().html("100");
+        });
+    </script>
+</head>
+<body>
+    <table border = "1">
+        <tr class="tr">
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+
+        <tr class="tr">
+            <td>4</td>
+            <td id="td5">5</td>
+            <td>6</td>
+        </tr>
+
+        <tr class="tr">
+            <td>7</td>
+            <td>8</td>
+            <td id="td9">9</td>
+        </tr>
+    </table>
+</body>
+</html>
