@@ -8,11 +8,10 @@
 
     <script>
         $(function () {
+            c = console.log;
+            
             // 행 추가
-            // $(".addBtn").click(function () {
             $("table").on("click", ".addBtn", function(){
-                // on() 메서드는 동적으로 생성된 요소에서도 이벤트를 발생
-                // click() 메서드는 동적으로 생성된 요소에서는 이벤트를 발생시키지 못함
                 const copyTr = $(this).parent().parent(); // 복사 할 행 할당
                 const newTr = copyTr.clone();
                 clearContents($(newTr).children()); // 복사된 행의 input태그 안의 내용을 삭제
@@ -21,21 +20,63 @@
                 function clearContents(tdArr) {
                     $.each(tdArr, function (index, item) {
                         $(item).children().val("");
-                    })
+                    });
+                };
+            });
 
-                }
+            // 전송버튼
+            $(".send").click(function() {
+                const data = new Array();
+
+                c($("tr").eq(1).children().eq(0).children().eq(0).val());
+                $("tr").each(function(i, e){
+                    let product = new Object();
+                    // 테이블의 헤드를 제외하고 값을 가져오자
+                    if (i > 0) {
+                    // let prodName = $(e).children().eq(0).children().eq(0).val();
+                    // let prodQty = $(e).children().eq(1).children().eq(0).val();
+                    // let prodPrice = $(e).children().eq(2).children().eq(0).val();
+                    // c(prodName, prodQty, prodPrice);
+
+                    // // product객체 속성에 값 부여
+                    // product.prodName = prodName;
+                    // product.prodQty = prodQty;
+                    // product.prodPrice = prodPrice;
+                    // c(product);
+                    // 또 다른 전송
+                    $(e).children().each(function(ind, inputTd) {
+                        if (ind < 3) {
+                            // 0, 1, 2번째 td만 
+                            c(ind,'ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+                            c($(inputTd).children().attr("name"));
+                            product[$(inputTd).children().attr("name")] = $(inputTd).children().val();
+
+                        }
+                    })
+                    data.push(product);
+                    };
+                }); // each()끝
+
+                c(data);
+                // json 처리 해벌휘기 다시 객체로 변환시킬때는 parse()
+                $("#jsonResult").html(JSON.stringify(data));
             });
 
             // 행 삭제
             $("#listTable").on("click", ".remBtn", function () {
-                $(this).closest("tr").remove();
+                // tr 이 0으로 사라지지 않게 만들어주는 if 문
+                if ($("tr").length > 2) {
+                    $(this).closest("tr").remove();
+                } else {
+                    alert("더 삭제하면 진짜 즞대~! 너 장사 접어야대~!");
+                }
             });
         });
     </script>
 </head>
 <body>
     <div>
-    <table border = "1" id="listTable">
+    <table border="1" id="listTable">
         <tr>
             <th>상품명</th>
             <th>수량</th>
@@ -44,20 +85,17 @@
             <th>삭제</th>
         </tr>
         <tr>
-            <td><input type="text" id="in1" /></td>
-            <td><input type="text" id="in2" /></td>
-            <td><input type="text" id="in3" /></td>
+            <td><input type="text" name="prodName" /></td>
+            <td><input type="text" name="prodQty"/></td>
+            <td><input type="text" name="prodPrice" /></td>
             <td><button class="addBtn">+</button></td>
             <td><button class="remBtn">-</button></td>
         </tr>
     </table>
     <div><button class="send">숑숑</button></div>
 </div>
-
-  
-
-  </table>
 </div>
-
+    <!-- 마찬가지 json -->
+    <div id="jsonResult"></div>
 </body>
 </html>
