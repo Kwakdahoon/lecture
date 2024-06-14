@@ -7,11 +7,9 @@
     <title>체크박스 오예</title>
     <script>
         $(function () {
-
-        
         c = console.log
-        $("#id-chkdx").prop("checked", false);
 
+        $("#id-chkdx").prop("checked", false);
         $("#id-chkdx").click(function () {
             console.log($("#id-chkdx").prop("checked"));
         })
@@ -19,9 +17,16 @@
     </script>
 </head>
 <body>
+    <div id = "constainer">
+        
+    </div>
     <div>
-    <input type="checkbox" name="" id="id-chkdx">
-
+    <input type="checkbox" name="" id="id-chkdx">통새우패티 토핑<br>
+    <input type="checkbox" name="" id="id-chkdx">쇠고기패티 추가<br>
+    <input type="checkbox" name="" id="id-chkdx">머쉬룸 토핑 추가<br>
+    <input type="checkbox" name="" id="id-chkdx">베이컨 토핑<br>
+    <input type="checkbox" name="" id="id-chkdx">공사장 쓰레기 추가<br>
+    <input type="checkbox" name="" id="id-chkdx">차에 밟힌 바퀴벌레 추가<br>
     </div>
 </body>
 </html>
