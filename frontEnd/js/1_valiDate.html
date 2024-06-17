@@ -195,7 +195,7 @@
         // errorMsg를 tagObj객체 다음 요소에 삽입시켜서 출력한다.
         let err = `<div class='errMsg'>${errorMsg}</div>`;
         $(err).insertAfter($(tagObj));
-        $(".errMsg").hide(5000);
+        $(".errMsg").show().delay(1000).fadeOut();
       }
     </script>
   </head>
