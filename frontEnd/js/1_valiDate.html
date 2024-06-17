@@ -1,177 +1,280 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>유효성 검사 (회원가입 페이지를 예로 들어 유효성 검사하는 방법을 익혀보자)</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="/css/vailDate.css">
-    <!-- 무조건 할 수 있어야 함 -->
-     <script>
-      c=console.log
-        // 회원가입 버튼을 아래의 조건에 따라 유효성 검사를 하고
-        // 유효하면 1-1_sub.html 페이지에 데이터를 전송하자.
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/vailDate.css" />
+    <title>유효성 검사 (회원가입 페이지를 예를 들어 유효성 검사하는 방법을 익혀보자)</title>
+    <script>
+      // 회원가입 버튼을 아래의 조건에 따라 유효성 검사를 하고
+      // 유효하면 1-1_sub.html 페이지에 데이터를 전송하자.
+      // * : 필수 항목
 
-        // 아이디 * : 4자 이상 8자 이하 (소문자로 저장)
-        // 비밀번호 * : 4자 이상 12자 이하
-        // 이메일 * : 이메일 주소 형식인지 아닌지 검사
-        // 휴대폰 번호 * : 전화번호 형식인지 아닌지 검사
-        // sex * : male of female 하나가 반드시 체크되어 있어야 한다.
-        // 취미 : 여러개를 선택할 수 있다.
-        // 직업 : 반드시 하나를 선택하도록 한다.
-        // 메모 : 가입인사 등을 입력 받는다. (안써도 통과)
-        // 가입 조항 동의 * : 반드시 체크 되어야 함
+      // 아이디(*) : 4자 이상 8자 이하 (소문자로 저장)
+      // 비밀번호(*) : 4자 이상 12자 이하
+      // 이메일 (*) : 이메일 주소 형식인지 아닌지 검사
+      // 휴대폰 번호 (*) : 전화번호 형식인지 아닌지 검사
+      // 성별 (*): 남성 또는 여성 중에 하나가 반드시 체크되어 있어야 한다.
+      // 취미 : 여러개를 선택할 수 있다.
+      // 직업 (*) : 반드시 하나를 선택하도록 한다.
+      // 메모 : 가입인사 등을 입력 받는다. (안써도 통과)
+      // 가입 조항 동의(*) : 반드시 동의 체크가 되어 있어야 함.
+      function registerValid() {
+        let valid = false;
+        // 유효성 검사를 모두 통과하면 valid=true;
+        // 아이디 검사
+        let idCheck = validUserId($("#userId").val());
+        let pwdCheck = validPwd($("#pwd1").val(), $("#pwd2").val());
+        let emailCheck = validEmail($("#email").val());
+        // 휴대폰번호 유효성 검사해보기!!!!
+        let mobileCheck = validMobile($("#mobile").val());
+        let genderCheck = validGender();
 
-        // 가입할때 하나라도 false 일 경우 넘어가지 않는 함수
-        function registerValid() {
-            // 모든 유효성 검사를 통과하면 true 반환
-            let idCheck = validUserId($("#userId").val());
-            let pwdCheck = validPwd($("#pwd1").val(), $("#pwd2").val());
-            let emailCheck = validEmail($("#email").val());
-            let mobileCheck = validMobile($("#mobile").val());
-            return idCheck && pwdCheck && emailCheck && mobileCheck;
+        // 취미 정보를 수집
+        let hobbies = getHobby();
+        // hobby=study&hobby=music&hobby=travel
+        // getHobby() : ,로 선택된 취미를 결합해서 반환
+        let jobCheck = getJob();
+
+        let memo = getMemo(); // 메모 내용
+
+        let isAgree = false;
+        console.log(document.getElementById("agree").checked);
+        if (document.getElementById("agree").checked) {
+          isAgree = true;
+        } else {
+          outputError("가입조항에 동의해 주세요.", $("#agree2"));
         }
 
-        function validMobile(mobile) {
-          // 휴대폰 형식 검사
-          let mobile = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-          let isValid = false;
+        if (idCheck && pwdCheck && emailCheck && genderCheck && hobbies && jobCheck && isAgree && mobileCheck == true) {
+          valid = true;
+        }
 
-          if (!mobile.test(mobile)) {
-            outputError("핸드폰번호 형식이 아닙니다.", $("#mobile"));
-          } else {
-            isVaild = true;
+
+        return valid;
+      }
+
+      // 휴대전화
+      function validMobile (mobile) {
+        let mobileRegExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+        // alert(mobile)
+        let isValid = false;
+
+        if (!mobileRegExp.test(mobile)) {
+          outputError("전화번호 형식이 아닙니다.", $("#mobile"));
+        } else {
+          isValid = true;
+        }
+
+        return isValid;
+      }
+
+
+      // 메모
+      function getMemo() {
+        console.log(document.getElementById("memo").value);
+      }
+
+      // 직업
+      function getJob() {
+      // 직업 (*) : 반드시 하나를 선택하도록 한다.
+      let isValid = false;
+        console.log(document.getElementById("job").value);
+        // document.getElementById("job").value == "직업을 선택하세요"
+        console.log(document.getElementById("job").selectedIndex); // 0
+        if (document.getElementById("job").selectedIndex == 0) {
+          outputError("필수 항목입니다.", $("#job"));
+        } else {
+          isValid = true;
+        }
+        return isValid;
+      }
+
+      // 취미
+      function getHobby() {
+        let hobbies = "";
+        let hobbyArr = document.getElementsByName("hobby");
+        console.log(hobbyArr);
+        console.log(hobbyArr[0].checked);
+
+        for (let i = 0; i < hobbyArr.length; i++) {
+          if (hobbyArr[i].checked == true) {
+            console.log(hobbyArr[i].value);
+            hobbies += hobbyArr[i].value + ",";
           }
-          return isValid;
         }
 
-        function validEmail(email) {
-            // 이메일 형식 검사
-            let emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-            let isValid = false;
+        console.log(hobbies);
+        // console.log(hobbies.slice(0, -1));
+        // console.log(hobbies.substring(0, hobbies.length - 1));
+        // 마지막 comma 제거해서 반환
 
-            if (!emailRegExp.test(email)) {
-                outputError("이메일 형식이 아닙니다.", $("#email"));
-            } else {
-                isValid = true;
-            }
-            return isValid;
+        return hobbies.substring(0, hobbies.length - 1);
+      }
+
+      // 성별
+      function validGender() {
+        // 남성 또는 여성 중에 하나가 반드시 체크되어 있어야 한다.
+        let isValid = false;
+        let radio1 = false; // 여성 라디오버튼
+        let radio2 = false; // 남성 라디오 버튼
+        console.log(document.getElementsByName("gender")[0].checked);
+        if (document.getElementsByName("gender")[0].checked) {
+          radio1 = true;
         }
 
-        function validPwd(pwd1, pwd2) {
-            // 비밀번호 유효성 검사
-            let isValid = false;
-            if (pwd1 === "") {
-                outputError("비밀번호는 필수 입력 사항입니다.", $("#pwd1"));
-            } else if (pwd1.length <= 3 || pwd1.length >= 13) {
-                outputError("4자 이상 12자 이하로 입력하세요.", $("#pwd1"));
-            } else if (pwd1 !== pwd2) {
-                outputError("비밀번호가 일치하지 않습니다", $("#pwd2"));
-            } else {
-                isValid = true;
-            }
-            return isValid;
+        if (document.getElementsByName("gender")[1].checked) {
+          radio2 = true;
         }
 
-        function validUserId(userId) {
-            // 아이디 유효성 검사
-            let idCheck = false;
-            if (userId === "") {
-                outputError("아이디는 필수항목입니다", $("#userId"));
-            } else if (userId.length <= 3 || userId.length >= 9) {
-                outputError("아이디는 4자리 이상 8자 이하입니다", $("#userId"));
-            } else {
-                idCheck = true;
-            }
-            return idCheck;
+        // 아무것도 체크되지 않았다면
+        if (radio1 == false && radio2 == false) {
+          outputError("성별은 필수항목입니다.", $("#radio-result"));
+        } else {
+          isValid = true;
+        }
+        return isValid;
+      }
+
+      // 이메일
+      function validEmail(email) {
+        // 이메일 (*) : 이메일 주소 형식인지 아닌지 검사 abc@abc.com, abc@abc.co.kr
+        let emailRegExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+        let isValid = false;
+
+        if (!emailRegExp.test(email)) {
+          outputError("이메일 형식이 아닙니다.", $("#email"));
+        } else {
+          isValid = true;
         }
 
-        function outputError(errorMsg, tagObj) {
-            // 에러 메시지 출력
-            let err = `<div class='errMsg'>${errorMsg}</div>`;
-            $(err).insertAfter($(tagObj));
-            $(".errMsg").hide(5000);
+        return isValid;
+      }
+
+      // 비밀번호
+      function validPwd(pwd1, pwd2) {
+        // 비밀번호(*) : 4자 이상 12자 이하
+        let isValid = false;
+        if (pwd1 === "") {
+          outputError("비밀번호는 필수항목입니다", $("#pwd1"));
+        } else if (pwd1.length <= 3 || pwd1.length >= 13) {
+          outputError("4자 이상 12자 이하로 입력하세요.", $("#pwd1"));
+        } else if (pwd1 !== pwd2) {
+          outputError("비밀번호가 일치하지 않습니다", $("#pwd2"));
+        } else {
+          isValid = true;
         }
+
+        return isValid;
+      }
+
+      // 아이디
+      function validUserId(userId) {
+        // 아이디(*) : 4자 이상 8자 이하
+        let idCheck = false;
+        console.log(userId === ""); // 유저가 아이디를 입력하지 않음
+        if (userId === "") {
+          // 에러 메시지 출력
+          outputError("아이디는 필수항목입니다.", $("#userId"));
+        } else if (userId.length <= 3 || userId.length >= 9) {
+          outputError("4자 이상 8자 이하로 입력하세요.", $("#userId"));
+        } else {
+          idCheck = true;
+        }
+
+        return idCheck;
+      }
+
+      // 에러출력
+      function outputError(errorMsg, tagObj) {
+        console.log(tagObj);
+        // errorMsg를 tagObj객체 다음 요소에 삽입시켜서 출력한다.
+        let err = `<div class='errMsg'>${errorMsg}</div>`;
+        $(err).insertAfter($(tagObj));
+        $(".errMsg").hide(5000);
+      }
     </script>
-</head>
-<body>
-    <!-- 전송 시킬때 쓰는 태그 -->
-    <form action="1-1_sub.html" onsubmit="return registerValid();"> 
-        <div class="container">
-            <h1>회원가입</h1>
-            <p>아래 항목을 기입해주세요. (* : 필수항목)</p>
-            <hr>
-            <label for="userId"><b>아이디 * : </b></label>
-            <input type="text" placeholder="아이디를 입력하세요" id="userId" name="userId">
+  </head>
+  <body>
+    <form action="1-1_sub.html">
+      <div class="container">
+        <h1>회원가입</h1>
+        <p>아래 항목을 기입해 주세요. (* : 필수항목)</p>
+        <hr />
+        <label for="userId"><b>아이디(*) : </b></label>
+        <input type="text" placeholder="아이디를 입력하세요" id="userId" name="userId" required/>
 
-            <label for="pwd1"><b>비밀번호 * : </b></label>
-            <input type="password" placeholder="비밀번호를 입력하세요" id="pwd1" name="pwd1">
-            <label for="pwd2"><b>비밀번호 확인 * : </b></label>
-            <input type="password" placeholder="비밀번호를 입력하세요" id="pwd2" name="pwd2">
+        <label for="pwd1"><b>비밀번호(*) : </b></label>
+        <input type="password" placeholder="비밀번호를 입력하세요" id="pwd1" name="pwd1" />
+        <label for="pwd2"><b>비밀번호 확인(*) : </b></label>
+        <input type="password" placeholder="비밀번호를 입력하세요" id="pwd2" name="pwd2" />
 
-            <label for="email"><b>E-mail 확인 * : </b></label>
-            <input type="text" placeholder="이메일을 입력하세요" id="email" name="email">
+        <label for="email"><b>E-mail(*) : </b></label>
+        <input type="text" placeholder="이메일을 입력하세요" id="email" name="email" />
 
-            <label for="mobile"><b>휴대폰 번호 확인 * : </b></label>
-            <input type="text" placeholder="휴대폰 번호를 입력하세요" id="mobile" name="mobile">
+        <label for="mobile"><b>휴대폰 번호(*) : </b></label>
+        <input type="text" placeholder="휴대폰번호를 입력하세요" id="mobile" name="mobile" />
 
-            <fieldset>
-                <legend>성별 *</legend>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" id="radio1" name="gender" value="option1" checked>
-                    <label class="form-check-label" for="radio1">남</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" id="radio2" name="gender" value="option2">
-                    <label class="form-check-label" for="radio2">여</label>
-                </div>
-            </fieldset>
 
-            <fieldset>
-                <legend>취미</legend>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="check1" name="hobby" value="study">
-                    <label class="form-check-label" for="check1">공부</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="check2" name="hobby" value="music">
-                    <label class="form-check-label" for="check2">음악감상</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="check3" name="hobby" value="travel">
-                    <label class="form-check-label" for="check3">여행</label>
-                </div>
-            </fieldset>
+        <fieldset>
+          <legend>성별(*)</legend>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio1" name="gender" value="option1" />
+            <label class="form-check-label" for="radio1">여성</label>
+          </div>
+          <div class="form-check" id="radio-result">
+            <input type="radio" class="form-check-input" id="radio2" name="gender" value="option2" />
+            <label class="form-check-label" for="radio2">남성</label>
+          </div>
+        </fieldset>
 
-            <label for="job" class="form-label">직업을 선택하세요:</label>
-            <select class="form-select" id="job" name="job">
-                <option>--직업을 선택하세요--</option>
-                <option>학생</option>
-                <option>크리에이터</option>
-                <option>건물주</option>
-                <option>공무원</option>
-            </select>
+        <fieldset>
+          <legend>취미</legend>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check1" name="hobby" value="study" />
+            <label class="form-check-label" for="check1">공부</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check2" name="hobby" value="music" />
+            <label class="form-check-label" for="check1">음악감상</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check3" name="hobby" value="travel" />
+            <label class="form-check-label" for="check1">여행</label>
+          </div>
+        </fieldset>
 
-            <div class="mb-3 mt-3">
-                <label for="memo">Memo</label>
-                <textarea class="form-control" rows="5" id="memo" name="memo"></textarea>
-            </div>
+        <label for="job" class="form-label">직업 (select one):</label>
+        <select class="form-select" id="job" name="job">
+          <option>--직업을 선택하세요--</option>
+          <option>학생</option>
+          <option>크리에이터</option>
+          <option>건물주</option>
+          <option>공무원</option>
+        </select>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="agree" name="agree" value="Y">
-                <label class="form-check-label" for="agree">가입 조항에 동의합니다.</label>
-            </div>
-            <p>
-                <a href="#">가입조항</a>
-            </p>
+        <div class="mb-3 mt-3">
+          <label for="memo">Memo:</label>
+          <textarea class="form-control" rows="5" id="memo" name="memo"></textarea>
+        </div>
 
-            <div class="clearfix">
-                <button type="submit" class="signupBtn">가입하기</button>
-                <button type="reset" class="cancelBtn">취소</button>
-            </div>
-        </div> <!--div container-->
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="agree" name="agree" value="Y" />
+          <label class="form-check-label" for="agree" id="agree2">가입 조항에 동의합니다. </label>
+        </div>
+
+        <p>
+          <a href="#">가입조항</a>
+        </p>
+        <div class="clearfix">
+          <button type="submit" class="signupBtn" onclick="return registerValid();">가입하기</button>
+          <button type="reset" class="cancelBtn">취소</button>
+        </div>
+      </div>
     </form>
-</body>
+  </body>
 </html>
