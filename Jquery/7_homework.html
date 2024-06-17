@@ -7,26 +7,102 @@
     <title>체크박스 오예</title>
     <script>
         $(function () {
-        c = console.log
+            const basePrice = 11000; // 기본 가격
 
-        $("#id-chkdx").prop("checked", false);
-        $("#id-chkdx").click(function () {
-            console.log($("#id-chkdx").prop("checked"));
-        })
-    });
+            $("#selectAll").change(function () {
+             if ($(this).prop("checked")) {
+                $(".id-chkdx").prop("checked" , true);  
+             } else {
+                $(".id-chkdx").prop("checked", false);
+             }
+             updatePrice();
+            });
+
+            function updatePrice() {
+                let total = basePrice;
+                $(".id-chkdx:checked").each(function () {
+                    const value = parseInt($(this).val(), 10);
+                    total += isNaN(value) ? 0 : value;
+                });
+                $("#price").html(total.toLocaleString() + "원 담기");
+            };
+            // 초기값 설정
+            updatePrice();
+        });
+
     </script>
+    <style>
+        #container {
+            border: 1px solid black;
+            display: inline-block;
+        }
+
+        #foodImg {
+            width: 400px;
+            height: 250px;
+            
+        }
+        #discription {
+            border: 1px solid black;
+        }
+
+        div {
+            text-align: center;
+        }
+        #div1,#div2,#div3,#price,#div4{
+            border: 1px solid black;
+            background-color: rgb(89, 197, 247);
+        }
+        .checkboxContainer {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 1px;
+        }
+    </style>
 </head>
 <body>
-    <div id = "constainer">
-        
+<div id = "container">
+    <div id="div1">
+        <img src="https://i.namu.wiki/i/0AXx8aI_kwQ2SF8JlM4l1Bj66iqJk2mO7hZWvmqJJTBa_XU9vZ-li2UsR9_LpmiSQyUp0DliLfruq-AP_nZsYWHr0ITocAJ-3HG6FGc9ODNABB0-tdgIaA0WSTpWA4OsnESyFPGbp_jmGOCyTGRHuw.webp" alt="hambugerImg" id="foodImg">
     </div>
-    <div>
-    <input type="checkbox" name="" id="id-chkdx">통새우패티 토핑<br>
-    <input type="checkbox" name="" id="id-chkdx">쇠고기패티 추가<br>
-    <input type="checkbox" name="" id="id-chkdx">머쉬룸 토핑 추가<br>
-    <input type="checkbox" name="" id="id-chkdx">베이컨 토핑<br>
-    <input type="checkbox" name="" id="id-chkdx">공사장 쓰레기 추가<br>
-    <input type="checkbox" name="" id="id-chkdx">차에 밟힌 바퀴벌레 추가<br>
+    <div id="discription">
+        참깨빵 위에 순쇠고기 패티두장<br>
+        특별한 소스 양상추 <br>
+        치즈 피클 양파까지~
     </div>
+    <div id="div2">
+        <span>
+            11,000원
+        </span>
+    </div>
+    <div id="div3">
+        <label class="checkboxContainer">
+            <input type="checkbox" class="id-chkdx" value="3000"><span>통새우패티 토핑 +3,000원</span><br>
+        </label>
+        <label class="checkboxContainer">
+            <input type="checkbox" class="id-chkdx" value="2000">  <span>쇠고기패티 추가 +2,000원</span><br>
+        </label>
+        <label class="checkboxContainer">
+            <input type="checkbox" class="id-chkdx" value="100">   <span>머쉬룸 토핑 추가 +100원</span><br>
+        </label>
+        <label class="checkboxContainer">
+            <input type="checkbox" class="id-chkdx" value="1000">  <span>베이컨 토핑 +1,000원</span><br>
+        </label>
+        <label class="checkboxContainer">
+            <input type="checkbox" class="id-chkdx" value="580000">  <span>먹다 남은 쓰레기 +580,000원</span><br>
+        </label>
+        <label class="checkboxContainer">
+            <input type="checkbox" class="id-chkdx" value="985000"><span>차에 밟힌 바퀴벌레 추가 +985,000원</span><br>
+        </label>
+    </div>
+    <div id="price">
+    </div>
+    <div id="div4">
+        <label for="selectAll">
+            <input type="checkbox" id="selectAll">모두체크
+        </label>
+    </div>
+
+</div>
 </body>
 </html>
