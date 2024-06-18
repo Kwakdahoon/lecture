@@ -34,24 +34,13 @@
 
         }) 
 
-        function inputData () {
-            console.log($(".student"));
-            $(".student").each(function(i,e){
-                let stuName = $(e).children().find(".stuName").val();
-                let kor = Number($(e).children().find(".kor").val());
-                let eng = Number($(e).children().find(".eng").val());
-                let math = Number($(e).children().find(".math").val());
-                
-                let tot = kor + eng + math;
-                let avg = Number((tot / 3).toFixed(2));
-                console.log(tot,typeof avg);
-                scorse.push([stuName, kor, eng, math, tot, avg]);
+        function inputData() {
+            $('.Student').each(function(i,e) {
+                let stuName = $(e).children().find('.stuName').val();
+                console.log(stuName);
 
-                $(e).children().find(".tot").val(tot);
-                $(e).children().find(".avg").val(avg);
-            });
-            console.log(scorse);
-        };
+            })
+        } 
     });
     </script>
 </head>
