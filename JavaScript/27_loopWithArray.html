@@ -37,15 +37,17 @@
 
         document.write("<hr>"); 
 
-        // forEach 문법
         document.write("forEach() <br>");
-        heroes.forEach(function (item) {
-        document.write(`요소는 ${item} 입니다 <br>`);
+        
+        
+        // forEach 문법
+        heroes.forEach(function (item, i) {
+        document.write(`요소는 ${key} 입니다 <br>`);
         })
         document.write("<hr>");
-        heroes.forEach(function (item, i) {
-            document.write(`${i}번째 요소에 있는 데이터는 ${item}입니다 <br>`)
-        });
+        // heroes.forEach(function (item, i) {
+        //     document.write(`${i}번째 요소에 있는 데이터는 ${item}입니다 <br>`)
+        // });
     </script>
 </head>
 <body>

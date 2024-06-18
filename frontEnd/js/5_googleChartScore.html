@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>성적표 차트 그리기</title>
+    <script>
+        // $(function () {
+        //     let data = [];
+        //     let datas = [];
+        //     let title = ["stuName", "kor", "eng", "math", "tot", "avg"];
+        //     data.push(title);
+        //     console.log($(".Student .stuName").eq(1).val())
+        //     $(".Student").each((i, e) => {
+        //         datas.push($(".Student .stuName").eq(i).val());
+        //         datas.push($(".Student .kor").eq(i).val())
+        //         datas.push($(".Student .eng").eq(i).val())
+        //         datas.push($(".Student .math").eq(i).val())
+        //         data.push(datas);
+        //         datas = [];
+        //     })
+        //     console.log(data)
+        // });
+        let scorse = new Array();
+
+        scorse = ['이름','국어','영어','수학','총점','평균'];
+        console.log(scorse);
+
+        $(function () {
+        
+        $('#btnResult').click( {
+
+        }) 
+
+        function inputData () {
+            console.log($(".student"));
+            $(".student").each(function(i,e){
+                let stuName = $(e).children().find(".stuName").val();
+                let kor = Number($(e).children().find(".kor").val());
+                let eng = Number($(e).children().find(".eng").val());
+                let math = Number($(e).children().find(".math").val());
+                
+                let tot = kor + eng + math;
+                let avg = Number((tot / 3).toFixed(2));
+                console.log(tot,typeof avg);
+                scorse.push([stuName, kor, eng, math, tot, avg]);
+
+                $(e).children().find(".tot").val(tot);
+                $(e).children().find(".avg").val(avg);
+            });
+            console.log(scorse);
+        };
+    });
+    </script>
+</head>
+<body>
+    <!-- <form action="/js/5-1_sub.html"> -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>총점</th>
+                <th>평균</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="Student">
+                <td><input type="text" class="stuName" value="둘리" /></td>
+                <td><input type="text" class="kor" value="88" /></td>
+                <td><input type="text" class="eng" value="68" /></td>
+                <td><input type="text" class="math" value="78" /></td>
+                <td><input type="text" class="tot" value=""/></td>
+                <td><input type="text" class="avg" value=""/></td>
+            </tr>
+            <tr class="Student">
+                <td><input type="text" class="stuName" value="희동" /></td>
+                <td><input type="text" class="kor" value="78" /></td>
+                <td><input type="text" class="eng" value="58" /></td>
+                <td><input type="text" class="math" value="98" /></td>
+                <td><input type="text" class="tot" value=""/></td>
+                <td><input type="text" class="avg" value=""/></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <input type="submit" value="결과" id="btnResult" /></div>
+</form>
+</body>
+</html>

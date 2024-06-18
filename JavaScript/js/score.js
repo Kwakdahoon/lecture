@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const numStudents = 5; // 학생 수
     const studentContainer = document.getElementById('students'); // 학생 입력 필드가 추가될 컨테이너
 
+    
     // 학생 수 만큼 입력 필드 생성
     for (let i = 1; i <= numStudents; i++) {
         const studentDiv = document.createElement('div');
