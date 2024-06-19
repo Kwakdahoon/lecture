@@ -22,3 +22,18 @@ h1 {
 .selectUnits img {
     width: 30px;
 }
+
+#iconImg {
+    width: 150pxS;
+}
+
+#map {
+    width: 300px;
+    height: 200px;
+    top: 0px;
+
+}
+
+.weatherInfo__mainWeather, .weatherInfo__weather {
+    width: 250px;
+}
