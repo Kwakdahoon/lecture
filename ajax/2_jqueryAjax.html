@@ -11,7 +11,7 @@
                 url: "http://aabbcc1121.cafe24.com/kdh/hello.txt", // 데이터가 송수신 될 서버의 주소
                 type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
                 dataType: "text", // 수신받을 데이터 타입 (MIME TYPE)
-                success: function (data) {
+                success: function (data) { // () 안에 있는 변수로 받아온다 (꼭 data 일 필요 없음)
                     // 통신이 성공하면 수행할 함수
                     $("#output").html(data);
                     console.log("ajax success");

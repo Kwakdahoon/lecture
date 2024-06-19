@@ -12,6 +12,7 @@
             let xhttp = new XMLHttpRequest(); // XHR객체 (ajax객체) 생성
             if (xhttp != null) {
                 xhttp.onreadystatechange = function () {
+                    console.log(this)
                     if (this.readyState == 4 && this.status == 200) {
                         // 통신이 성공(완료) 되었다면
                         document.getElementById("output").innerHTML = this.responseText

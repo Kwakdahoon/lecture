@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/weather.css">
+    <title>Open Weather API 이용하기</title>
+    <script>
+        // bee540788f7b6d91d789c68dd5a2fac9
+        // 위도 37.483782 경도 126.9003409입니다.
+
+        let baseUrl = "https://api.openweathermap.org/data/2.5/weather?appid=bee540788f7b6d91d789c68dd5a2fac9"
+
+        $(function() {
+            getWeatherData("seoul", "metric");
+
+            $("#selectCity").change(function (){
+                // 선택된 도시 값 알아오기
+                let city = $("#selectCity").val();
+                console.log(city)
+                // ajax를 다시 호출
+                getWeatherData(city, "metric");
+            })
+
+            $(".selectUnits").change(function(){
+                let temperature = $(".selectUnits input[unit]").eq(0).val();
+                console.log(temperature)
+            })
+        });
+
+        let outputMainWeather = "";   
+        function parsingJson(json) {
+            let mainWeather = json.main;
+            let cityName = json.name;
+            let description = json.weather[0].description;
+            let icon = json.weather[0].icon
+
+            console.log(description);
+            $("#cityName").html(cityName);
+            
+            // 아이콘과 날씨 설명 출력
+            let outputDescription = `<img id="iconImg" src="https://openweathermap.org/img/wn/${icon}@2x.png"/> ${description}`
+            $(".weatherInfo__weather").html(outputDescription);
+
+            // 날씨 정보 테이블 출력
+            outputMainWeather = `<table>`;
+            outputMainWeather += `<tr><th>기온</th><td>${mainWeather.temp}</td></tr>`;
+            outputMainWeather += `<tr><th>체감온도</th><td>${mainWeather.feels_like}</td></tr>`;
+            outputMainWeather += `<tr><th>최고기온</th><td>${mainWeather.temp_min}</td></tr>`;
+            outputMainWeather += `<tr><th>최저기온</th><td>${mainWeather.temp_max}</td></tr>`;
+            outputMainWeather += `<tr><th>기압</th><td>${mainWeather.pressure}</td></tr>`;
+            outputMainWeather += `<tr><th>습도</th><td>${mainWeather.humidity}%</td></tr>`;
+            outputMainWeather += `</table>`;
+                
+            $(".weatherInfo__mainWeather").html(outputMainWeather);
+        };
+
+
+        function getWeatherData(cityName, unit) {
+            let url = baseUrl + "&q=" + cityName + "&units=" + unit;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    parsingJson(data);
+                },
+                error : function () {
+                },
+                complete: function () {
+                }
+            }); 
+        }
+
+        // weatherInfo__weather 요소에 description을 출력하고
+        // weatherInfo__mainWeather 요소에 table태그로 main 정보 출력
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1><span id="cityName"></span>의 날씨</h1>
+
+        <div class="controller">
+            <select id="selectCity"class="form-select form-select-sm">
+                <option value="seoul" checked>서울</option>
+                <option value="daejeon">대전</option>
+                <option value="busan">부산</option>
+                <option value="jeju">제주</option>
+                <option value="incheon">인천</option>
+            </select>
+
+            <div class="selectUnits">
+                <label for="cel">
+                <input id="cel" type="radio" name="unit" value="metric" checked/><img src="img/C.png">
+                </label>
+                <label for="kelvin">
+                <input id="kelvin" type="radio" name="unit" value="imperial"/><img src="img/kel.png">
+                </label>
+                <label for="standard">
+                <input id="standard" type="radio" name="unit" value="standard"/><img src="img/F.png">
+                </label>
+            </div>
+
+        </div>
+        <div class="contents">
+            <div class="weatherInfo__weather"></div>
+            <div class="weatherInfo__mainWeather"></div>
+        </div>
+    </div>
+</body>
+</html>

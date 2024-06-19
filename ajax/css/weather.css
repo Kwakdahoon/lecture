@@ -1,0 +1,24 @@
+.container {
+    background: linear-gradient(125deg, rgb(223, 219, 219), rgb(197, 197, 212), gray)
+};
+
+h1 {
+    padding: ;
+}
+.controller {
+    display: flex;
+}
+
+.selectUnits {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+.selectUnits [type = "radio"] {
+    opacity: 0;
+}
+
+.selectUnits img {
+    width: 30px;
+}
