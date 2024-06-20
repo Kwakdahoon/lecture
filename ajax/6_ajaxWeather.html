@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- kakao map -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d259b1ebbfde4e313e6456681d90f3ba"></script>
+
     <link rel="stylesheet" href="./css/weather.css">
 
 
@@ -13,6 +21,7 @@
     <script>
         // bee540788f7b6d91d789c68dd5a2fac9
         // 위도 37.483782 경도 126.9003409입니다.
+        // 위도 7.6049 경도 45.8572
 
         let baseUrl = "https://api.openweathermap.org/data/2.5/weather?appid=bee540788f7b6d91d789c68dd5a2fac9"
 
@@ -54,8 +63,38 @@
             outputMainWeather += `</table>`;
                 
             $(".weatherInfo__mainWeather").html(outputMainWeather);
+
+            // 지도 그리기
+            console.log(json.coord.lat , json.coord.lon);
+
+            outputMap(json.coord.lat , json.coord.lon, `https://openweathermap.org/img/wn/${icon}@2x.png`)
         };
 
+            function outputMap(lat, lon, waeatherIcon) {
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = {
+                center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
+                level: 6 // 지도의 확대 레벨
+                };
+
+                var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                var imageSrc = waeatherIcon, // 마커이미지의 주소입니다    
+                imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+                imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+                // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+                    markerPosition = new kakao.maps.LatLng(lat,lon); // 마커가 표시될 위치입니다
+
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition, 
+                    image: markerImage // 마커이미지 설정 
+                    
+                });
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+            };
 
         function getWeatherData(cityName, unit) {
             let url = baseUrl + "&q=" + cityName + "&units=" + unit;
@@ -87,6 +126,7 @@
                 <option value="busan">부산</option>
                 <option value="jeju">제주</option>
                 <option value="incheon">인천</option>
+                <option value="sex">에티오피아</option>
             </select>
 
             <div class="selectUnits">
@@ -104,6 +144,7 @@
         <div class="contents">
             <div class="weatherInfo__weather"></div>
             <div class="weatherInfo__mainWeather"></div>
+            <div id="map" style="width:100%;height:350px;"></div>
         </div>
     </div>
 </body>
