@@ -9,25 +9,41 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Document</title>
-    <style>
-      .topHeader {
-       background-image: url(./image/travel.jpg);
-       background-size: cover;
-       background-repeat: no-repeat;
-       background-position: center;
-       height: 200px;
-      } 
-      h1 {
-       color: black;
-       font-size: 50px;
-       font-weight: bolder;
-      }
-   </style>
     <script>
       let itemNo = 1;
+      let pageNo = 1;
+      let numOfRows = 10;
+      let totalCount = 0;
+      let totalPage = 0;
+      // totaCount : 8566
+      // numOfRows : 10
+      // pageNo : 1
+
+      // page1 : 1 ~ 10
+      // page2 : 11 ~ 20
+      // page3 : 21 ~ 30
+      // ....
+      // page856 : 8551 ~ 8560
+      // page ?? : 8561 ~ 8566
+      // totalPage
+      // totalCount / nomOfRows == 8566 / 10 + 1 = 857
+
         $(function () {
             getTourData();
-            $()
+            
+            console.log(pageNo, totalCount);
+            
+            $("#morePage").click(function(){
+              console.log("pageNo = " + pageNo, "totalCount = " + totalCount, "totalPage = " + totalPage)
+              if(pageNo < totalPage) {
+                pageNo++
+                alert(pageNo);
+                getTourData();
+              } else if (pageNo == totalPage) {
+                alert("마지막 페이지입니다.");
+                $(this).attr("disabled", true);
+              }
+            })
         })
 
         function noiamge () {
@@ -41,7 +57,11 @@
             const myKey = "zn%2BzZZug02R%2FeRrWaeYGi7zd%2BTlXJK9wF2G%2Bk0QBVm3mSrjMOvEc3L45lh8wzKpXAW1AZmv3j6gJ%2BCjp91p2Jg%3D%3D"
             let baseUrl = `http://apis.data.go.kr/B551011/KorService1/areaBasedList1?&MobileOS=ETC&MobileApp=AppTest&ServiceKey=${myKey}`;
             let url = baseUrl + "&areaCode=1" + "&_type=json"; // 서울지역(areaCode=1), 제이슨으로
+            // 다음 페이지로
+            url += "&pageNo=" + pageNo + "&numOfRows=" + numOfRows;
             console.log(url);
+            
+            $(".loading").show();
             $.ajax({
                 url: url, // 데이터가 송수신 될 서버의 주소
                 type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
@@ -54,19 +74,30 @@
                 error : function () {
                 },
                 complete: function () {
+                  $(".loading").hide();
                 }
             })
         }
         function parsingJSON(json) {
             // List Group With Linked Items를 이용해서 
             // 응답받은 목록을 출력해 보자.
+            totalCount = json.response.body.totalCount;
+            console.log(totalCount)
+
+
+            if(totalCount % numOfRows == 0) {
+              totalPage = Math.floor(totalCount / numOfRows);
+            } else {
+              totalPage = parseInt(totalCount / numOfRows + 1);
+            }
+            
             let tourAr = json.response.body.items.item; // 배열
             console.log(tourAr);
 
-            let output = `<div class="list-group">`;
+            let output = `<div class="list-group">`; 
             $.each(tourAr, function(i,e) {
-              console.log(e.title)
-              console.log(e.firstimage)
+              // console.log(e.title)
+              // console.log(e.firstimage)
               // output += `<span class='item__count'>${itemNo++}</span>`;
               output += `
               <a href="areaBasedDetail.html?contentid=${e.contentid}" class="list-group-item list-group-item-action">
@@ -80,25 +111,49 @@
 
              
             });
+            output += `</div>`;
 
-            $("#tourInfo").html(output);
+            $("#tourInfo").append(output);
         }
 
     </script>
-    <style>
-        .topHeader {
-         background-image: url(./image/travel.jpg);
-         background-size: cover;
-         background-repeat: no-repeat;
-         background-position: center;
-         height: 200px;
-        } 
-        h1 {
-         color: black;
-         font-size: 50px;
-         font-weight: bolder;
-        }
-     </style>
+<style>
+  .topHeader {
+    background-image: url(./image/travel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+  } 
+  h1 {
+    color: black;
+    font-size: 50px;
+    font-weight: bolder;
+  }
+  .topHeader {
+      background-image: url(./image/travel.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 200px;
+    } 
+    h1 {
+      color: black;
+      font-size: 50px;
+      font-weight: bolder;
+    }
+    img {
+      width: 70px;
+    }
+
+    .loading {
+      display: none;
+    }
+    #morePage {
+      width: 200px;
+      margin-top: 20px ;
+    }
+</style>
 </head>
 <body>
     <div class="p-5 bg-primary text-white text-center topHeader">
@@ -127,11 +182,11 @@
 
       <div class="container mt-5">
         <h2>TourAPI 지역 기반 관광정보 리스트 페이지</h2>
+        <!-- 로딩이 되어 있음을 알림 -->
+        <div class="loading"><img src="./image/loading.gif" alt=""></div>
         <div class="list-group" id="tourInfo">
-            <a href="#" class="list-group-item list-group-item-action"></a>
-            <a href="#" class="list-group-item list-group-item-action"></a>
-            <a href="#" class="list-group-item list-group-item-action"></a>
         </div>
+        <button type="button" class="btn btn-success" id="morePage">다음 페이지로</button>
         </div>
           
       <div class="mt-5 p-4 bg-dark text-white text-center">
