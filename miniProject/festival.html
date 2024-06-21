@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,12 +44,26 @@
         }
 
         function parsingJSON (json) {
-            let a = json.response.body.items.item;
-            console.log(a)
+            output = "";
+            let festivalArr = json.response.body.items.item;
+            console.log(festivalArr)
+            $.each(festivalArr, function(i,e) {
+                console.log(e)
+               
+            })
+            $("#test").html(output)
         }
     </script>
 </head>
 <body>
-    
+    <div id="test">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 </body>
 </html>
