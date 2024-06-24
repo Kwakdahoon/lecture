@@ -30,9 +30,9 @@
 
         $(function () {
             getTourData();
-            
+
             console.log(pageNo, totalCount);
-            
+            // ajax부분에서 async
             $("#morePage").click(function(){
               console.log("pageNo = " + pageNo, "totalCount = " + totalCount, "totalPage = " + totalPage)
               if(pageNo < totalPage) {
@@ -46,7 +46,7 @@
             })
         })
 
-        function noiamge () {
+        function noimage () {
           $("img"),error(function(){
             $(this).attr("src", "/image/noImage.png")
           });
@@ -66,6 +66,7 @@
                 url: url, // 데이터가 송수신 될 서버의 주소
                 type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
                 dataType: "json", // 수신받을 데이터 타입 (MIME TYPE)
+                async: false, // 동기 통신 방식
                 success: function (data) { // () 안에 있는 변수로 받아온다 (꼭 data 일 필요 없음)
                     // 통신이 성공하면 수행할 함수
                     console.log(data);
