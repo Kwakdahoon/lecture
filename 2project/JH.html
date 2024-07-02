@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination Example</title>
+    <script>
+         function createPagination(totalCount, page) { // currentpage에 값 바꿔 넣어야됨
+            console.log("전체개수 : ",totalCount,"현재 페이지 : " + currentPage);
+            let output = "";
+            let totalPages = Math.ceil(totalCount / numOfRows);//3749 / 50 = 75
+            let startPage = Math.floor((currentPage - 1) / 10) * 10 + 1;
+            let endPage = Math.min(startPage + 9, totalPages);
+
+
+            // 첫 페이지로 이동 
+            //bootstrap active disabled 로 반짝이 줌
+            output += '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">';
+            output += '    <a class="page-link" href="#" data-page="1">첫 페이지</a>';
+            output += '</li>';
+
+            // 이전 페이지로 이동
+            output += '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">';
+            output += '    <a class="page-link" href="#" data-page="' + (currentPage - 1) + '">이전</a>';
+            output += '</li>';
+            console.log(startPage , endPage);
+            for (let i = startPage; i <= endPage; i++) {
+                output += '<li class="page-item ' + (currentPage === i ? 'active' : '') + '">';
+                output += '    <a class="page-link" href="#" data-page="' + i + '">' + i + '</a>';
+                output += '</li>';
+            }
+
+            // 다음 페이지로 이동
+            output += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">';
+            output += '    <a class="page-link" href="#" data-page="' + (currentPage + 1) + '">다음</a>';
+            output += '</li>';
+
+            // console.log("totalPages : " + totalPages);
+            // 마지막 페이지로 이동
+            output += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">';
+            output += '    <a class="page-link" href="#" data-page="' + totalPages + '">마지막 페이지</a>';
+            output += '</li>';
+
+            $("#pagination").html(output);
+        }
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+</body>
+</html>
