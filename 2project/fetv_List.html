@@ -58,93 +58,100 @@ WebFont.load({
       });
     </script>
     <script>
-let listNo = 1;
-let pageNo = 1;
-let numOfRows = 20;
-let totalCount = 0;
-let totalPage = 0;
-const myKey = "zn%2BzZZug02R%2FeRrWaeYGi7zd%2BTlXJK9wF2G%2Bk0QBVm3mSrjMOvEc3L45lh8wzKpXAW1AZmv3j6gJ%2BCjp91p2Jg%3D%3D";
+      let listNo = 1;
+      let pageNo = 1;
+      let numOfRows = 10;
+      let totalCount = 0;
+      let totalPage = 0;
+      const myKey = "zn%2BzZZug02R%2FeRrWaeYGi7zd%2BTlXJK9wF2G%2Bk0QBVm3mSrjMOvEc3L45lh8wzKpXAW1AZmv3j6gJ%2BCjp91p2Jg%3D%3D"
+      $(function () {
+          getTourData();
+        });
+        getSearch();
+          $("#form1").keyup(function(e) {
+              if (e.keyCode == 13) { // 13 == enter 키코드 
+                  searchFestival($("#form1").val());
+              }
+          })
+        
+         let keyword = "";
+          searchFestival() {
+            keyword 
 
-$(function () {
-  getTourData();
-  $("#form1").keyup(function (e) {
-    if (e.keyCode == 13) {
-      searchFestival();
-    }
-  });
-});
+          }
+        function getTourData() {
 
-function getTourData(pageNo = 1) {
-  let baseUrl = `https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=${numOfRows}&pageNo=${pageNo}&MobileOS=ETC&MobileApp=AppTest&serviceKey=${myKey}&listYN=Y&arrange=A&contentTypeId=15&areaCode=&sigunguCode=&cat1=A02&cat2=&cat3=&_type=json`;
+let baseUrl = `https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=AppTest&serviceKey=${myKey}
+			&listYN=Y&arrange=A&contentTypeId=15&areaCode=&sigunguCode=&cat1=A02&cat2=&cat3=`;
 
-  $(".loading").show();
-  $.ajax({
-    url: baseUrl,
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-      totalCount = data.response.body.totalCount;
-      totalPage = Math.ceil(totalCount / numOfRows);
-      parsingJSON(data);
-      setupPagination();
-    },
-    error: function () {},
-    complete: function () {
-      $(".loading").hide();
-    }
-  });
-}
+            let url = baseUrl + "&areaCode=" + "&_type=json"; // 서울지역(areaCode=1), 제이슨으로
 
-function searchFestival(event) {
-  if (event && event.keyCode !== 13) return;
+            $(".loading").show();
+            $.ajax({
+                url: url, // 데이터가 송수신 될 서버의 주소
+                type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+                dataType: "json", // 수신받을 데이터 타입 (MIME TYPE)
+                success: function (data) { // () 안에 있는 변수로 받아온다 (꼭 data 일 필요 없음)
+                    console.log(data);
+                    parsingJSON(data);
+                },
+                error : function () {
+                },
+                complete: function () {
+                }
+            })
+        }
+        function getSearch (json) {
+          let baseUrl = `https://apis.data.go.kr/B551011/KorService1/searchKeyword1?
+          MobileOS=etc&MobileApp=mobileapp&keyword=%EB%B9%B5&contentTypeId=15&serviceKey=${myKey}`;
+          let url = baseUrl + "&_type=json";
 
-  let searchWord = $("#form1").val();
-  let baseUrl = `https://apis.data.go.kr/B551011/KorService1/searchKeyword1?numOfRows=${numOfRows}&pageNo=${pageNo}&MobileOS=ETC&MobileApp=AppTest&keyword=${encodeURIComponent(searchWord)}&contentTypeId=15&serviceKey=${myKey}&_type=json`;
+          $.ajax({
+                url: url, // 데이터가 송수신 될 서버의 주소
+                type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+                dataType: "json", // 수신받을 데이터 타입 (MIME TYPE)
+                success: function (data) { // () 안에 있는 변수로 받아온다 (꼭 data 일 필요 없음)
+                    // 통신이 성공하면 수행할 함수
+                    console.log(data);
+                    parsingJSON(data);
+                },
+                error : function () {
+                },
+                complete: function () {
+                  $(".loading").hide();
+                }
+            })
+            function parsingJSON(json) {
+            }
+            console.log(json);
+        }
 
-  $(".loading").show();
-  $.ajax({
-    url: baseUrl,
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-      totalCount = data.response.body.totalCount;
-      totalPage = Math.ceil(totalCount / numOfRows);
-      parsingJSON(data);
-      setupPagination();
-    },
-    error: function () {},
-    complete: function () {
-      $(".loading").hide();
-    }
-  });
-}
 
-function parsingJSON(json) {
-  let output = "";
-  let outputDesC = "";
-  let festivalArr = json.response.body.items.item;
-
-  $.each(festivalArr, function (i, e) {
-    output += `<a class="list-group-item list-group-item-action" id="list-${listNo}-list" data-bs-toggle="list" href="#list-${listNo}" role="tab" aria-controls="list-${listNo}">${listNo}. ${e.title}</a>`;
-    outputDesC += `<div class="tab-pane fade show" id="list-${listNo}" role="tabpanel" aria-labelledby="list-${listNo}-list">
+        function parsingJSON (json) {
+            output = "";
+            outputDesC = "";
+            outputTc = "";
+            let festivalArr = json.response.body.items.item;
+            let tC = json.response.body.totalCount;
+            // console.log(festivalArr)
+            $.each(festivalArr, function(i,e) {
+        output += `<a class="list-group-item list-group-item-action" 
+              id="list-${listNo}-list" data-bs-toggle="list" href="#list-${listNo}" 
+              role="tab" aria-controls="list-${listNo}">${listNo}. ${e.title}</a>`;
+        outputDesC += `<div class="tab-pane fade show" 
+                    id="list-${listNo}" role="tabpanel" aria-labelledby="list-${listNo}-list">
                     <a href="thisisDetail.html?contentid=${e.contentid}"><img src="${e.firstimage}" width="600px" height="750px"/></a></div>`;
-    listNo++;
-  });
+        listNo++;
+          });
+          outputTc = tC;
+          $("#list-tab").html(output);
+          $("#nav-tabContent").html(outputDesC);
+          $("#totalCount").html("총 데이터 개수 : " + tC);
 
-  $("#list-tab").html(output);
-  $("#nav-tabContent").html(outputDesC);
-  $("#totalCount").html("총 데이터 개수 : " + totalCount);
-}
-
-function setupPagination() {
-  let paginationHTML = "";
-
-  for (let i = 1; i <= totalPage; i++) {
-    paginationHTML += `<li class="page-item"><a class="page-link" href="#" onclick="getTourData(${i})">${i}</a></li>`;
-  }
-
-  $("#pagination").html(paginationHTML);
-}
+        };
+        $(document).ready(function () {
+        // $('.pagination').parent().addClass('d-flex justify-content-center');
+    });
 
     </script>
     <style>
@@ -359,20 +366,6 @@ function setupPagination() {
       </div>
 <div id="totalCount"></div>
       <!-- page list  -->
-<div class="input-group ps-5">
-  <div id="navbar-search-autocomplete" class="form-outline" data-mdb-input-init>
-    <input type="search" id="form1" class="form-control" placeholder="검색어를 입력해주세요" onkeyup="searchFestival(event)"/>
-  </div>
-  <button type="button" class="btn btn-primary" data-mdb-ripple-init onclick="searchFestival()">
-    <i class="fas fa-search"></i>
-  </button>
-</div>
-
-<!-- Page navigation -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination" id="pagination">
-  </ul>
-</nav>
 <!-- <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">

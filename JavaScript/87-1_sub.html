@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>팝업띄우기용 노예</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/commonJS.js"></script>
+    <title>공지사항 (팝업창)</title>
     <script>
-        function saveCookie() {
-            // 24시간 후에 만료되는 쿠키 저장
-            let myCookie = "";
-            let now = new Date();
-            now.setHours(now.getHours() + 24); // 24시간 후
-            myCookie = "myCook=kdh;expires=" + now.toUTCString();
-            document.cookie = "myCook113=kdh;expires=" + now.toUTCString();
-            document.cookie = "myCoo1313k=kdh;expires=" + now.toUTCString();
-            document.cookie = "myCo4141242ok=kdh;expires=" + now.toUTCString();
-            document.cookie = myCookie;
-            window.close();
+      // 유저가 checkbox에 체크를 했다면 => 쿠키를 남기고 닫기
+      // 유저가 checkbox에 체크를 하지 않았다면 => 그냥 닫기
+      function closeNotice() {
+        // alert("!");
+        let chkBox = document.getElementById("closeChkBox");
+        console.log(chkBox.checked);
+        // 체크박스가 체크가 되어있으면 chkBox.checked == true
+        // 체크박스가 체크가 되어있지 않으면 chkBox.checked == false
+
+        if (chkBox.checked == true) {
+          // 쿠키 저장
+          // alert("체크됨 - 쿠키 저장하자");
+          // 쿠키 이름 : notice, 값 : Y
+          saveCookie("notice", "Y", 1);
         }
+
+        // 닫기
+        window.close();
+      }
     </script>
-    <style>
-        div { 
-        text-align: center;
-        margin-top: 50px;
-        }
-    </style>
-</head>
-<body>
-    <div id="notice">
-        <h1>공지사항</h1>
-
-            <div>쿠키를 열심히 공부해 봅시다.</div>
-            
-            <div class="check">하루동안 이 창 열지 않기</div>
-            <br><br>
-            <input type="checkbox">
-
-            <div class="close">
-                <input type="button" value ="닫기" onclick="saveCookie();">
-            </div>
-            
+  </head>
+  <body>
+    <div class="notice">
+      <h1>공지사항</h1>
+      <div>쿠키를 열심히 공부해 봅시다.</div>
+      <div class="check"><input type="checkbox" id="closeChkBox" />하루 동안 이 창 열지 않기</div>
+      <div class="close">
+        <input type="button" value="닫기" onclick="closeNotice();" />
+      </div>
     </div>
-</body>
+  </body>
 </html>
