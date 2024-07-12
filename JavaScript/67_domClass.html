@@ -7,32 +7,24 @@
     <title>Document</title>
     <script>
         window.onload = function () {
+
+
             let list = document.getElementById("list");
-            console.log(list);
-
-
-
             list.onclick = function (e) {
-                console.log(e);
-                let target = e.target;
-                console.log(target);
-                target.classList.toggle("text-red");
-
+            let target = e.target;
+            target.classList.toggle("text-red");
             };
-            
             let a = document.getElementsByTagName("i");
             for (let i = 0; i < a.length; i++) {
                 console.log(a[i]);
                 a[i].onclick = function (e) {
                     let target = e["target"];
-                    console.log(e);
-                    console.log(target.classList);
                     target.classList.toggle("fa-regular");
                     target.classList.toggle("fa-solid");
                 };
             }
 
-
+            
         }
     </script>
     <style>
@@ -54,6 +46,5 @@
         <li>list3 <i class="fa-solid fa-heart"></i></li>
     </ul>
     <i class="fa-solid fa-heart"></i>
-    
 </body>
 </html>
