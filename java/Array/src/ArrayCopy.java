@@ -83,5 +83,47 @@ public class ArrayCopy {
 		System.out.println(System.identityHashCode(str4));
 		
 		// System.arraycopy()
+		
+		// 깊은 복사
+		// 1) new 연산자로 복사객체를 생성 for문을 이용해서 각요소를 복사
+		// 2) Array.copyOf90
+		// 3) System.arraycopy()
+		
+		// 2
+		int[] arr = {0,1,2,3,4,5};
+		int[] arr2 = Arrays.copyOf(arr, arr.length);
+		System.out.println("arr : " + Arrays.toString(arr));
+		System.out.println("arr2 : " + Arrays.toString(arr2));
+		int[] arr3 = Arrays.copyOf(arr,10);
+		System.out.println("arr3 : " + Arrays.toString(arr3));
+		arr[3] = 30;
+		System.out.println("수정 후 arr : " + Arrays.toString(arr));
+		System.out.println("수정 후 arr2 : " + Arrays.toString(arr2));
+		
+		// 3) 
+		char[] arr4 = {'a','b','c'};
+		char[] num4 = {'0','1','2','3','4','5'};
+		System.out.println("arr4 : " + Arrays.toString(arr4));
+		System.out.println("num4 : " + Arrays.toString(num4));
+		
+		char[] copyArr = new char [num4.length];
+		System.out.println("copyArr : " + Arrays.toString(copyArr));
+		System.arraycopy(num4, 0, copyArr, 0, num4.length);
+		System.out.println(Arrays.toString(copyArr));
+		System.out.println(num4 == copyArr);
+		
+		// 정렬
+		int[] arr5 = {2,6,1,8,5};
+		Arrays.sort(arr5);
+		System.out.println(Arrays.toString(arr5));
+		
+		int intA = 12;
+		
+		// Boxing (primitive type ->  wrapper class (참조타입) )
+		Integer integerA = new Integer(intA);
+		System.out.println(integerA);
+		// Unboxing (참조 타입 -> primitive type)
+		int intB = integerA.intValue();
+		System.out.println(intB);
 	}
 }
