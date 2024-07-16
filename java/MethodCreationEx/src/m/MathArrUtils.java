@@ -1,4 +1,4 @@
-package webkdh;
+package m;
 
 import java.util.Arrays;
 
@@ -9,9 +9,8 @@ public class MathArrUtils {
 		for (int i = 0; i < num.length; i++) {
 			sum += num[i];
 		}
-		System.out.println(Arrays.toString(num));
-		System.out.println("총합 : " + sum);
-		
+		System.out.println("기존 배열 : " + Arrays.toString(num));
+		System.out.println("총합 : " + sum);		
 	}
 	
 	public static void average(int[] num) {
@@ -19,7 +18,7 @@ public class MathArrUtils {
 		for (int i = 0; i < num.length; i++) {
 			sum += num[i];
 		}
-		System.out.println("평균 : " + sum / 10);
+		System.out.println("평균 : " + sum / num.length);
 	}
 	
 	public static void max(int[] num) {
