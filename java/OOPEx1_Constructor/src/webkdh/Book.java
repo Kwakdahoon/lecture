@@ -1,35 +1,37 @@
 package webkdh;
 
 public class Book {
-	// 멤버변수 : 제목(title), 저자(author), 가격(price)
-	String title;
-	String author;
-	int price;
+
+// 책이름, 가격, 수량
+	private String name; // 1
+	private int price;
+	private int quantity;
 	
 	// 생성자
-	public Book() {
-		// 제목 : , 저자 : , 가격 : 0
-//		this.title = "";
-		this("","");
-		
-	}
-	
-	public Book(String title, String author) {
-//		this.title = title;
-//		this.author = author;
-//		this.price = 0;
-		this(title, author, 0);
-	}
-	
-	public Book(String title, String author, int price) {
-		this.title = title;
-		this.author = author;
+	public Book(String name, int price, int quantity) { // 2
+		this.name = name;
 		this.price = price;
+		this.quantity = quantity;
 	}
 	
 	// 메서드
-	public void displayBook () {
-		System.out.println
-		("책이름 : " + title + ", 저자 : " + author + ", 가격 : " + price);
+	public String getName() { // 3
+		return this.name;
+	}
+	
+	public int getPrice() {
+		return this.price;
+	}
+	
+	public int getQuantity() {
+		return this.quantity;
+	}
+	
+	public void displayBook() {
+//		System.out.println("책이름 : " + this.name + ", 가격 : " + this.price + ", 개수 : " + this.quantity);
+	}
+	
+	public int getTotalPrice() { // 10
+		return this.price * this.quantity;
 	}
 }
