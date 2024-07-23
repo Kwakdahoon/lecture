@@ -1,6 +1,6 @@
 package webkdh.Ex1;
 
-public class Product {
+public abstract class Product {
 	// 멤버변수
 	private String name;
 	private String color;
@@ -8,11 +8,14 @@ public class Product {
 	private int y;
 	
 	// 생성자
+	Product() {
+		
+	}
 
 	public Product (String name, String color, int x, int y) {
 		super();
 		this.name = name;
-		this.name = color;
+		this.color = color;
 		this.x = x;
 		this.y = y;
 	}
@@ -36,13 +39,13 @@ public class Product {
 	}
 	
 	// 그리는 메서드
-	public void draw() {
-		System.out.println("도형을 그립니다.");
-	}
+//	public void draw() {
+//		System.out.println("도형을 그립니다.");
+//	}
 	// 추상메서드
-//	public abstract void draw(); 
+	public abstract void draw(); 
 	
 	public String display() {
-		return "Product [name=" + name + ", color=" + color + ", x=" + x + ", y=" + y + "]";
+		return "이름 : " + name + ", 색 : " + color + ", x=" + x + ", y=" + y;
 	}
 }

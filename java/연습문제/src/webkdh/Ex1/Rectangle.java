@@ -12,8 +12,12 @@ public class Rectangle extends Product{
 	}
 	@Override
 	public String display() {
-		return "Rectangle [width=" + width + ", length=" + length + "] " + "가로 : " + width + ", 세로 : " + length;
+		return super.display() + ", 가로 : " + width + ", 세로 : " + length;
+	}
+	@Override
+	public void draw() {
+		System.out.println(this.display() + "인 사각형이 그려집니다.");		
 	}
 
 
-}
+};
