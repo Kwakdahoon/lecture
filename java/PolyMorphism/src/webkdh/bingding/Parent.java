@@ -6,4 +6,5 @@ public class Parent {
 	void method() {
 		System.out.println("Parent.method() 호출");
 	}
+
 }

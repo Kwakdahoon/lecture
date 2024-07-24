@@ -18,6 +18,12 @@ public class Rectangle extends Product{
 	public void draw() {
 		System.out.println(this.display() + "인 사각형이 그려집니다.");		
 	}
+	public int getWidth() {
+		return width;
+	}
+	public int getLength() {
+		return length;
+	}
 
 
 };

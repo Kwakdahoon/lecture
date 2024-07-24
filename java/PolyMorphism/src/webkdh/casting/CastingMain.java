@@ -6,10 +6,10 @@ public class CastingMain {
 		Car c = new Car();
 		c.drive();
 		// 다운캐스팅 (부모타입 -> 자손타입)
-//		FireEngine f = (FireEngine) c; // 컴파일은 통과. 런타임오류 발생
-//		f.water();
+		FireEngine f = (FireEngine) c; // 컴파일은 통과. 런타임오류 발생
+		f.water();
 		
-		Car poly = new FireEngine(); // 업캐스팅 (자손타입 -> 부모타입)
+		Car poly = (Car) new FireEngine(); // 업캐스팅 (자손타입 -> 부모타입)
 //		poly.drive();
 //		poly.water
 		

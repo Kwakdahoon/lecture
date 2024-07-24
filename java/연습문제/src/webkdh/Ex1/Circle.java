@@ -10,7 +10,9 @@ public class Circle extends Product{
 	}
 	
 
-
+	public int getRadius () {
+		return radius;
+	}
 	@Override
 	public String display() {
 		return super.display() + ", 반지름 : " + radius; 
