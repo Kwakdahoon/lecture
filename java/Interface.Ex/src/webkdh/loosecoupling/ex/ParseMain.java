@@ -9,13 +9,7 @@ public class ParseMain {
 		
 //		String filename = "data.json";
 //		System.out.println(filename.substring(filename.lastIndexOf(".") + 1));
-		
-//		파일의 확장자 : json
-//		JSON 파일 파싱을 ㅅ ㅣ작대스
-//		파싱 완료
-//		파일의 확장자 : xml
-//		JSON 파일 파싱을 ㅅ ㅣ작대스
-//		파싱 완료
+
 
 		service.processParse("data.json");
 		System.out.println();
@@ -23,6 +17,6 @@ public class ParseMain {
 		System.out.println();
 		service.processParse("data.yaml");
 		System.out.println();
-		service.processParse("data.yaml");
+		service.processParse("data.dahoon");
 	}
 }
