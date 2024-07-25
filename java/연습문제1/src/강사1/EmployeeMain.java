@@ -26,6 +26,14 @@ public class EmployeeMain {
 		아이티부서.addEmployee(장길동);
 		
 		아이티부서.뽀이치();
+		
+		
+		String a = "11";
+		String b = "12";
+		String c = "ㄴㅇㅁ";
+		String d = a.equals(b) ? "값 같음" : a.equals(c) ? "ㄴㅇㅁ" : "달리다굼";
+		
+		System.out.println(d);
 	}
 
 }

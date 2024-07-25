@@ -44,10 +44,11 @@ public abstract class Pet {
 		System.out.println("걸어 다닙니다.");
 	}
 	
-	// 추상메서드 어떻게 짖을지 모름 abstract
+	
 //	public void doCry() {
 //		System.out.println("짖습니다.");
 //	}
+	// 추상메서드 어떻게 짖을지 모름 abstract
 	public abstract void doCry(); // body 없이 선언부만. 
 	
 	@Override
