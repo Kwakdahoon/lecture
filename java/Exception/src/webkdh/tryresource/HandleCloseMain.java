@@ -12,7 +12,7 @@ public class HandleCloseMain {
 				// 전역변수로 두기 2
 		//		FileInputStream fis = null;
 		//		try {
-		//		fis = new FileInputStream("E:\\lecture\\java\\Exception\\src\\webkdh\\tryresource\\score.dat");
+		//		fis = new FileInputStream("E:\\lecture\\java\\ExceptionEx\\src\\webkdh\\tryresource\\score.dat");
 		//		} catch (FileNotFoundException e) {
 		////			e.printStackTrace();
 		//			System.out.println("파일이 없음");
@@ -27,10 +27,18 @@ public class HandleCloseMain {
 		//		}
 				
 		// 자동으로 close()호출을 해준다. (단, AutoCloseable인터페이스를 구현한 것이어야 한다.)	
-		try (FileInputStream fis = new FileInputStream("E:\\lecture\\java\\Exception\\src\\webkdh\\tryresource\\score.dat")) {
-		DataInputStream dis = new DataInputStream(fis);
+		try (FileInputStream fis = new FileInputStream("E:\\lecture\\java\\ExceptionEx\\src\\webkdh\\tryresource\\score.dat");
+		DataInputStream dis = new DataInputStream(fis)) {
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("파일 없음");
+//			e.printStackTrace();
+			
 		}
+//		try (FileInputStream fis = new FileInputStream("E:\\lecture\\java\\ExceptionEx\\src\\webkdh\\tryresource\\score.dat");
+//		DataInputStream dis = new DataInputStream(fis)) {
+//		} catch (IOException e) {
+////			e.printStackTrace();
+//			System.out.println("파일이 없습니다.");
+//		}
 	}
 }

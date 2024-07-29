@@ -22,7 +22,7 @@ public class ExceptionMain {
 		catch (InputMismatchException e) {
 //			System.out.println(e.getMessage());
 //			e.printStackTrace();
-			System.out.println("정수를입력해씨빨련아");
+			System.out.println("점천수를 입력하세요");
 			
 		} catch (ArithmeticException e) {
 			System.out.println(e.getMessage());

@@ -9,6 +9,8 @@ public class ExceptionEx1 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
+		
+		
 		try {
 			install();
 		} catch (InstallException e) {
