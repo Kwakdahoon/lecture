@@ -16,50 +16,74 @@ public class InfoMain {
 //		아래의 조건이 충족되도록 프로그래밍 하세요
 //		학번이 같으면 같은 학생으로 취급한다.
 //		점수 | 학번 | 이름 을 기준으로 정렬되어 TreeSet에 저장될 수 있도록 하세요.
+
 		
-		StuScore stu1 = new StuScore("00001" , "정다훈", 10);
-		StuScore stu2 = new StuScore("00002" , "이다홍", 64);
-		StuScore stu3 = new StuScore("00003" , "김다훙", 45);
-		StuScore stu4 = new StuScore("00004" , "소다훙", 14);
-		StuScore stu5 = new StuScore("00005" , "혜다훙", 64);
-		StuScore stu6 = new StuScore("00006" , "란훙", 74);
-		StuScore stu7 = new StuScore("00008" , "걱다훙", 88); // 겹침
-		StuScore stu8 = new StuScore("00008" , "곽다훈", 78); // 겹침
+		TreeSet<Student> stu = new TreeSet<Student>();
 		
-		Set<StuScore> stu = new HashSet<StuScore>();
+		Student stu1 = new Student("00001" , "정다훈", 100);
+		Student stu2 = new Student("00002" , "이다홍", 80);
+//		StuScore stu3 = new StuScore("00003" , "김다훙", 45);
+//		StuScore stu4 = new StuScore("00004" , "소다훙", 14);
+//		StuScore stu5 = new StuScore("00005" , "혜다훙", 64);
+//		StuScore stu6 = new StuScore("00006" , "란훙", 74);
+		Student stu7 = new Student("00008" , "걱다훙", 90); // 겹침
+		Student stu8 = new Student("00008" , "곽다훈", 78); // 겹침
+		
+
 		
 		stu.add(stu1);
 		stu.add(stu2);
-		stu.add(stu3);
-		stu.add(stu4);
-		stu.add(stu5);
-		stu.add(stu6);
+//		stu.add(stu3);
+//		stu.add(stu4);
+//		stu.add(stu5);
+//		stu.add(stu6);
 		stu.add(stu7);
 		stu.add(stu8);
-		System.out.println(stu7.equals(stu8));
-		System.out.println(stu7.hashCode());
-		System.out.println(stu8.hashCode());
+//		System.out.println(stu7.equals(stu8));
+//		System.out.println(stu7.hashCode());
+//		System.out.println(stu8.hashCode());
 		
-		System.out.println(stu);
+//		System.out.println(stu);
+		for(Student s : stu) {
+			System.out.println(s);
+		}
 		
-		System.out.println("Score : " + wjdfufwjs);
-		System.out.println(stu);
-//		stu.sort(null);
-		System.out.println("Score : " + wjdfufgn);
-		System.out.println(stu);
+		// 성적 비교기
 		System.out.println();
-	
-		System.out.println("name : " + wjdfufwjs);
-		System.out.println(stu);
-//		stu.sort(new StuName());
-		System.out.println("name : " + wjdfufgn);
-		System.out.println(stu);
+		Score sc = new Score();
+		TreeSet<Student> scoreSet = new TreeSet<Student>();
+//		scoreSet.add(stu1);
+//		scoreSet.add(stu2);
+//		scoreSet.add(stu7);
+//		scoreSet.add(stu8);
 		
-		System.out.println();
-		System.out.println(wjdfufwjs);
-		System.out.println(stu);
-//		stu.sort(new StuNum());
-		System.out.println(wjdfufgn);
-		System.out.println(stu);		
+
+		
+		for(Student s : scoreSet) {
+			scoreSet.add(s);
+		}
+		for(Student s : scoreSet) {
+			System.out.println(s);
+		}
+		
+//		System.out.println("Score : " + wjdfufwjs);
+//		System.out.println(stu);
+////		stu.sort(null);
+//		System.out.println("Score : " + wjdfufgn);
+//		System.out.println(stu);
+//		System.out.println();
+//	
+//		System.out.println("name : " + wjdfufwjs);
+//		System.out.println(stu);
+////		stu.sort(new StuName());
+//		System.out.println("name : " + wjdfufgn);
+//		System.out.println(stu);
+//		
+//		System.out.println();
+//		System.out.println(wjdfufwjs);
+//		System.out.println(stu);
+////		stu.sort(new StuNum());
+//		System.out.println(wjdfufgn);
+//		System.out.println(stu);		
 	}
 }

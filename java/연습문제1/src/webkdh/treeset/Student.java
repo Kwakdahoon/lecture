@@ -2,12 +2,12 @@ package webkdh.treeset;
 
 import java.util.Objects;
 
-public class StuScore implements Comparable<StuScore>{
+public class Student implements Comparable<Student>{
 	private String stuNum;
 	private String name;
 	private int score;
 
-	public StuScore (String stuNum, String name, int score) {
+	public Student (String stuNum, String name, int score) {
 		this.stuNum = stuNum;
 		this.name = name;
 		this.score = score;
@@ -26,14 +26,15 @@ public class StuScore implements Comparable<StuScore>{
 	}
 
 	@Override
-	public int compareTo(StuScore o) {
-			return this.score < o.score  ? 1 : this.score == o.score ? 0 : -1; // 성적 오름차
+	public int compareTo(Student o) {
+		return stuNum.compareTo(o.stuNum);
+//			return this.score < o.score  ? 1 : this.score == o.score ? 0 : -1; // 성적 오름차
 //			return this.score < o.score  ? -1 : this.score == o.score ? 0 : 1; // 성적 내림차
 		}
 
 	@Override
 	public boolean equals(Object obj) {
-		StuScore temp = (StuScore) obj;
+		Student temp = (Student) obj;
 		if(stuNum.equals(temp.stuNum)) {
 			return true;
 		}
