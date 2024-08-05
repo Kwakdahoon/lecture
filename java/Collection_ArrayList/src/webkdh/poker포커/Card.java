@@ -1,27 +1,34 @@
-package webkdh.poker포커;
+package webkdh.poker포커; 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-
-public class Card {
-	private String[] type = {"S", "H", "D", "C"};
+public class Card implements Comparable<Card>{
+	private int num;
+	private Kind kind;
 	
-	private static Map<String, ArrayList<String>> num = new HashMap<>();
-	
-	public Card() {
-		inputNum();
+	public Card(int num, Kind kind) {
+		this.num = num;
+		this.kind = kind;
 	}
-	public void inputNum() {
-		ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(
-				1,2,3,4,5,6,7,8,9,10,11,12,13
-				));
-		String a = "";
-		for (int i = 0; i < numbers.size() + 1; i++) {
-			a += type[i];
-			System.out.println(a);
+
+	public int getNum() {
+		return num;
+	}
+
+	public Kind getKind() {
+		return kind;
+	}
+
+	@Override
+	public String toString() {
+		return num + kind.toString();
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		if (this.num != o.num) {
+			return Integer.compare(this.num, o.num);
+		} else {
+			return this.kind.compareTo(kind);
 		}
 	}
+	
 }
