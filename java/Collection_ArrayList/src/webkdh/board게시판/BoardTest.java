@@ -13,18 +13,17 @@ public class BoardTest {
 		Member mem2 = new Member("002", "개길동1");
 		Member mem3 = new Member("003", "씹길동1");
 
-		mg.insert(mem3);
-		mg.insert(mem2);
 		mg.insert(mem1);
+		mg.insert(mem2);
+		mg.insert(mem3);
 		
 		// 회원검색
 		Member searchMem1 = mg.selectByUserId(mem1.getMemberId());
 		System.out.println(searchMem1);
 		Member searchMem2 = mg.selectByUserId(mem2.getNickName());
 		System.out.println(searchMem2);
-		
 		mg.deleteMember("user3"); // 회원삭제
-		System.out.println(mg.selectByUserId("user3"));
+//		System.out.println(mg.selectByUserId("user3"));
 		
 		// 회원이 게시글을 몇개 작성한다.
 		
@@ -48,10 +47,10 @@ public class BoardTest {
 		HashMap<String, Member> newMemMap = (HashMap)memboard.get("member");
 		// 출력 : 게시판
 		for(Board board : boards) {
-			System.out.println("글번호 : " + board.getBoardId());
-			System.out.println("제목 : " + board.getTitle());
-			System.out.println("글쓴이 : " + (mg.getManage().get(board.getMemberID().getNickname()));
-			System.out.println("글번호 : " + board.getBoardId());
+			System.out.print("글번호 : " + board.getBoardId());
+			System.out.print(", 제목 : " + board.getTitle());
+			System.out.println(", 글쓴이 : " + board.getWriter().getNickName());
+			System.out.print(", 글번호 : " + board.getBoardId() + "\n");
 		}
 	}
 }

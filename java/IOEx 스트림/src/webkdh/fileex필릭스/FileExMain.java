@@ -36,12 +36,10 @@ public class FileExMain {
 					flieCnt++;
 					totalSize += file.length();
 				}
-				
+				 
 			} // for문 끝
 			
 			DecimalFormat df = new DecimalFormat("#,###");
-			
-			
 			
 			System.out.println(flieCnt + "개 파일 \t" + totalSize + "바이트");
 			System.out.println(dirCnt + "개 디렉터리 \t" + df.format(curDirectory.getUsableSpace()) + " 바이트");

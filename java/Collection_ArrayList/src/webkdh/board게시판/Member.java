@@ -10,7 +10,6 @@ public class Member {
 	}
 
 	public void add(String name) {
-		// TODO Auto-generated method stub
 		
 	}
 

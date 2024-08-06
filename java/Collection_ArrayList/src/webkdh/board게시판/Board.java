@@ -24,5 +24,4 @@ public class Board {
 	public String getWriter() {
 		return writer;
 	}
-	
 }
