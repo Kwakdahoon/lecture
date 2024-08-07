@@ -1,4 +1,4 @@
-package webkdh.friends예제;
+package com.webkdh.view친구테이블연결.friends예제;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

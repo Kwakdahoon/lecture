@@ -11,7 +11,9 @@ public class DBConnectionMain {
 		String id = "hr";
 		String pwd = "1234";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+		
 		Connection conn = null;
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, id, pwd);
