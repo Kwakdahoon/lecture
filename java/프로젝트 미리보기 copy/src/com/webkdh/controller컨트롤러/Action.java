@@ -1,6 +1,6 @@
 package com.webkdh.controller컨트롤러;
 
-import com.webkdh.controller.service메서드짬통.DeleteFriend;
+import com.webkdh.controller.service메서드짬통.DeleteFriendService;
 import com.webkdh.controller.service메서드짬통.FriendManagementService;
 import com.webkdh.controller.service메서드짬통.OutputEntireFriendService;
 import com.webkdh.controller.service메서드짬통.SaveFriendService;
@@ -35,7 +35,7 @@ public class Action{
 			result = new SearchByNameService();
 			break;
 		case 7:
-			result = new DeleteFriend();
+			result = new DeleteFriendService();
 			break;
 		case 9:
 			System.exit(0);

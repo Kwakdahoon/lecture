@@ -11,9 +11,9 @@ public class OutputEntireFriendService implements FriendManagementService {
 	@Override
 	public void toDo() throws ClassNotFoundException, SQLException {
 		System.out.println("전체 친구 조회하러 가자");
-		FriendsMgmDAO fmd = FriendsMgmDAOImpl.getInstance();
+		FriendsMgmDAO dao = FriendsMgmDAOImpl.getInstance();
 		
-		List<Friend> list = fmd.selectAllFriends();
+		List<Friend> list = dao.selectAllFriends();
 		
 		for(Friend f : list) {
 			System.out.println(f.toString());

@@ -3,6 +3,7 @@ package com.webkdh.controller컨트롤러;
 import com.webkdh.controller.service메서드짬통.FriendManagementService;
 import com.webkdh.controller.service메서드짬통.OutputEntireFriendService;
 import com.webkdh.controller.service메서드짬통.SaveFriendService;
+import com.webkdh.controller.service메서드짬통.SearchByNameService;
 
 public class Action{
 	private Action() {} // 기본생성자 private로 해줘야 싱글톤이 됨

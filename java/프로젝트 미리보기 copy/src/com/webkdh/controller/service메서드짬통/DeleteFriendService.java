@@ -2,7 +2,7 @@ package com.webkdh.controller.service메서드짬통;
 
 import java.sql.SQLException;
 
-public class DeleteFriend implements FriendManagementService {
+public class DeleteFriendService implements FriendManagementService {
 
 	@Override
 	public void toDo() throws ClassNotFoundException, SQLException {
