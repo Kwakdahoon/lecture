@@ -19,7 +19,7 @@
 		PASSWORD <div><input type = "password" name ="pw"/></div>
 	</div>
 	
-	<button type = "submit">게이정보</button>
+	<button type = "submit">개인정보</button>
 	</form>
 </body>
 </html>

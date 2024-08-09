@@ -34,7 +34,7 @@ public class UserPSPost extends HttpServlet {
       out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<meta charset=\"UTF-8\">\r\n");
-      out.write("<title>GET방식 출력 응답</title>\r\n");
+      out.write("<title>POST방식 출력 응답</title>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("<div> 이름 : " + name + "</div>");
