@@ -35,11 +35,15 @@ public class GetParameterNamesServlet extends HttpServlet {
 //			System.out.println(paraName + ": " + value);
 			
 			List<String> valueList = new ArrayList<>();
-			String[] valueArr = request.getParameterValues(paraName);
 			
-			for (String value : valueArr) {
-				valueList.add(value);
-			}
+			String[] valueArr = request.getParameterValues(paraName);
+			// 방법 1
+//			for (String value : valueArr) {
+//				valueList.add(value);
+//			}
+			// 방법 2
+			valueList = Arrays.asList(valueArr);
+			
 			System.out.println("params - " + paraName + " : " + valueList);
 		}
 		
